@@ -1,0 +1,14 @@
+---
+description: Convenções da API NestJS (controllers, services, DTOs, erros)
+globs:
+  - "apps/api/**/*.ts"
+  - "libraries/**/*.ts"
+alwaysApply: false
+---
+
+- Estrutura de módulo: `controller` (fino) → `service` (regra de negócio) → `repository` (acesso a dados). Controller nunca chama Prisma direto.
+- DTOs com `class-validator` + `class-transformer`; todo input externo é validado no DTO, nunca no service.
+- Erros de domínio estendem `DomainError`; HTTP mapping só no exception filter. Nunca lançar `HttpException` de dentro de um service.
+- Injeção por construtor; nada de `new` para dependências.
+- Nomes: arquivos `kebab-case`, classes `PascalCase`, colunas de banco `snake_case`.
+- Testes espelham a estrutura: `src/foo/foo.service.ts` → `src/foo/__tests__/foo.service.spec.ts`. Sem mock de banco: usar o banco de teste + factories.

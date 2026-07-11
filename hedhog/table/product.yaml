@@ -1,0 +1,11 @@
+# hedhog/table/product.yaml
+# 10 linhas declarativas → migration + API CRUD tipada + permissões de rota.
+columns:
+  - type: pk
+  - name: name
+  - name: price
+    type: decimal
+    precision: 12
+    scale: 2
+  - type: created_at
+  - type: updated_at

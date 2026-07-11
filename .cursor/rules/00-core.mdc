@@ -1,0 +1,10 @@
+---
+description: Fundamentos do projeto — stack, comandos e limites. Única rule sempre ativa.
+alwaysApply: true
+---
+
+- Stack: HedHog (NestJS + Next.js + Prisma/PostgreSQL), monorepo pnpm + Turborepo, TypeScript estrito.
+- Antes de mudanças multi-arquivo: apresente o plano e aguarde aprovação.
+- CRUD e tabelas novas: SEMPRE via YAML em `hedhog/table/` + skill `criar-modulo-hedhog`. Nunca gere CRUD manualmente.
+- Nunca edite `prisma/migrations/` nem arquivos `.env*`.
+- Testes e lint devem passar antes de declarar qualquer tarefa concluída: `pnpm test && pnpm lint && pnpm typecheck`.

@@ -1,0 +1,13 @@
+---
+description: Convenções do admin Next.js (App Router, Server Components, dados)
+globs:
+  - "apps/admin/**/*.tsx"
+  - "apps/admin/**/*.ts"
+alwaysApply: false
+---
+
+- Server Components por padrão; `"use client"` apenas quando houver estado/efeito/evento.
+- Data fetching no servidor (route handlers ou server actions); nunca `fetch` de API interna dentro de client component.
+- Componentes funcionais com export nomeado; sem default export.
+- Estilo: Tailwind com os tokens do tema do admin HedHog; sem CSS inline e sem cores hard-coded.
+- Formulários: `react-hook-form` + resolver `zod`; o schema zod é a fonte de verdade e mora ao lado do componente em `schema.ts`.

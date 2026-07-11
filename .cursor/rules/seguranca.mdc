@@ -1,0 +1,10 @@
+---
+description: Checklist de segurança para código que toca auth, pagamentos, uploads ou dados pessoais. Aplicar quando a tarefa envolver dados sensíveis.
+alwaysApply: false
+---
+
+- Toda rota nova exige verificação de permissão RBAC (`route.yaml` + `role.yaml` sincronizados) — nada de rota pública por omissão.
+- Input de usuário nunca chega a query sem passar por DTO validado; proibido interpolar strings em SQL/Prisma raw.
+- Uploads: validar MIME real (não extensão), limitar tamanho, armazenar fora do webroot.
+- Dados pessoais (LGPD): logar apenas IDs, nunca payloads com PII; campos sensíveis criptografados em repouso.
+- Segredos: apenas `process.env`; se encontrar segredo hard-coded, PARE e reporte antes de qualquer outra ação.
