@@ -1,0 +1,17 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: icon
+    length: 255
+    isNullable: true
+  - name: name
+    type: locale_varchar
+    length: 255
+    locale:
+      en: Name
+      pt: Nome
+  - name: is_template
+    type: boolean
+    default: false
+  - type: created_at
+  - type: updated_at

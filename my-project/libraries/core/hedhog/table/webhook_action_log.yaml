@@ -1,0 +1,49 @@
+columns:
+  - type: pk
+  - type: fk
+    name: webhook_call_log_id
+    references:
+      table: webhook_call_log
+      column: id
+      onDelete: cascade
+      onUpdate: cascade
+  - type: fk
+    name: webhook_action_id
+    isNullable: true
+    references:
+      table: webhook_action
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - name: action_name
+    type: varchar
+    length: 127
+  - name: action_type
+    type: varchar
+    length: 64
+  - name: status
+    type: varchar
+    length: 16
+  - name: duration_ms
+    type: int
+    default: 0
+  - name: request_payload
+    type: json
+    isNullable: true
+  - name: response_payload
+    type: json
+    isNullable: true
+  - name: error_message
+    type: text
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - webhook_call_log_id
+  - columns:
+      - webhook_action_id
+  - columns:
+      - status
+  - columns:
+      - created_at

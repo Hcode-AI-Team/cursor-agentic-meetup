@@ -1,0 +1,289 @@
+- component_id:
+    where:
+      slug: active-users-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: mail-sent-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: mail-sent-chart
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: permissions-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: permissions-chart
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: session-activity-chart
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: sessions-today-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: menus-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: routes-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: user-growth-chart
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: account-security
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: account-security
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: account-security
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: activity-timeline
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: activity-timeline
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: activity-timeline
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: email-notifications
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: email-notifications
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: email-notifications
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: login-history-chart
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: login-history-chart
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: login-history-chart
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: profile-card
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: profile-card
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: profile-card
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: stat-online-time
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: stat-online-time
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: stat-online-time
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: stat-actions-today
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: stat-actions-today
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: stat-actions-today
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: stat-consecutive-days
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: stat-consecutive-days
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: stat-consecutive-days
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: stat-access-level
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: stat-access-level
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: stat-access-level
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: user-roles
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: user-roles
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: user-roles
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: user-sessions
+  role_id:
+    where:
+      slug: user
+- component_id:
+    where:
+      slug: user-sessions
+  role_id:
+    where:
+      slug: admin-access
+- component_id:
+    where:
+      slug: user-sessions
+  role_id:
+    where:
+      slug: admin
+      
+- component_id:
+    where:
+      slug: mail-config
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: locale-config
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: oauth-config
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: storage-config
+  role_id:
+    where:
+      slug: admin
+- component_id:
+    where:
+      slug: theme-config
+  role_id:
+    where:
+      slug: admin

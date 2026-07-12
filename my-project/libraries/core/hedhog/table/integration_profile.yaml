@@ -1,0 +1,34 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: name
+    type: varchar
+    length: 127
+  - name: type_id
+    type: fk
+    references:
+      table: integration_type
+      column: id
+      onDelete: RESTRICT
+  - name: provider_id
+    type: fk
+    references:
+      table: integration_provider
+      column: id
+      onDelete: RESTRICT
+  - name: config
+    type: json
+    isNullable: true
+  - name: is_active
+    type: boolean
+    default: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true
+  - columns:
+      - type_id
+  - columns:
+      - provider_id

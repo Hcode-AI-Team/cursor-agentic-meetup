@@ -1,0 +1,118 @@
+- slug: core.setting.changed
+  name: Core setting changed
+  module: core
+  aggregate_type: setting
+  description: Disparado quando uma configuração do core é alterada.
+  status: active
+  payload_schema:
+    slug:
+      type: string
+      description: Slug da configuração alterada
+    oldValue:
+      type: string
+      nullable: true
+      description: Valor anterior da configuração
+    newValue:
+      type: string
+      nullable: true
+      description: Novo valor da configuração
+    hasValue:
+      type: boolean
+      description: Indica se o novo valor está definido
+  metadata_schema:
+    settingSlug:
+      type: string
+      description: Slug da configuração (espelho de payload.slug, usado para roteamento)
+    source:
+      type: string
+      description: Origem da alteração (ex. api, migration, seed)
+
+- slug: core.user.created
+  name: Core user created
+  module: core
+  aggregate_type: user
+  description: Disparado quando um novo usuário é criado.
+  status: active
+  payload_schema:
+    id:
+      type: number
+      description: ID do usuário criado
+    name:
+      type: string
+      description: Nome do usuário
+    email:
+      type: string
+      description: E-mail do usuário
+  metadata_schema: null
+
+- slug: core.user.updated
+  name: Core user updated
+  module: core
+  aggregate_type: user
+  description: Disparado quando os dados de um usuário são atualizados.
+  status: active
+  payload_schema:
+    id:
+      type: number
+      description: ID do usuário atualizado
+    name:
+      type: string
+      nullable: true
+      description: Novo nome do usuário
+  metadata_schema: null
+
+- slug: core.user.deleted
+  name: Core user deleted
+  module: core
+  aggregate_type: user
+  description: Disparado quando um ou mais usuários são excluídos.
+  status: active
+  payload_schema:
+    ids:
+      type: array
+      description: IDs dos usuários excluídos
+  metadata_schema: null
+
+- slug: core.role.created
+  name: Core role created
+  module: core
+  aggregate_type: role
+  description: Disparado quando um novo perfil de acesso é criado.
+  status: active
+  payload_schema:
+    id:
+      type: number
+      description: ID do perfil criado
+    slug:
+      type: string
+      description: Slug do perfil
+  metadata_schema: null
+
+- slug: core.role.updated
+  name: Core role updated
+  module: core
+  aggregate_type: role
+  description: Disparado quando um perfil de acesso é atualizado.
+  status: active
+  payload_schema:
+    id:
+      type: number
+      description: ID do perfil atualizado
+    slug:
+      type: string
+      nullable: true
+      description: Novo slug do perfil
+  metadata_schema: null
+
+- slug: core.role.deleted
+  name: Core role deleted
+  module: core
+  aggregate_type: role
+  description: Disparado quando um ou mais perfis de acesso são excluídos.
+  status: active
+  payload_schema:
+    ids:
+      type: array
+      description: IDs dos perfis excluídos
+  metadata_schema: null
+

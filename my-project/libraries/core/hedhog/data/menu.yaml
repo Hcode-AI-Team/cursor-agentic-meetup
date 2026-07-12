@@ -1,0 +1,246 @@
+- url: /
+  order: -1
+  icon: house
+  name:
+    en: Dashboard
+    pt: Dashboard
+  slug: /
+  relations:
+    role:
+      - where:
+          slug: admin-access
+- order: 1000
+  icon: settings-2
+  name:
+    en: Management
+    pt: Gerenciamento
+  slug: /core/management
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-mail
+      - where:
+          slug: integration-manager
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/menu
+  order: 0
+  icon: menu
+  name:
+    en: Menus
+    pt: Menus
+  slug: /core/menu
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/dashboard/management
+  order: 0
+  icon: settings
+  name:
+    en: Dashboard
+    pt: Dashboard
+  slug: /core/dashboard/management
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/roles
+  order: 1
+  icon: shield-check
+  name:
+    en: Roles
+    pt: Cargos
+  slug: /core/roles
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/routes
+  order: 2
+  icon: route
+  name:
+    en: Routes
+    pt: Rotas
+  slug: /core/routes
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/configurations
+  order: 3
+  icon: settings-2
+  name:
+    en: Configurations
+    pt: Configurações
+  slug: /core/configurations
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/mail
+  order: 4
+  icon: mail
+  name:
+    en: Emails
+    pt: E-mails
+  slug: /core/mail-management
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-mail
+      - where:
+          slug: integration-manager
+- menu_id:
+    where:
+      slug: /core/mail-management
+  url: /core/mail/template
+  order: 3
+  icon: mail
+  name:
+    en: Mail Template
+    pt: Templates de e-mail
+  slug: /core/mail-template
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-mail
+- menu_id:
+    where:
+      slug: /core/mail-management
+  url: /core/mail/log
+  order: 4
+  icon: file-text
+  name:
+    en: Mail Log
+    pt: E-mails enviados
+  slug: /core/mail-log
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/mail-management
+  url: /core/integration/profiles
+  order: 5
+  icon: plug-2
+  name:
+    en: Integration Profiles
+    pt: Perfis de Integração
+  slug: /core/integration/profiles
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/ai_agent
+  order: 8
+  icon: bot
+  name:
+    en: AI Agents
+    pt: Agentes IA
+  slug: /core/ai-agent
+  relations:
+    role:
+      - where:
+          slug: admin
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/integrations-webhooks
+  order: 9
+  icon: webhook
+  name:
+    en: Integrations and Webhooks
+    pt: Integrações e Webhook
+  slug: /core/integrations-webhooks
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/setting-list
+  order: 10
+  icon: list
+  name:
+    en: Setting Lists
+    pt: Listas de Configuração
+  slug: /core/setting-list
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- menu_id:
+    where:
+      slug: /core/management
+  url: /core/access-log
+  order: 11
+  icon: file-clock
+  name:
+    en: Access Logs
+    pt: Logs de Acesso
+  slug: /core/access-log
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /core/users
+  order: 0
+  icon: users
+  name:
+    en: Users
+    pt: Usuários
+  slug: /core/users
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+
+- url: /core/mcp_chat
+  order: 8
+  icon: terminal
+  name:
+    en: Chat
+    pt: Chat
+  slug: /core/mcp-chat
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access

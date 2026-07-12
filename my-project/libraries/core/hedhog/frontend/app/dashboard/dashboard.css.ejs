@@ -1,0 +1,157 @@
+.dashboard-tabs-list .dashboard-tab-trigger {
+  position: relative;
+  border: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  border-radius: 8px 8px 0 0 !important;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.dashboard-tabs-list .dashboard-tab-trigger.dashboard-tab-trigger-inactive {
+  background: transparent !important;
+  color: color-mix(in oklab, var(--muted-foreground) 60%, transparent) !important;
+}
+
+.dashboard-tabs-list
+  .dashboard-tab-trigger.dashboard-tab-trigger-inactive:hover {
+  background: color-mix(in oklab, var(--background) 50%, transparent) !important;
+  color: color-mix(in oklab, var(--foreground) 80%, transparent) !important;
+}
+
+.dashboard-tabs-list .dashboard-tab-trigger.dashboard-tab-trigger-active,
+.dashboard-tabs-list
+  .dashboard-tab-trigger.dashboard-tab-trigger-active[data-state='active'] {
+  z-index: 10;
+  background: var(--background) !important;
+  color: var(--primary) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dashboard-tabs-list .dashboard-tab-trigger.dashboard-tab-trigger-active svg {
+  color: var(--primary) !important;
+}
+
+.dashboard-grid.react-grid-layout {
+  position: relative;
+  transition: height 200ms ease;
+}
+
+.dashboard-grid .react-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top, width, height;
+}
+
+.dashboard-grid .react-grid-item img {
+  pointer-events: none;
+  user-select: none;
+}
+
+.dashboard-grid .react-grid-item > .react-resizable-handle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.dashboard-grid .react-grid-item > .react-resizable-handle::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--muted-foreground);
+  border-bottom: 2px solid var(--muted-foreground);
+  opacity: 0.45;
+}
+
+.dashboard-grid
+  .react-grid-item:hover
+  > .react-resizable-handle.react-resizable-handle-se,
+.dashboard-grid
+  .react-grid-item.resizing
+  > .react-resizable-handle.react-resizable-handle-se {
+  opacity: 1;
+}
+
+.dashboard-grid .react-resizable-hide > .react-resizable-handle {
+  display: none;
+}
+
+.dashboard-grid
+  .react-grid-item
+  > .react-resizable-handle:not(.react-resizable-handle-se) {
+  display: none;
+}
+
+.dashboard-grid
+  .react-grid-item
+  > .react-resizable-handle.react-resizable-handle-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+/* Drag handle styles */
+.drag-handle {
+  cursor: grab !important;
+  user-select: none !important;
+}
+
+.drag-handle:active {
+  cursor: grabbing !important;
+}
+
+/* Prevent text selection during drag */
+.dashboard-grid .react-grid-item.react-draggable-dragging {
+  transition: none;
+  z-index: 100;
+  will-change: transform;
+  opacity: 0.9;
+}
+
+.dashboard-grid .react-grid-item.resizing {
+  transition: none;
+  z-index: 100;
+  will-change: transform;
+  opacity: 0.9;
+}
+
+/* Placeholder styling */
+.dashboard-grid .react-grid-placeholder {
+  background: color-mix(in oklab, var(--primary) 20%, transparent);
+  opacity: 0.5;
+  transition-duration: 100ms;
+  z-index: 2;
+  border-radius: 0.5rem;
+  border: 2px dashed var(--primary);
+}
+
+.dashboard-grid .react-grid-item:hover {
+  outline: 1px solid color-mix(in oklab, var(--primary) 12%, transparent);
+  outline-offset: -1px;
+}
+
+.dashboard-widget > [data-slot='card'] {
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.dashboard-widget > [data-slot='card'] > [data-slot='card-header'] {
+  padding-top: 0;
+}
+
+@media (max-width: 639px) {
+  .dashboard-widget > [data-slot='card'] {
+    gap: 0.625rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+}

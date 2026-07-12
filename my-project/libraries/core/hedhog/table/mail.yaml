@@ -1,0 +1,15 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: subject
+    type: locale_varchar
+    locale:
+      pt: Assunto
+      en: Subject
+  - name: body
+    type: locale_text
+    locale:
+      pt: Corpo
+      en: Body
+  - type: created_at
+  - type: updated_at

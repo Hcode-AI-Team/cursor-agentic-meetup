@@ -1,0 +1,72 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+  - name: title
+    type: varchar
+    length: 255
+  - name: body
+    type: text
+    isNullable: true
+  - name: type
+    type: enum
+    values:
+      - info
+      - success
+      - warning
+      - error
+      - progress
+    default: info
+  - name: status
+    type: enum
+    values:
+      - unread
+      - read
+    default: unread
+  - name: icon
+    type: varchar
+    length: 64
+    isNullable: true
+  - name: action_type
+    type: enum
+    values:
+      - url
+      - sheet
+      - modal
+    default: url
+    isNullable: true
+  - name: action_data
+    type: json
+    isNullable: true
+  - name: action_url
+    type: varchar
+    length: 512
+    isNullable: true
+  - name: auto_remove
+    type: boolean
+    default: false
+  - name: progress
+    type: int
+    isNullable: true
+  - name: started_at
+    type: timestamptz
+    isNullable: true
+  - name: finished_at
+    type: timestamptz
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - user_id
+  - columns:
+      - user_id
+      - status
+  - columns:
+      - user_id
+      - created_at

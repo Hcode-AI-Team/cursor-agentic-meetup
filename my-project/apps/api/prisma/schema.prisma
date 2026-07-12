@@ -1,0 +1,1374 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model access_log {
+  id         Int      @id @default(autoincrement())
+  user_id    Int?
+  ip         String?  @db.VarChar
+  user_agent String?
+  method     String?  @db.VarChar
+  path       String?  @db.VarChar
+  mcp_tool   String?  @db.VarChar
+  mcp_prompt String?
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  user       user?    @relation(fields: [user_id], references: [id], onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model ai_agent {
+  id                Int                               @id @default(autoincrement())
+  slug              String                            @unique(map: "ai_agent_slug_unique") @db.VarChar
+  provider          ai_agent_provider_7cb93b1143_enum @default(openai)
+  model             String?                           @db.VarChar
+  instructions      String?
+  external_agent_id String?                           @db.VarChar
+  created_at        DateTime                          @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime                          @default(now()) @db.Timestamptz(6)
+  ai_execution      ai_execution[]
+}
+
+model ai_execution {
+  id                Int                                  @id @default(autoincrement())
+  user_id           Int?
+  conversation_id   Int?
+  agent_id          Int?
+  trigger           ai_execution_trigger_c6f1b566d8_enum @default(manual)
+  status            ai_execution_status_6ec345f75e_enum  @default(running)
+  context_slug      String?                              @db.VarChar
+  tokens_input      Int                                  @default(0)
+  tokens_output     Int                                  @default(0)
+  tokens_total      Int                                  @default(0)
+  cost_usd          Decimal                              @default(0) @db.Decimal
+  started_at        DateTime                             @db.Timestamptz(6)
+  finished_at       DateTime?                            @db.Timestamptz(6)
+  error             String?
+  created_at        DateTime                             @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime                             @default(now()) @db.Timestamptz(6)
+  ai_agent          ai_agent?                            @relation(fields: [agent_id], references: [id], onUpdate: NoAction, map: "ai_agent_agent_id_fkey")
+  mcp_conversation  mcp_conversation?                    @relation(fields: [conversation_id], references: [id], onUpdate: NoAction, map: "mcp_conversation_conversation_id_fkey")
+  user              user?                                @relation(fields: [user_id], references: [id], onUpdate: NoAction, map: "user_user_id_fkey")
+  ai_execution_step ai_execution_step[]
+}
+
+model ai_execution_step {
+  id             Int                                    @id @default(autoincrement())
+  execution_id   Int
+  step_order     Int                                    @default(0)
+  type           ai_execution_step_type_ef4254cada_enum @default(prompt)
+  provider       String?                                @db.VarChar
+  model          String?                                @db.VarChar
+  tool_name      String?                                @db.VarChar
+  tokens_input   Int                                    @default(0)
+  tokens_output  Int                                    @default(0)
+  cost_usd       Decimal                                @default(0) @db.Decimal
+  duration_ms    Int                                    @default(0)
+  input_summary  String?
+  output_summary String?
+  success        Boolean                                @default(true)
+  error          String?
+  created_at     DateTime                               @default(now()) @db.Timestamptz(6)
+  ai_execution   ai_execution                           @relation(fields: [execution_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "ai_execution_execution_id_fkey")
+}
+
+model ai_instruction {
+  id                     Int                                  @id @default(autoincrement())
+  slug                   String                               @unique(map: "ai_instruction_slug_unique") @db.VarChar
+  layer                  ai_instruction_layer_fde675383a_enum @default(system)
+  name                   String                               @db.VarChar
+  content                String
+  variables_schema       Json?                                @db.Json
+  locale                 String                               @default("en") @db.VarChar
+  module_slug            String?                              @db.VarChar
+  is_active              Boolean                              @default(true)
+  version                Int                                  @default(1)
+  created_at             DateTime                             @default(now()) @db.Timestamptz(6)
+  updated_at             DateTime                             @default(now()) @db.Timestamptz(6)
+  ai_instruction_version ai_instruction_version[]
+}
+
+model ai_instruction_version {
+  id             Int            @id @default(autoincrement())
+  instruction_id Int
+  version        Int
+  content        String
+  change_note    String?        @db.VarChar
+  created_by_id  Int?
+  created_at     DateTime       @default(now()) @db.Timestamptz(6)
+  ai_instruction ai_instruction @relation(fields: [instruction_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "ai_instruction_instruction_id_fkey")
+  user           user?          @relation(fields: [created_by_id], references: [id], onUpdate: NoAction, map: "user_created_by_id_fkey")
+}
+
+model ai_model_pricing {
+  id                             Int      @id @default(autoincrement())
+  provider                       String   @db.VarChar
+  model                          String   @db.VarChar
+  price_input_per_million        Decimal  @db.Decimal
+  price_output_per_million       Decimal  @db.Decimal
+  price_cached_input_per_million Decimal? @db.Decimal
+  is_active                      Boolean  @default(true)
+  valid_from                     DateTime @db.Timestamptz(6)
+  created_at                     DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model dashboard {
+  id               Int                @id @default(autoincrement())
+  slug             String             @unique(map: "dashboard_slug_unique") @db.VarChar
+  icon             String?            @db.VarChar
+  is_template      Boolean            @default(false)
+  created_at       DateTime           @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime           @default(now()) @db.Timestamptz(6)
+  dashboard_item   dashboard_item[]
+  dashboard_locale dashboard_locale[]
+  dashboard_role   dashboard_role[]
+  dashboard_user   dashboard_user[]
+}
+
+model dashboard_component {
+  id                         Int                          @id @default(autoincrement())
+  slug                       String                       @unique(map: "dashboard_component_slug_unique") @db.VarChar
+  library_slug               String                       @default("core") @db.VarChar
+  min_width                  Int                          @default(1)
+  max_width                  Int?
+  min_height                 Int                          @default(1)
+  max_height                 Int?
+  width                      Int
+  height                     Int
+  is_resizable               Boolean                      @default(true)
+  created_at                 DateTime                     @default(now()) @db.Timestamptz(6)
+  updated_at                 DateTime                     @default(now()) @db.Timestamptz(6)
+  dashboard_component_locale dashboard_component_locale[]
+  dashboard_component_role   dashboard_component_role[]
+  dashboard_item             dashboard_item[]
+}
+
+model dashboard_component_locale {
+  id                     Int                 @id @default(autoincrement())
+  locale_id              Int
+  dashboard_component_id Int
+  name                   String              @db.VarChar(255)
+  description            String              @db.VarChar(512)
+  created_at             DateTime            @default(now()) @db.Timestamptz(6)
+  updated_at             DateTime            @default(now()) @db.Timestamptz(6)
+  dashboard_component    dashboard_component @relation(fields: [dashboard_component_id], references: [id], onDelete: Cascade, map: "dashboard_component_dashboard_component_id_fkey")
+  locale                 locale              @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+}
+
+model dashboard_component_role {
+  id                  Int                 @id @default(autoincrement())
+  component_id        Int
+  role_id             Int
+  created_at          DateTime            @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime            @default(now()) @db.Timestamptz(6)
+  dashboard_component dashboard_component @relation(fields: [component_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "dashboard_component_component_id_fkey")
+  role                role                @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_role_id_fkey")
+}
+
+model dashboard_item {
+  id                  Int                 @id @default(autoincrement())
+  component_id        Int
+  dashboard_id        Int
+  width               Int
+  height              Int
+  x_axis              Int
+  y_axis              Int
+  created_at          DateTime            @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime            @default(now()) @db.Timestamptz(6)
+  dashboard_component dashboard_component @relation(fields: [component_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "dashboard_component_component_id_fkey")
+  dashboard           dashboard           @relation(fields: [dashboard_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "dashboard_dashboard_id_fkey")
+}
+
+model dashboard_locale {
+  id           Int       @id @default(autoincrement())
+  locale_id    Int
+  dashboard_id Int
+  name         String    @db.VarChar(255)
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime  @default(now()) @db.Timestamptz(6)
+  dashboard    dashboard @relation(fields: [dashboard_id], references: [id], onDelete: Cascade, map: "dashboard_dashboard_id_fkey")
+  locale       locale    @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+}
+
+model dashboard_role {
+  id           Int       @id @default(autoincrement())
+  dashboard_id Int
+  role_id      Int
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime  @default(now()) @db.Timestamptz(6)
+  dashboard    dashboard @relation(fields: [dashboard_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "dashboard_dashboard_id_fkey")
+  role         role      @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_role_id_fkey")
+}
+
+model dashboard_user {
+  id           Int       @id @default(autoincrement())
+  dashboard_id Int
+  user_id      Int
+  is_home      Boolean   @default(false)
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime  @default(now()) @db.Timestamptz(6)
+  dashboard    dashboard @relation(fields: [dashboard_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "dashboard_dashboard_id_fkey")
+  user         user      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model event_webhook {
+  id                         Int                                  @id @default(autoincrement())
+  slug                       String                               @unique(map: "event_webhook_slug_unique") @db.VarChar
+  name                       String                               @db.VarChar
+  description                String?
+  status                     event_webhook_status_7b7b41a94d_enum @default(active)
+  priority                   Int                                  @default(0)
+  url                        String
+  method                     event_webhook_method_abe30bc650_enum @default(POST)
+  headers                    Json?                                @db.Json
+  query                      Json?                                @db.Json
+  payload                    Json?                                @db.Json
+  timeout_ms                 Int                                  @default(10000)
+  retry_count                Int                                  @default(0)
+  created_at                 DateTime                             @default(now()) @db.Timestamptz(6)
+  updated_at                 DateTime                             @default(now()) @db.Timestamptz(6)
+  event_webhook_delivery_log event_webhook_delivery_log[]
+  event_webhook_event        event_webhook_event[]
+}
+
+model event_webhook_delivery_log {
+  id                           Int                                               @id @default(autoincrement())
+  event_webhook_id             Int?
+  integration_event_catalog_id Int?
+  outbox_event_id              Int?
+  event_name                   String                                            @db.VarChar
+  method                       String                                            @db.VarChar
+  url                          String
+  status                       event_webhook_delivery_log_status_29b023067f_enum
+  http_status                  Int?
+  duration_ms                  Int                                               @default(0)
+  attempt_count                Int                                               @default(1)
+  error_message                String?
+  request_summary              Json?                                             @db.Json
+  response_summary             Json?                                             @db.Json
+  created_at                   DateTime                                          @default(now()) @db.Timestamptz(6)
+  updated_at                   DateTime                                          @default(now()) @db.Timestamptz(6)
+  event_webhook                event_webhook?                                    @relation(fields: [event_webhook_id], references: [id], map: "event_webhook_event_webhook_id_fkey")
+  integration_event_catalog    integration_event_catalog?                        @relation(fields: [integration_event_catalog_id], references: [id], map: "integration_event_catalog_integration_event_catalog_id_fkey")
+}
+
+model event_webhook_event {
+  id                           Int                       @id @default(autoincrement())
+  event_webhook_id             Int
+  integration_event_catalog_id Int
+  created_at                   DateTime                  @default(now()) @db.Timestamptz(6)
+  updated_at                   DateTime                  @default(now()) @db.Timestamptz(6)
+  event_webhook                event_webhook             @relation(fields: [event_webhook_id], references: [id], onDelete: Cascade, map: "event_webhook_event_webhook_id_fkey")
+  integration_event_catalog    integration_event_catalog @relation(fields: [integration_event_catalog_id], references: [id], onDelete: Cascade, map: "integration_event_catalog_integration_event_catalog_id_fkey")
+}
+
+model file {
+  id            Int           @id @default(autoincrement())
+  filename      String        @db.VarChar
+  path          String        @db.VarChar
+  provider_id   Int
+  location      String        @db.VarChar
+  mimetype_id   Int
+  size          Int           @default(0)
+  created_at    DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime      @default(now()) @db.Timestamptz(6)
+  file_mimetype file_mimetype @relation(fields: [mimetype_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "file_mimetype_mimetype_id_fkey")
+  file_provider file_provider @relation(fields: [provider_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "file_provider_provider_id_fkey")
+  user          user[]
+}
+
+model file_mimetype {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  file       file[]
+}
+
+model file_provider {
+  id                   Int                    @id @default(autoincrement())
+  slug                 String                 @unique(map: "file_provider_slug_unique") @db.VarChar
+  created_at           DateTime               @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime               @default(now()) @db.Timestamptz(6)
+  file                 file[]
+  file_provider_locale file_provider_locale[]
+}
+
+model file_provider_locale {
+  id               Int           @id @default(autoincrement())
+  locale_id        Int
+  file_provider_id Int
+  name             String        @db.VarChar(255)
+  created_at       DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime      @default(now()) @db.Timestamptz(6)
+  file_provider    file_provider @relation(fields: [file_provider_id], references: [id], onDelete: Cascade, map: "file_provider_file_provider_id_fkey")
+  locale           locale        @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+}
+
+model inbox_event {
+  id              Int                                @id @default(autoincrement())
+  outbox_event_id Int
+  consumer_name   String                             @db.VarChar
+  status          inbox_event_status_97e6c4339b_enum @default(received)
+  attempt_count   Int                                @default(0)
+  last_error      String?                            @db.VarChar
+  processed_at    DateTime?                          @db.Timestamptz(6)
+  created_at      DateTime                           @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime                           @default(now()) @db.Timestamptz(6)
+  outbox_event    outbox_event                       @relation(fields: [outbox_event_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "outbox_event_outbox_event_id_fkey")
+}
+
+model integration_event_catalog {
+  id                         Int                                              @id @default(autoincrement())
+  slug                       String                                           @unique(map: "integration_event_catalog_slug_unique") @db.VarChar
+  name                       String                                           @db.VarChar
+  module                     String                                           @db.VarChar
+  aggregate_type             String?                                          @db.VarChar
+  description                String?
+  payload_schema             Json?                                            @db.Json
+  metadata_schema            Json?                                            @db.Json
+  status                     integration_event_catalog_status_8c9c7fd473_enum @default(active)
+  created_at                 DateTime                                         @default(now()) @db.Timestamptz(6)
+  updated_at                 DateTime                                         @default(now()) @db.Timestamptz(6)
+  event_webhook_delivery_log event_webhook_delivery_log[]
+  event_webhook_event        event_webhook_event[]
+}
+
+model integration_link {
+  id                 Int      @id @default(autoincrement())
+  source_module      String   @db.VarChar
+  source_entity_type String   @db.VarChar
+  source_entity_id   String   @db.VarChar
+  target_module      String   @db.VarChar
+  target_entity_type String   @db.VarChar
+  target_entity_id   String   @db.VarChar
+  link_type          String   @db.VarChar
+  metadata           Json?    @db.Json
+  created_at         DateTime @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model integration_profile {
+  id                   Int                  @id @default(autoincrement())
+  slug                 String               @unique(map: "integration_profile_slug_unique") @db.VarChar
+  name                 String               @db.VarChar
+  type_id              Int
+  provider_id          Int
+  config               Json?                @db.Json
+  is_active            Boolean              @default(true)
+  created_at           DateTime             @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime             @default(now()) @db.Timestamptz(6)
+  integration_provider integration_provider @relation(fields: [provider_id], references: [id], onUpdate: NoAction, map: "integration_provider_provider_id_fkey")
+  integration_type     integration_type     @relation(fields: [type_id], references: [id], onUpdate: NoAction, map: "integration_type_type_id_fkey")
+  webhook_action       webhook_action[]
+}
+
+model integration_provider {
+  id                          Int                           @id @default(autoincrement())
+  slug                        String                        @unique(map: "integration_provider_slug_unique") @db.VarChar
+  type_id                     Int
+  created_at                  DateTime                      @default(now()) @db.Timestamptz(6)
+  updated_at                  DateTime                      @default(now()) @db.Timestamptz(6)
+  integration_profile         integration_profile[]
+  integration_type            integration_type              @relation(fields: [type_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "integration_type_type_id_fkey")
+  integration_provider_locale integration_provider_locale[]
+}
+
+model integration_provider_locale {
+  id                      Int                  @id @default(autoincrement())
+  locale_id               Int
+  integration_provider_id Int
+  name                    String               @db.VarChar(127)
+  created_at              DateTime             @default(now()) @db.Timestamptz(6)
+  updated_at              DateTime             @default(now()) @db.Timestamptz(6)
+  integration_provider    integration_provider @relation(fields: [integration_provider_id], references: [id], onDelete: Cascade, map: "integration_provider_integration_provider_id_fkey")
+  locale                  locale               @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+}
+
+model integration_type {
+  id                      Int                       @id @default(autoincrement())
+  slug                    String                    @unique(map: "integration_type_slug_unique") @db.VarChar
+  icon                    String?                   @db.VarChar
+  created_at              DateTime                  @default(now()) @db.Timestamptz(6)
+  updated_at              DateTime                  @default(now()) @db.Timestamptz(6)
+  integration_profile     integration_profile[]
+  integration_provider    integration_provider[]
+  integration_type_locale integration_type_locale[]
+}
+
+model integration_type_locale {
+  id                  Int              @id @default(autoincrement())
+  locale_id           Int
+  integration_type_id Int
+  name                String           @db.VarChar(127)
+  created_at          DateTime         @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime         @default(now()) @db.Timestamptz(6)
+  integration_type    integration_type @relation(fields: [integration_type_id], references: [id], onDelete: Cascade, map: "integration_type_integration_type_id_fkey")
+  locale              locale           @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+}
+
+model locale {
+  id                          Int                           @id @default(autoincrement())
+  name                        String                        @db.VarChar
+  code                        String                        @unique(map: "locale_code_unique") @db.Char(2)
+  region                      String                        @db.Char(2)
+  enabled                     Boolean                       @default(true)
+  created_at                  DateTime                      @default(now()) @db.Timestamptz(6)
+  updated_at                  DateTime                      @default(now()) @db.Timestamptz(6)
+  dashboard_component_locale  dashboard_component_locale[]
+  dashboard_locale            dashboard_locale[]
+  file_provider_locale        file_provider_locale[]
+  integration_provider_locale integration_provider_locale[]
+  integration_type_locale     integration_type_locale[]
+  mail_locale                 mail_locale[]
+  menu_locale                 menu_locale[]
+  role_locale                 role_locale[]
+  screen_locale               screen_locale[]
+  setting_group_locale        setting_group_locale[]
+  setting_locale              setting_locale[]
+  setting_subgroup_locale     setting_subgroup_locale[]
+  translation                 translation[]
+}
+
+model mail {
+  id             Int              @id @default(autoincrement())
+  slug           String           @unique(map: "mail_slug_unique") @db.VarChar
+  created_at     DateTime         @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime         @default(now()) @db.Timestamptz(6)
+  mail_locale    mail_locale[]
+  mail_sent      mail_sent[]
+  mail_sent_user mail_sent_user[]
+  mail_var       mail_var[]
+  webhook_action webhook_action[]
+}
+
+model mail_locale {
+  id         Int      @id @default(autoincrement())
+  locale_id  Int
+  mail_id    Int
+  subject    String   @db.VarChar(255)
+  body       String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  locale     locale   @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  mail       mail     @relation(fields: [mail_id], references: [id], onDelete: Cascade, map: "mail_mail_id_fkey")
+}
+
+model mail_sent {
+  id             Int              @id @default(autoincrement())
+  mail_id        Int
+  subject        String           @db.VarChar
+  from           String           @db.VarChar
+  to             String?          @db.VarChar
+  cc             String?          @db.VarChar
+  bcc            String?          @db.VarChar
+  body           String
+  created_at     DateTime         @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime         @default(now()) @db.Timestamptz(6)
+  mail           mail             @relation(fields: [mail_id], references: [id], onDelete: Cascade, map: "mail_mail_id_fkey")
+  mail_sent_user mail_sent_user[]
+}
+
+model mail_sent_user {
+  id                 Int                                   @id @default(autoincrement())
+  mail_sent_id       Int?
+  mail_id            Int
+  user_id            Int
+  user_identifier_id Int?
+  recipient_email    String                                @db.VarChar
+  status             mail_sent_user_status_606696b06e_enum @default(received)
+  read_at            DateTime?                             @db.Timestamptz(6)
+  error_code         String?                               @db.VarChar
+  error_message      String?
+  created_at         DateTime                              @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime                              @default(now()) @db.Timestamptz(6)
+  mail               mail                                  @relation(fields: [mail_id], references: [id], onDelete: Cascade, map: "mail_mail_id_fkey")
+  mail_sent          mail_sent?                            @relation(fields: [mail_sent_id], references: [id], map: "mail_sent_mail_sent_id_fkey")
+  user_identifier    user_identifier?                      @relation(fields: [user_identifier_id], references: [id], map: "user_identifier_user_identifier_id_fkey")
+  user               user                                  @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_user_id_fkey")
+}
+
+model mail_var {
+  id         Int      @id @default(autoincrement())
+  mail_id    Int
+  name       String   @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  mail       mail     @relation(fields: [mail_id], references: [id], onDelete: Cascade, map: "mail_mail_id_fkey")
+}
+
+model mcp_api_key {
+  id           Int       @id @default(autoincrement())
+  user_id      Int
+  name         String    @db.VarChar
+  token_hash   String    @db.VarChar
+  token_prefix String    @db.VarChar
+  type         String    @default("mcp") @db.VarChar
+  last_used_at DateTime? @db.Timestamptz(6)
+  expires_at   DateTime? @db.Timestamptz(6)
+  revoked_at   DateTime? @db.Timestamptz(6)
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime  @default(now()) @db.Timestamptz(6)
+  user         user      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model mcp_conversation {
+  id                       Int                        @id @default(autoincrement())
+  user_id                  Int
+  title                    String?                    @db.VarChar
+  created_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  updated_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  ai_execution             ai_execution[]
+  user                     user                       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+  mcp_conversation_message mcp_conversation_message[]
+}
+
+model mcp_conversation_message {
+  id               Int                                           @id @default(autoincrement())
+  conversation_id  Int
+  role             mcp_conversation_message_role_422a6ea954_enum
+  content          String
+  tool_name        String?                                       @db.VarChar
+  tool_call_id     String?                                       @db.VarChar
+  created_at       DateTime                                      @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime                                      @default(now()) @db.Timestamptz(6)
+  mcp_conversation mcp_conversation                              @relation(fields: [conversation_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "mcp_conversation_conversation_id_fkey")
+}
+
+model mcp_tool_call_log {
+  id          Int      @id @default(autoincrement())
+  user_id     Int?
+  tool_name   String   @db.VarChar
+  input       String?
+  success     Boolean  @default(false)
+  error       String?  @db.VarChar
+  duration_ms Int
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  user        user?    @relation(fields: [user_id], references: [id], onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model menu {
+  id          Int           @id @default(autoincrement())
+  menu_id     Int?
+  slug        String        @unique(map: "menu_slug_unique") @db.VarChar
+  url         String?       @db.VarChar
+  order       Int           @default(0)
+  icon        String        @db.VarChar
+  created_at  DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime      @default(now()) @db.Timestamptz(6)
+  menu        menu?         @relation("menuTomenu", fields: [menu_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  other_menu  menu[]        @relation("menuTomenu")
+  menu_locale menu_locale[]
+  menu_screen menu_screen[]
+  role_menu   role_menu[]
+}
+
+model menu_locale {
+  id         Int      @id @default(autoincrement())
+  locale_id  Int
+  menu_id    Int
+  name       String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  locale     locale   @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  menu       menu     @relation(fields: [menu_id], references: [id], onDelete: Cascade, map: "menu_menu_id_fkey")
+}
+
+model menu_screen {
+  id        Int    @id @default(autoincrement())
+  menu_id   Int
+  screen_id Int
+  menu      menu   @relation(fields: [menu_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "menu_menu_id_fkey")
+  screen    screen @relation(fields: [screen_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "screen_screen_id_fkey")
+
+  @@unique([menu_id, screen_id], map: "menu_screen_menu_id_screen_id_unique")
+}
+
+model notification {
+  id          Int                                       @id @default(autoincrement())
+  user_id     Int
+  title       String                                    @db.VarChar
+  body        String?
+  type        notification_type_934e7a71cc_enum         @default(info)
+  status      notification_status_3a7944cf59_enum       @default(unread)
+  icon        String?                                   @db.VarChar
+  action_type notification_action_type_f5ed983546_enum? @default(url)
+  action_data Json?                                     @db.Json
+  action_url  String?                                   @db.VarChar
+  auto_remove Boolean                                   @default(false)
+  progress    Int?
+  started_at  DateTime?                                 @db.Timestamptz(6)
+  finished_at DateTime?                                 @db.Timestamptz(6)
+  created_at  DateTime                                  @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime                                  @default(now()) @db.Timestamptz(6)
+  user        user                                      @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_user_id_fkey")
+}
+
+model outbox_event {
+  id             Int                                 @id @default(autoincrement())
+  event_name     String                              @db.VarChar
+  source_module  String                              @db.VarChar
+  aggregate_type String                              @db.VarChar
+  aggregate_id   String                              @db.VarChar
+  payload        Json                                @db.Json
+  status         outbox_event_status_e5d55ba10d_enum @default(pending)
+  attempt_count  Int                                 @default(0)
+  last_error     String?                             @db.VarChar
+  available_at   DateTime                            @db.Timestamptz(6)
+  processed_at   DateTime?                           @db.Timestamptz(6)
+  created_at     DateTime                            @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime                            @default(now()) @db.Timestamptz(6)
+  inbox_event    inbox_event[]
+}
+
+model role {
+  id                       Int                        @id @default(autoincrement())
+  slug                     String                     @unique(map: "role_slug_unique") @db.VarChar
+  created_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  updated_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  dashboard_component_role dashboard_component_role[]
+  dashboard_role           dashboard_role[]
+  role_locale              role_locale[]
+  role_menu                role_menu[]
+  role_route               role_route[]
+  role_screen              role_screen[]
+  role_user                role_user[]
+}
+
+model role_locale {
+  id          Int      @id @default(autoincrement())
+  locale_id   Int
+  role_id     Int
+  name        String   @db.VarChar(255)
+  description String?  @db.VarChar(511)
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  locale      locale   @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  role        role     @relation(fields: [role_id], references: [id], onDelete: Cascade, map: "role_role_id_fkey")
+}
+
+model role_menu {
+  id         Int      @id @default(autoincrement())
+  role_id    Int
+  menu_id    Int
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  menu       menu     @relation(fields: [menu_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "menu_menu_id_fkey")
+  role       role     @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_role_id_fkey")
+}
+
+model role_route {
+  id         Int      @id @default(autoincrement())
+  role_id    Int
+  route_id   Int
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  role       role     @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_role_id_fkey")
+  route      route    @relation(fields: [route_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "route_route_id_fkey")
+
+  @@unique([role_id, route_id], map: "role_route_role_id_route_id_unique")
+}
+
+model role_screen {
+  id         Int      @id @default(autoincrement())
+  role_id    Int
+  screen_id  Int
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  role       role     @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_role_id_fkey")
+  screen     screen   @relation(fields: [screen_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "screen_screen_id_fkey")
+
+  @@unique([role_id, screen_id], map: "role_screen_role_id_screen_id_unique")
+}
+
+model role_user {
+  id         Int      @id @default(autoincrement())
+  role_id    Int
+  user_id    Int
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  role       role     @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_role_id_fkey")
+  user       user     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+
+  @@unique([role_id, user_id], map: "role_user_role_id_user_id_unique")
+}
+
+model route {
+  id           Int                           @id @default(autoincrement())
+  type         route_type_5c30d132ab_enum    @default(HTTP)
+  name         String?                       @db.VarChar
+  url          String?                       @db.VarChar
+  method       route_method_3b4d117a29_enum?
+  tool_name    String?                       @db.VarChar
+  description  String?                       @db.VarChar
+  created_at   DateTime                      @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime                      @default(now()) @db.Timestamptz(6)
+  role_route   role_route[]
+  route_screen route_screen[]
+}
+
+model route_screen {
+  id         Int      @id @default(autoincrement())
+  route_id   Int
+  screen_id  Int
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  route      route    @relation(fields: [route_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "route_route_id_fkey")
+  screen     screen   @relation(fields: [screen_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "screen_screen_id_fkey")
+
+  @@unique([route_id, screen_id], map: "route_screen_route_id_screen_id_unique")
+}
+
+model screen {
+  id            Int             @id @default(autoincrement())
+  slug          String          @unique(map: "screen_slug_unique") @db.VarChar
+  icon          String?         @db.VarChar
+  created_at    DateTime        @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime        @default(now()) @db.Timestamptz(6)
+  menu_screen   menu_screen[]
+  role_screen   role_screen[]
+  route_screen  route_screen[]
+  screen_locale screen_locale[]
+}
+
+model screen_locale {
+  id          Int      @id @default(autoincrement())
+  locale_id   Int
+  screen_id   Int
+  name        String   @db.VarChar(255)
+  description String?  @db.VarChar(511)
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  locale      locale   @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  screen      screen   @relation(fields: [screen_id], references: [id], onDelete: Cascade, map: "screen_screen_id_fkey")
+}
+
+model setting {
+  id               Int                               @id @default(autoincrement())
+  group_id         Int
+  slug             String                            @unique(map: "setting_slug_unique") @db.VarChar
+  type             setting_type_0f055cd5ea_enum      @default(string)
+  component        setting_component_6e72a03bda_enum @default(input_text)
+  value            String?                           @db.VarChar
+  user_override    Boolean                           @default(false)
+  subgroup_id      Int?
+  created_at       DateTime                          @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime                          @default(now()) @db.Timestamptz(6)
+  setting_group    setting_group                     @relation(fields: [group_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "setting_group_group_id_fkey")
+  setting_subgroup setting_subgroup?                 @relation(fields: [subgroup_id], references: [id], onUpdate: NoAction, map: "setting_subgroup_subgroup_id_fkey")
+  setting_list     setting_list[]
+  setting_locale   setting_locale[]
+  setting_user     setting_user[]
+}
+
+model setting_group {
+  id                   Int                    @id @default(autoincrement())
+  icon                 String                 @db.VarChar
+  slug                 String                 @unique(map: "setting_group_slug_unique") @db.VarChar
+  created_at           DateTime               @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime               @default(now()) @db.Timestamptz(6)
+  setting              setting[]
+  setting_group_locale setting_group_locale[]
+}
+
+model setting_group_locale {
+  id               Int           @id @default(autoincrement())
+  locale_id        Int
+  setting_group_id Int
+  name             String        @db.VarChar(63)
+  description      String?       @db.VarChar(255)
+  created_at       DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime      @default(now()) @db.Timestamptz(6)
+  locale           locale        @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  setting_group    setting_group @relation(fields: [setting_group_id], references: [id], onDelete: Cascade, map: "setting_group_setting_group_id_fkey")
+}
+
+model setting_list {
+  id         Int      @id @default(autoincrement())
+  setting_id Int
+  order      Int      @default(0)
+  value      String   @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  setting    setting  @relation(fields: [setting_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "setting_setting_id_fkey")
+}
+
+model setting_locale {
+  id          Int      @id @default(autoincrement())
+  locale_id   Int
+  setting_id  Int
+  description String?  @db.VarChar(255)
+  name        String?  @db.VarChar(63)
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  locale      locale   @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  setting     setting  @relation(fields: [setting_id], references: [id], onDelete: Cascade, map: "setting_setting_id_fkey")
+}
+
+model setting_runtime_state {
+  scope      String   @id @db.VarChar
+  version    BigInt   @default(0)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model setting_subgroup {
+  id                      Int                       @id @default(autoincrement())
+  slug                    String                    @unique(map: "setting_subgroup_slug_unique") @db.VarChar
+  created_at              DateTime                  @default(now()) @db.Timestamptz(6)
+  updated_at              DateTime                  @default(now()) @db.Timestamptz(6)
+  setting                 setting[]
+  setting_subgroup_locale setting_subgroup_locale[]
+}
+
+model setting_subgroup_locale {
+  id                  Int              @id @default(autoincrement())
+  locale_id           Int
+  setting_subgroup_id Int
+  name                String?          @db.VarChar(63)
+  description         String?          @db.VarChar(255)
+  created_at          DateTime         @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime         @default(now()) @db.Timestamptz(6)
+  locale              locale           @relation(fields: [locale_id], references: [id], onDelete: Cascade, map: "locale_locale_id_fkey")
+  setting_subgroup    setting_subgroup @relation(fields: [setting_subgroup_id], references: [id], onDelete: Cascade, map: "setting_subgroup_setting_subgroup_id_fkey")
+}
+
+model setting_user {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  setting_id Int
+  value      String?  @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  setting    setting  @relation(fields: [setting_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "setting_setting_id_fkey")
+  user       user     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+
+  @@unique([user_id, setting_id], map: "setting_user_user_id_setting_id_unique")
+}
+
+model translation {
+  id                    Int                   @id @default(autoincrement())
+  locale_id             Int
+  namespace_id          Int
+  name                  String                @db.VarChar
+  value                 String                @db.VarChar
+  created_at            DateTime              @default(now()) @db.Timestamptz(6)
+  updated_at            DateTime              @default(now()) @db.Timestamptz(6)
+  locale                locale                @relation(fields: [locale_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "locale_locale_id_fkey")
+  translation_namespace translation_namespace @relation(fields: [namespace_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "translation_namespace_namespace_id_fkey")
+}
+
+model translation_namespace {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar
+  created_at  DateTime      @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime      @default(now()) @db.Timestamptz(6)
+  translation translation[]
+}
+
+model user {
+  id                                                   Int                      @id @default(autoincrement())
+  name                                                 String                   @db.VarChar
+  photo_id                                             Int?
+  suspended_until                                      DateTime?                @db.Timestamptz(6)
+  last_login_at                                        DateTime?                @db.Timestamptz(6)
+  suspended_reason                                     String?                  @db.VarChar
+  deactivated_at                                       DateTime?                @db.Timestamptz(6)
+  created_at                                           DateTime                 @default(now()) @db.Timestamptz(6)
+  updated_at                                           DateTime                 @default(now()) @db.Timestamptz(6)
+  access_log                                           access_log[]
+  ai_execution                                         ai_execution[]
+  ai_instruction_version                               ai_instruction_version[]
+  dashboard_user                                       dashboard_user[]
+  mail_sent_user                                       mail_sent_user[]
+  mcp_api_key                                          mcp_api_key[]
+  mcp_conversation                                     mcp_conversation[]
+  mcp_tool_call_log                                    mcp_tool_call_log[]
+  notification                                         notification[]
+  role_user                                            role_user[]
+  setting_user                                         setting_user[]
+  file                                                 file?                    @relation(fields: [photo_id], references: [id], onUpdate: NoAction, map: "file_photo_id_fkey")
+  user_account                                         user_account[]
+  user_activity                                        user_activity[]
+  user_change_log_user_change_log_actor_user_idTouser  user_change_log[]        @relation("user_change_log_actor_user_idTouser")
+  user_change_log_user_change_log_target_user_idTouser user_change_log[]        @relation("user_change_log_target_user_idTouser")
+  user_credential                                      user_credential[]
+  user_identifier                                      user_identifier[]
+  user_mfa                                             user_mfa[]
+  user_recovery_code                                   user_recovery_code[]
+  user_session                                         user_session[]
+  webhook_action                                       webhook_action[]
+}
+
+model user_account {
+  id               Int                                   @id @default(autoincrement())
+  user_id          Int
+  provider         user_account_provider_52222e2ecb_enum
+  provider_user_id String                                @db.VarChar
+  email            String?                               @db.VarChar
+  scopes           String?                               @db.VarChar
+  refresh_token    Bytes?
+  token_expires_at DateTime?                             @db.Timestamptz(6)
+  created_at       DateTime                              @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime                              @default(now()) @db.Timestamptz(6)
+  user             user                                  @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model user_activity {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  action     String
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  user       user     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model user_change_log {
+  id                                        Int      @id @default(autoincrement())
+  target_user_id                            Int
+  actor_user_id                             Int?
+  action                                    String   @db.VarChar
+  summary                                   String?
+  before_data                               String?
+  after_data                                String?
+  ip_address                                String?  @db.VarChar
+  created_at                                DateTime @default(now()) @db.Timestamptz(6)
+  updated_at                                DateTime @default(now()) @db.Timestamptz(6)
+  user_user_change_log_actor_user_idTouser  user?    @relation("user_change_log_actor_user_idTouser", fields: [actor_user_id], references: [id], map: "user_actor_user_id_fkey")
+  user_user_change_log_target_user_idTouser user     @relation("user_change_log_target_user_idTouser", fields: [target_user_id], references: [id], onDelete: Cascade, map: "user_target_user_id_fkey")
+}
+
+model user_credential {
+  id             Int                                  @id @default(autoincrement())
+  user_id        Int
+  type           user_credential_type_4466d7f008_enum
+  hash           String                               @db.VarChar
+  revoked_at     DateTime?                            @db.Timestamptz(6)
+  expires_at     DateTime?                            @db.Timestamptz(6)
+  requires_reset Boolean                              @default(false)
+  created_at     DateTime                             @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime                             @default(now()) @db.Timestamptz(6)
+  user           user                                 @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model user_identifier {
+  id                        Int                                  @id @default(autoincrement())
+  user_id                   Int
+  type                      user_identifier_type_e66d505520_enum
+  value                     String                               @db.VarChar
+  verified_at               DateTime?                            @db.Timestamptz(6)
+  enabled                   Boolean                              @default(false)
+  created_at                DateTime                             @default(now()) @db.Timestamptz(6)
+  updated_at                DateTime                             @default(now()) @db.Timestamptz(6)
+  mail_sent_user            mail_sent_user[]
+  user                      user                                 @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+  user_identifier_challenge user_identifier_challenge[]
+
+  @@unique([type, value], map: "user_identifier_type_value_unique")
+}
+
+model user_identifier_challenge {
+  id                 Int             @id @default(autoincrement())
+  user_identifier_id Int
+  hash               String          @db.VarChar
+  expires_at         DateTime        @db.Timestamptz(6)
+  verified_at        DateTime?       @db.Timestamptz(6)
+  attempts           Int             @default(0)
+  created_at         DateTime        @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime        @default(now()) @db.Timestamptz(6)
+  user_identifier    user_identifier @relation(fields: [user_identifier_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_identifier_user_identifier_id_fkey")
+}
+
+model user_mfa {
+  id                 Int                           @id @default(autoincrement())
+  user_id            Int
+  type               user_mfa_type_4ce08a626e_enum
+  name               String                        @db.VarChar
+  verified_at        DateTime?                     @db.Timestamptz(6)
+  suspended_until    DateTime?                     @db.Timestamptz(6)
+  created_at         DateTime                      @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime                      @default(now()) @db.Timestamptz(6)
+  user               user                          @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+  user_mfa_challenge user_mfa_challenge[]
+  user_mfa_email     user_mfa_email[]
+  user_mfa_phone     user_mfa_phone[]
+  user_mfa_totp      user_mfa_totp[]
+  user_mfa_webauthn  user_mfa_webauthn[]
+}
+
+model user_mfa_challenge {
+  id          Int       @id @default(autoincrement())
+  user_mfa_id Int
+  hash        String    @db.VarChar
+  expires_at  DateTime  @db.Timestamptz(6)
+  verified_at DateTime? @db.Timestamptz(6)
+  attempts    Int       @default(0)
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime  @default(now()) @db.Timestamptz(6)
+  user_mfa    user_mfa  @relation(fields: [user_mfa_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_mfa_user_mfa_id_fkey")
+}
+
+model user_mfa_email {
+  id          Int      @id @default(autoincrement())
+  user_mfa_id Int
+  email       String   @db.VarChar
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  user_mfa    user_mfa @relation(fields: [user_mfa_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_mfa_user_mfa_id_fkey")
+}
+
+model user_mfa_phone {
+  id          Int      @id @default(autoincrement())
+  user_mfa_id Int
+  phone       String   @db.VarChar
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  user_mfa    user_mfa @relation(fields: [user_mfa_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_mfa_user_mfa_id_fkey")
+}
+
+model user_mfa_totp {
+  id          Int      @id @default(autoincrement())
+  user_mfa_id Int
+  secret      Bytes
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @default(now()) @db.Timestamptz(6)
+  user_mfa    user_mfa @relation(fields: [user_mfa_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_mfa_user_mfa_id_fkey")
+}
+
+model user_mfa_webauthn {
+  id            Int       @id @default(autoincrement())
+  user_mfa_id   Int
+  credential_id Bytes
+  public_key    Bytes
+  sign_count    Int
+  last_used_at  DateTime? @db.Timestamptz(6)
+  created_at    DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime  @default(now()) @db.Timestamptz(6)
+  user_mfa      user_mfa  @relation(fields: [user_mfa_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_mfa_user_mfa_id_fkey")
+}
+
+model user_recovery_code {
+  id         Int       @id @default(autoincrement())
+  user_id    Int
+  hash       String    @db.VarChar
+  used_at    DateTime? @db.Timestamptz(6)
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at DateTime  @default(now()) @db.Timestamptz(6)
+  user       user      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+
+  @@unique([user_id, hash], map: "user_recovery_code_user_id_hash_unique")
+}
+
+model user_session {
+  id         Int       @id @default(autoincrement())
+  user_id    Int
+  hash       String    @db.VarChar
+  browser_id String?   @db.VarChar
+  ip_address String    @db.VarChar
+  user_agent String    @db.VarChar
+  revoked_at DateTime? @db.Timestamptz(6)
+  expires_at DateTime  @db.Timestamptz(6)
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at DateTime  @default(now()) @db.Timestamptz(6)
+  user       user      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_user_id_fkey")
+}
+
+model webhook_action {
+  id                     Int                                                  @id @default(autoincrement())
+  webhook_integration_id Int
+  type                   webhook_action_type_075609db9a_enum
+  name                   String                                               @db.VarChar
+  order                  Int                                                  @default(0)
+  status                 webhook_action_status_a64e43a03e_enum                @default(active)
+  integration_profile_id Int?
+  mail_id                Int?
+  email_to               String?
+  email_cc               String?
+  email_bcc              String?
+  whatsapp_target_type   webhook_action_whatsapp_target_type_909601367d_enum?
+  whatsapp_target        String?                                              @db.VarChar
+  whatsapp_template      String?
+  whatsapp_instance      String?                                              @db.VarChar
+  whatsapp_base_url      String?                                              @db.VarChar
+  whatsapp_token         String?
+  http_url               String?
+  http_method            String?                                              @db.VarChar
+  http_headers           Json?                                                @db.Json
+  http_query             Json?                                                @db.Json
+  http_body              String?
+  http_timeout_ms        Int?
+  http_retry_count       Int?
+  internal_api_path      String?
+  internal_api_method    String?                                              @db.VarChar
+  internal_api_query     Json?                                                @db.Json
+  internal_api_body      Json?                                                @db.Json
+  internal_api_token     String?
+  internal_api_user_id   Int?
+  app_command_slug       String?                                              @db.VarChar
+  app_command_params     Json?                                                @db.Json
+  created_at             DateTime                                             @default(now()) @db.Timestamptz(6)
+  updated_at             DateTime                                             @default(now()) @db.Timestamptz(6)
+  integration_profile    integration_profile?                                 @relation(fields: [integration_profile_id], references: [id], map: "integration_profile_integration_profile_id_fkey")
+  mail                   mail?                                                @relation(fields: [mail_id], references: [id], map: "mail_mail_id_fkey")
+  user                   user?                                                @relation(fields: [internal_api_user_id], references: [id], map: "user_internal_api_user_id_fkey")
+  webhook_integration    webhook_integration                                  @relation(fields: [webhook_integration_id], references: [id], onDelete: Cascade, map: "webhook_integration_webhook_integration_id_fkey")
+  webhook_action_log     webhook_action_log[]
+}
+
+model webhook_action_log {
+  id                  Int              @id @default(autoincrement())
+  webhook_call_log_id Int
+  webhook_action_id   Int?
+  action_name         String           @db.VarChar
+  action_type         String           @db.VarChar
+  status              String           @db.VarChar
+  duration_ms         Int              @default(0)
+  request_payload     Json?            @db.Json
+  response_payload    Json?            @db.Json
+  error_message       String?
+  created_at          DateTime         @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime         @default(now()) @db.Timestamptz(6)
+  webhook_action      webhook_action?  @relation(fields: [webhook_action_id], references: [id], map: "webhook_action_webhook_action_id_fkey")
+  webhook_call_log    webhook_call_log @relation(fields: [webhook_call_log_id], references: [id], onDelete: Cascade, map: "webhook_call_log_webhook_call_log_id_fkey")
+}
+
+model webhook_call_log {
+  id                     Int                                     @id @default(autoincrement())
+  webhook_integration_id Int?
+  public_uuid            String                                  @db.VarChar
+  status                 webhook_call_log_status_dd183fc85e_enum
+  remote_ip              String?                                 @db.VarChar
+  duration_ms            Int                                     @default(0)
+  error_message          String?
+  payload_summary        Json?                                   @db.Json
+  payload_raw            Json?                                   @db.Json
+  response_summary       Json?                                   @db.Json
+  created_at             DateTime                                @default(now()) @db.Timestamptz(6)
+  updated_at             DateTime                                @default(now()) @db.Timestamptz(6)
+  webhook_action_log     webhook_action_log[]
+  webhook_integration    webhook_integration?                    @relation(fields: [webhook_integration_id], references: [id], map: "webhook_integration_webhook_integration_id_fkey")
+}
+
+model webhook_integration {
+  id               Int                                        @id @default(autoincrement())
+  slug             String                                     @unique(map: "webhook_integration_slug_unique") @db.VarChar
+  name             String                                     @db.VarChar
+  description      String?
+  public_uuid      String                                     @db.VarChar
+  status           webhook_integration_status_323cf25dda_enum @default(active)
+  require_token    Boolean                                    @default(false)
+  token_hash       String?                                    @db.VarChar
+  allowed_ips      Json?                                      @db.Json
+  body_schema      Json?                                      @db.Json
+  created_at       DateTime                                   @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime                                   @default(now()) @db.Timestamptz(6)
+  webhook_action   webhook_action[]
+  webhook_call_log webhook_call_log[]
+}
+
+enum ai_agent_provider_7cb93b1143_enum {
+  openai
+  gemini
+}
+
+enum ai_execution_status_6ec345f75e_enum {
+  running
+  completed
+  failed
+  cancelled
+}
+
+enum ai_execution_step_type_ef4254cada_enum {
+  prompt
+  tool_call
+  tool_result
+  output
+  error
+}
+
+enum ai_execution_trigger_c6f1b566d8_enum {
+  manual
+  webhook
+  schedule
+  tool
+  api
+}
+
+enum ai_instruction_layer_fde675383a_enum {
+  system
+  product
+  module
+  agent
+  tool
+  output
+}
+
+enum event_webhook_delivery_log_status_29b023067f_enum {
+  success
+  failed
+}
+
+enum event_webhook_method_abe30bc650_enum {
+  GET
+  POST
+  PUT
+  PATCH
+  DELETE
+}
+
+enum event_webhook_status_7b7b41a94d_enum {
+  active
+  inactive
+}
+
+enum inbox_event_status_97e6c4339b_enum {
+  received
+  processing
+  processed
+  failed
+  skipped
+}
+
+enum integration_event_catalog_status_8c9c7fd473_enum {
+  active
+  inactive
+}
+
+enum mail_sent_user_status_606696b06e_enum {
+  received
+  read
+  error
+}
+
+enum mcp_conversation_message_role_422a6ea954_enum {
+  user
+  assistant
+  tool_call
+  tool_result
+}
+
+enum notification_action_type_f5ed983546_enum {
+  url
+  sheet
+  modal
+}
+
+enum notification_status_3a7944cf59_enum {
+  unread
+  read
+}
+
+enum notification_type_934e7a71cc_enum {
+  info
+  success
+  warning
+  error
+  progress
+}
+
+enum outbox_event_status_e5d55ba10d_enum {
+  pending
+  processing
+  processed
+  failed
+  dead_letter
+}
+
+enum route_method_3b4d117a29_enum {
+  GET
+  POST
+  PATCH
+  DELETE
+  PUT
+  OPTIONS
+  HEAD
+}
+
+enum route_type_5c30d132ab_enum {
+  HTTP
+  MCP
+}
+
+enum setting_component_6e72a03bda_enum {
+  input_text     @map("input-text")
+  input_number   @map("input-number")
+  input_duration @map("input-duration")
+  input_bytes    @map("input-bytes")
+  input_secret   @map("input-secret")
+  input_file     @map("input-file")
+  input_tags     @map("input-tags")
+  combobox
+  radio
+  color_picker   @map("color-picker")
+  switch
+  checkbox
+  entity_picker  @map("entity-picker")
+}
+
+enum setting_type_0f055cd5ea_enum {
+  string
+  array
+  number
+  boolean
+  json
+  secret
+}
+
+enum user_account_provider_52222e2ecb_enum {
+  google
+  facebook
+  github
+  apple
+  microsoft
+  microsoft_entra_id @map("microsoft-entra-id")
+  linkedin
+}
+
+enum user_credential_type_4466d7f008_enum {
+  password
+}
+
+enum user_identifier_type_e66d505520_enum {
+  email
+  username
+  phone
+  cpf
+}
+
+enum user_mfa_type_4ce08a626e_enum {
+  webauthn
+  totp
+  email
+}
+
+enum webhook_action_status_a64e43a03e_enum {
+  active
+  inactive
+}
+
+enum webhook_action_type_075609db9a_enum {
+  email
+  whatsapp_evolution
+  http_request
+  internal_api
+  app_command
+}
+
+enum webhook_action_whatsapp_target_type_909601367d_enum {
+  phone
+  group
+}
+
+enum webhook_call_log_status_dd183fc85e_enum {
+  success
+  failed
+}
+
+enum webhook_integration_status_323cf25dda_enum {
+  active
+  inactive
+}

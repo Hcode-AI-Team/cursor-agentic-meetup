@@ -1,0 +1,9 @@
+columns:
+  - name: scope
+    type: VARCHAR
+    length: 64
+    isPrimaryKey: true
+  - name: version
+    type: BIGINT
+    default: 0
+  - type: updated_at

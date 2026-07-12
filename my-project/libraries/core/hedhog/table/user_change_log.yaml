@@ -1,0 +1,40 @@
+columns:
+  - type: pk
+  - name: target_user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+  - name: actor_user_id
+    type: fk
+    isNullable: true
+    references:
+      table: user
+      column: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+  - name: action
+    type: varchar
+    length: 80
+  - name: summary
+    type: text
+    isNullable: true
+  - name: before_data
+    type: text
+    isNullable: true
+  - name: after_data
+    type: text
+    isNullable: true
+  - name: ip_address
+    type: varchar
+    length: 64
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+
+indices:
+  - columns: [target_user_id]
+  - columns: [actor_user_id]
+  - columns: [action]

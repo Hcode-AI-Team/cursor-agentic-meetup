@@ -1,0 +1,35 @@
+columns:
+  - type: pk
+  - name: provider
+    length: 50
+  - name: model
+    length: 100
+  - name: price_input_per_million
+    type: decimal
+    precision: 10
+    scale: 4
+  - name: price_output_per_million
+    type: decimal
+    precision: 10
+    scale: 4
+  - name: price_cached_input_per_million
+    type: decimal
+    precision: 10
+    scale: 4
+    isNullable: true
+  - name: is_active
+    type: boolean
+    default: true
+  - name: valid_from
+    type: datetime
+  - type: created_at
+indices:
+  - columns:
+      - provider
+      - model
+      - valid_from
+    isUnique: true
+  - columns:
+      - provider
+  - columns:
+      - is_active

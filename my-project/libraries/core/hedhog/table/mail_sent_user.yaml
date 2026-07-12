@@ -1,0 +1,75 @@
+columns:
+  - type: pk
+  - name: mail_sent_id
+    type: fk
+    isNullable: true
+    references:
+      table: mail_sent
+      column: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+  - name: mail_id
+    type: fk
+    references:
+      table: mail
+      column: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+  - name: user_identifier_id
+    type: fk
+    isNullable: true
+    references:
+      table: user_identifier
+      column: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+  - name: recipient_email
+    type: varchar
+    length: 255
+  - name: status
+    type: enum
+    values:
+      - received
+      - read
+      - error
+    default: received
+  - name: read_at
+    type: datetime
+    isNullable: true
+  - name: error_code
+    type: varchar
+    length: 128
+    isNullable: true
+  - name: error_message
+    type: text
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - mail_sent_id
+      - user_id
+    isUnique: true
+  - columns:
+      - user_id
+      - created_at
+  - columns:
+      - user_id
+      - status
+      - created_at
+  - columns:
+      - user_id
+      - read_at
+  - columns:
+      - mail_id
+  - columns:
+      - user_identifier_id
+  - columns:
+      - status

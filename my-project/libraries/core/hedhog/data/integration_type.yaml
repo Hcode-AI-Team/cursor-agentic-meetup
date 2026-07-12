@@ -1,0 +1,47 @@
+- slug: email
+  name:
+    en: Email
+    pt: E-mail
+  icon: mail
+
+- slug: whatsapp
+  name:
+    en: WhatsApp
+    pt: WhatsApp
+  icon: message-circle
+
+- slug: storage
+  name:
+    en: Storage
+    pt: Armazenamento
+  icon: hard-drive
+
+- slug: ai
+  name:
+    en: Artificial Intelligence
+    pt: Inteligência Artificial
+  icon: bot
+
+- slug: video
+  name:
+    en: Video Generation
+    pt: Geração de Vídeo
+  icon: clapperboard
+
+- slug: oauth
+  name:
+    en: OAuth / SSO
+    pt: OAuth / SSO
+  icon: key-round
+
+- slug: payment
+  name:
+    en: Payments
+    pt: Pagamentos
+  icon: credit-card
+
+- slug: captcha
+  name:
+    en: CAPTCHA
+    pt: CAPTCHA
+  icon: shield-check

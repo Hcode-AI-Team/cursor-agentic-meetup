@@ -1,0 +1,19 @@
+columns:
+  - type: pk
+  - name: user_mfa_id
+    type: fk
+    references:
+      table: user_mfa
+      column: id
+      onDelete: CASCADE
+  - name: hash
+  - name: expires_at
+    type: datetime
+  - name: verified_at
+    type: datetime
+    isNullable: true
+  - name: attempts
+    type: int
+    default: 0
+  - type: created_at
+  - type: updated_at

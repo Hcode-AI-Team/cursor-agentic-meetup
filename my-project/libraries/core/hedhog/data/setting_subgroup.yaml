@@ -1,0 +1,375 @@
+- slug: database-cleanup
+  name:
+    en: Database Cleanup
+    pt: Limpeza do Banco de Dados
+  description:
+    en: Settings for cleanup routines and database maintenance jobs
+    pt: Configurações para rotinas de limpeza e tarefas de manutenção do banco de dados
+
+- slug: session-retention
+  name:
+    en: Session Retention
+    pt: Retenção de Sessões
+  description:
+    en: Rules for retaining and removing expired user sessions
+    pt: Regras para retenção e remoção de sessões expiradas de usuários
+
+- slug: webhook-log-retention
+  name:
+    en: Webhook Log Retention
+    pt: Retenção de Logs de Webhook
+  description:
+    en: Rules for retaining and removing incoming webhook call logs
+    pt: Regras para retenção e remoção de logs de chamadas de webhook de entrada
+
+- slug: notification-retention
+  name:
+    en: Notification Retention
+    pt: Retenção de Notificações
+  description:
+    en: Rules for retaining and automatically removing old user notifications
+    pt: Regras para retenção e remoção automática de notificações antigas de usuários
+
+- slug: maintenance-mode
+  name:
+    en: Maintenance Mode
+    pt: Modo de Manutenção
+  description:
+    en: Controls whether the system is presented as temporarily unavailable for maintenance
+    pt: Controla se o sistema é apresentado como temporariamente indisponível para manutenção
+
+- slug: email-password-auth
+  name:
+    en: Email and Password Authentication
+    pt: Autenticação por Email e Senha
+  description:
+    en: Controls for traditional email and password sign-in
+    pt: Controles para autenticação tradicional com email e senha
+
+- slug: password-policy
+  name:
+    en: Password Policy
+    pt: Política de Senha
+  description:
+    en: Requirements and validation rules for user passwords
+    pt: Requisitos e regras de validação para senhas de usuários
+
+- slug: email-restrictions
+  name:
+    en: Email Restrictions
+    pt: Restrições de Email
+  description:
+    en: Domain allowlists and blocklists for email-based access
+    pt: Listas de permissão e bloqueio de domínios para acesso baseado em email
+
+- slug: mfa-general
+  name:
+    en: MFA General
+    pt: MFA Geral
+  description:
+    en: Core multi-factor authentication behavior and challenge settings
+    pt: Comportamento principal da autenticação multifator e configurações de desafio
+
+- slug: mfa-totp
+  name:
+    en: MFA TOTP
+    pt: MFA TOTP
+  description:
+    en: Time-based one-time password configuration
+    pt: Configuração de senhas temporárias baseadas em tempo
+
+- slug: mfa-email
+  name:
+    en: MFA Email
+    pt: MFA por Email
+  description:
+    en: Email-based multi-factor authentication settings
+    pt: Configurações de autenticação multifator baseada em email
+
+- slug: token-configuration
+  name:
+    en: Token Configuration
+    pt: Configuração de Tokens
+  description:
+    en: Access and refresh token lifetime settings
+    pt: Configurações de duração de tokens de acesso e atualização
+
+- slug: session-management
+  name:
+    en: Session Management
+    pt: Gerenciamento de Sessões
+  description:
+    en: Limits and policies for concurrent user sessions
+    pt: Limites e políticas para sessões simultâneas de usuários
+
+- slug: admin-login-page
+  name:
+    en: Administration Login Page
+    pt: Página de Login da Administração
+  description:
+    en: Controls which OAuth providers are visible on the Admin login page
+    pt: Controla quais provedores OAuth são visíveis na página de login do Admin
+
+- slug: regional-settings
+  name:
+    en: Regional Settings
+    pt: Configurações Regionais
+  description:
+    en: Default language and timezone options for the system
+    pt: Opções padrão de idioma e fuso horário para o sistema
+
+- slug: date-time-formats
+  name:
+    en: Date and Time Formats
+    pt: Formatos de Data e Hora
+  description:
+    en: Formatting rules for dates and times across the application
+    pt: Regras de formatação para datas e horários em toda a aplicação
+
+- slug: currency-format
+  name:
+    en: Currency
+    pt: Moeda
+  description:
+    en: Default currency for monetary value formatting
+    pt: Moeda padrão para formatação de valores monetários
+
+- slug: oauth-general
+  name:
+    en: OAuth General
+    pt: OAuth Geral
+  description:
+    en: Shared settings for OAuth providers and role assignment
+    pt: Configurações compartilhadas para provedores OAuth e atribuição de funções
+
+- slug: google
+  name:
+    en: Google
+    pt: Google
+  description:
+    en: Google OAuth Provider
+    pt: Provedor OAuth do Google
+
+- slug: facebook
+  name:
+    en: Facebook
+    pt: Facebook
+  description:
+    en: Facebook OAuth Provider
+    pt: Provedor OAuth do Facebook
+
+- slug: microsoft
+  name:
+    en: Microsoft
+    pt: Microsoft
+  description:
+    en: Microsoft OAuth Provider
+    pt: Provedor OAuth da Microsoft
+
+- slug: github
+  name:
+    en: GitHub
+    pt: GitHub
+  description:
+    en: GitHub OAuth Provider
+    pt: Provedor OAuth do GitHub
+
+- slug: microsoft-entra-id
+  name:
+    en: Microsoft Entra ID
+    pt: Microsoft Entra ID
+  description:
+    en: Microsoft Entra ID (Azure AD) OAuth Provider
+    pt: Provedor OAuth Microsoft Entra ID (Azure AD)
+
+- slug: apple
+  name:
+    en: Apple
+    pt: Apple
+  description:
+    en: Apple OAuth Provider (Sign in with Apple)
+    pt: Provedor OAuth da Apple (Sign in with Apple)
+
+- slug: linkedin
+  name:
+    en: LinkedIn
+    pt: LinkedIn
+  description:
+    en: LinkedIn OAuth Provider
+    pt: Provedor OAuth do LinkedIn
+
+- slug: theme-selector
+  name:
+    en: Theme Selector
+    pt: Seletor de Tema
+  description:
+    en: Global theme mode selection settings
+    pt: Configurações de seleção global do modo de tema
+
+- slug: light-theme-colors
+  name:
+    en: Light Theme Colors
+    pt: Cores do Tema Claro
+  description:
+    en: Palette configuration for the light theme
+    pt: Configuração da paleta para o tema claro
+
+- slug: dark-theme-colors
+  name:
+    en: Dark Theme Colors
+    pt: Cores do Tema Escuro
+  description:
+    en: Palette configuration for the dark theme
+    pt: Configuração da paleta para o tema escuro
+
+- slug: theme-customization
+  name:
+    en: Theme Customization
+    pt: Personalização de Tema
+  description:
+    en: Layout, typography, and other theme customization options
+    pt: Opções de layout, tipografia e outras personalizações do tema
+
+- slug: branding
+  name:
+    en: Branding
+    pt: Identidade Visual
+  description:
+    en: Logo, icon, and brand presentation settings
+    pt: Configurações de logo, ícone e apresentação da marca
+
+- slug: storage-general
+  name:
+    en: Storage General
+    pt: Armazenamento Geral
+  description:
+    en: Shared configuration for file storage providers and limits
+    pt: Configuração compartilhada para provedores de armazenamento e limites
+
+- slug: local-storage
+  name:
+    en: Local Storage
+    pt: Armazenamento Local
+  description:
+    en: Filesystem-based storage configuration
+    pt: Configuração de armazenamento baseado em sistema de arquivos
+
+- slug: s3-storage
+  name:
+    en: Amazon S3 Storage
+    pt: Armazenamento Amazon S3
+  description:
+    en: AWS S3 bucket access and storage settings
+    pt: Configurações de acesso e armazenamento em bucket AWS S3
+
+- slug: abs-storage
+  name:
+    en: Azure Blob Storage
+    pt: Armazenamento Azure Blob
+  description:
+    en: Azure Blob Storage account and container settings
+    pt: Configurações de conta e contêiner do Azure Blob Storage
+
+- slug: gcs-storage
+  name:
+    en: Google Cloud Storage
+    pt: Armazenamento Google Cloud
+  description:
+    en: Google Cloud Storage authentication settings
+    pt: Configurações de autenticação do Google Cloud Storage
+
+- slug: do-spaces-storage
+  name:
+    en: DigitalOcean Spaces
+    pt: DigitalOcean Spaces
+  description:
+    en: DigitalOcean Spaces bucket access and optional CDN settings
+    pt: Configurações de acesso ao bucket e CDN opcional do DigitalOcean Spaces
+
+- slug: image-optimization
+  name:
+    en: Image Optimization
+    pt: Otimização de Imagens
+  description:
+    en: Automatic image compression and WebP conversion settings for uploads
+    pt: Configurações de compressão automática de imagens e conversão para WebP nos uploads
+
+- slug: outbox-general
+  name:
+    en: Outbox General
+    pt: Outbox Geral
+  description:
+    en: Core settings for the outbox event delivery system
+    pt: Configurações principais do sistema de entrega de eventos outbox
+
+- slug: startup-behavior
+  name:
+    en: Startup Behavior
+    pt: Comportamento na Inicialização
+  description:
+    en: Startup processing settings for pending outbox events
+    pt: Configurações de processamento na inicialização para eventos pendentes do outbox
+
+- slug: processing-config
+  name:
+    en: Processing Configuration
+    pt: Configuração de Processamento
+  description:
+    en: Background processing cadence and batch settings for outbox events
+    pt: Configurações de frequência e lotes do processamento em segundo plano dos eventos outbox
+
+- slug: retry-config
+  name:
+    en: Retry Configuration
+    pt: Configuração de Reprocessamento
+  description:
+    en: Retry, backoff, and dead letter handling for failed outbox events
+    pt: Configurações de reprocessamento, backoff e fila de falha para eventos outbox com erro
+
+- slug: access-log-retention
+  name:
+    en: Access Log Retention
+    pt: Retenção de Logs de Acesso
+  description:
+    en: Rules for retaining and removing old system access logs
+    pt: Regras para retenção e remoção de logs de acesso do sistema
+
+- slug: worker-retention
+  name:
+    en: Worker Retention
+    pt: Retenção de Workers
+  description:
+    en: Rules for retaining and automatically removing offline workers
+    pt: Regras para retenção e remoção automática de workers offline
+
+- slug: general-system
+  name:
+    en: System
+    pt: Sistema
+  description:
+    en: General system configuration settings
+    pt: Configurações gerais do sistema
+
+- slug: mail-configuration
+  name:
+    en: Email
+    pt: Email
+  description:
+    en: Email service configuration
+    pt: Configuração do serviço de email
+
+- slug: ai-configuration
+  name:
+    en: AI
+    pt: IA
+  description:
+    en: AI provider configuration
+    pt: Configuração de provedores de IA
+
+- slug: mcp-configuration
+  name:
+    en: MCP
+    pt: MCP
+  description:
+    en: Model Context Protocol configuration
+    pt: Configuração do servidor MCP

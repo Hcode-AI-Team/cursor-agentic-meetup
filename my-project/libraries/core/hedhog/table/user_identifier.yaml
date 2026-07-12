@@ -1,0 +1,26 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: type
+    isUnique: true
+    type: enum
+    values:
+      - email
+      - username
+      - phone
+      - cpf
+  - name: value
+    isUnique: true
+  - name: verified_at
+    type: datetime
+    isNullable: true
+  - name: enabled
+    type: boolean
+    default: false
+  - type: created_at
+  - type: updated_at

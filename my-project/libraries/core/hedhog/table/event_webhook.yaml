@@ -1,0 +1,55 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: name
+    type: varchar
+    length: 127
+  - name: description
+    type: text
+    isNullable: true
+  - name: status
+    type: enum
+    enum:
+      - active
+      - inactive
+    default: active
+  - name: priority
+    type: int
+    default: 0
+  - name: url
+    type: text
+  - name: method
+    type: enum
+    enum:
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+    default: POST
+  - name: headers
+    type: json
+    isNullable: true
+  - name: query
+    type: json
+    isNullable: true
+  - name: payload
+    type: json
+    isNullable: true
+  - name: timeout_ms
+    type: int
+    default: 10000
+  - name: retry_count
+    type: int
+    default: 0
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true
+  - columns:
+      - status
+  - columns:
+      - priority
+

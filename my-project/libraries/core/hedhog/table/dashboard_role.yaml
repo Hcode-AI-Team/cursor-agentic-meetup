@@ -1,0 +1,16 @@
+columns:
+  - type: pk
+  - name: dashboard_id
+    type: fk
+    references:
+      table: dashboard
+      column: id
+      onDelete: CASCADE
+  - name: role_id
+    type: fk
+    references:
+      table: role
+      column: id
+      onDelete: CASCADE
+  - type: created_at
+  - type: updated_at

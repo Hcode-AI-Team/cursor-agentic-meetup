@@ -1,0 +1,65 @@
+columns:
+  - type: pk
+  - name: group_id
+    type: fk
+    references:
+      table: setting_group
+      column: id
+      onDelete: CASCADE
+  - type: slug
+  - name: type
+    type: enum
+    enum:
+      - string
+      - array
+      - number
+      - boolean
+      - json
+      - secret
+    default: string
+  - name: component
+    type: enum
+    enum:
+      - input-text
+      - input-number
+      - input-duration
+      - input-bytes
+      - input-secret
+      - input-file
+      - input-tags
+      - combobox
+      - radio
+      - color-picker
+      - switch
+      - checkbox
+      - entity-picker
+    default: input-text
+  - name: value
+    length: 1023
+    isNullable: true
+  - name: user_override
+    type: boolean
+    default: false
+  - name: description
+    length: 255
+    isNullable: true
+    type: locale_varchar
+    locale:
+      en: Description
+      pt: Descrição
+  - name: name
+    length: 63
+    isNullable: true
+    type: locale_varchar
+    locale:
+      en: Name
+      pt: Nome
+  - name: subgroup_id
+    type: fk
+    references:
+      table: setting_subgroup
+      column: id
+      onDelete: SET NULL
+    isNullable: true
+  - type: created_at
+  - type: updated_at

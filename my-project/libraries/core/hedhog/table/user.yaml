@@ -1,0 +1,26 @@
+columns:
+  - type: pk
+  - name: name
+  - name: photo_id
+    type: fk
+    isNullable: true
+    references:
+      table: file
+      column: id
+      onDelete: SET NULL
+    locale:
+      en: Photo
+      pt: Foto
+  - name: suspended_until
+    type: datetime
+    isNullable: true
+  - name: last_login_at
+    type: datetime
+    isNullable: true
+  - name: suspended_reason
+    isNullable: true
+  - name: deactivated_at
+    type: datetime
+    isNullable: true
+  - type: created_at
+  - type: updated_at

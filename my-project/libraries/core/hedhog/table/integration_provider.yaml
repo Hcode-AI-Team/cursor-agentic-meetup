@@ -1,0 +1,23 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: type_id
+    type: fk
+    references:
+      table: integration_type
+      column: id
+      onDelete: CASCADE
+  - name: name
+    type: locale_varchar
+    length: 127
+    locale:
+      en: Name
+      pt: Nome
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true
+  - columns:
+      - type_id

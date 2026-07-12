@@ -1,0 +1,43 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: layer
+    type: enum
+    enum:
+      - system
+      - product
+      - module
+      - agent
+      - tool
+      - output
+    default: system
+  - name: name
+    length: 200
+  - name: content
+    type: text
+  - name: variables_schema
+    type: json
+    isNullable: true
+  - name: locale
+    length: 10
+    default: en
+  - name: module_slug
+    isNullable: true
+  - name: is_active
+    type: boolean
+    default: true
+  - name: version
+    type: int
+    default: 1
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true
+  - columns:
+      - layer
+  - columns:
+      - module_slug
+  - columns:
+      - is_active

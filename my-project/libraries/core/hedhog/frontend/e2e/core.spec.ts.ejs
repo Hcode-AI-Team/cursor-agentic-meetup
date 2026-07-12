@@ -1,0 +1,28 @@
+import { test } from '@playwright/test';
+import { expectPageLoads } from './support';
+
+test.describe('Módulo core', () => {
+  const urls = [
+    '/core/menu',
+    '/core/dashboard/management',
+    '/core/roles',
+    '/core/routes',
+    '/core/configurations',
+    '/core/mail',
+    '/core/mail/template',
+    '/core/mail/log',
+    '/core/integration/profiles',
+    '/core/ai_agent',
+    '/core/integrations-webhooks',
+    '/core/setting-list',
+    '/core/access-log',
+    '/core/users',
+    '/core/mcp_chat',
+  ];
+
+  for (const url of urls) {
+    test(`${url} carrega sem crash`, async ({ page }) => {
+      await expectPageLoads(page, url);
+    });
+  }
+});

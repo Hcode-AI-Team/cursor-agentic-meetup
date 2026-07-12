@@ -1,0 +1,19 @@
+columns:
+  - type: pk
+  - name: dashboard_id
+    type: fk
+    references:
+      table: dashboard
+      column: id
+      onDelete: CASCADE
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: is_home
+    type: boolean
+    default: false
+  - type: created_at
+  - type: updated_at

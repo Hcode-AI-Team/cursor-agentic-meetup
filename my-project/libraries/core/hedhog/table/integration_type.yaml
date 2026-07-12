@@ -1,0 +1,19 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: name
+    type: locale_varchar
+    length: 127
+    locale:
+      en: Name
+      pt: Nome
+  - name: icon
+    type: varchar
+    length: 127
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true

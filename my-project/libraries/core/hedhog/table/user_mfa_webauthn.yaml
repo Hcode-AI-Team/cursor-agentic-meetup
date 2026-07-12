@@ -1,0 +1,19 @@
+columns:
+  - type: pk
+  - name: user_mfa_id
+    type: fk
+    references:
+      table: user_mfa
+      column: id
+      onDelete: CASCADE
+  - name: credential_id
+    type: bytes
+  - name: public_key
+    type: bytes
+  - name: sign_count
+    type: int
+  - name: last_used_at
+    type: datetime
+    isNullable: true
+  - type: created_at
+  - type: updated_at

@@ -1,0 +1,26 @@
+columns:
+  - type: pk
+  - type: fk
+    name: event_webhook_id
+    references:
+      table: event_webhook
+      column: id
+      onDelete: cascade
+      onUpdate: cascade
+  - type: fk
+    name: integration_event_catalog_id
+    references:
+      table: integration_event_catalog
+      column: id
+      onDelete: cascade
+      onUpdate: cascade
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - event_webhook_id
+      - integration_event_catalog_id
+    isUnique: true
+  - columns:
+      - integration_event_catalog_id
+

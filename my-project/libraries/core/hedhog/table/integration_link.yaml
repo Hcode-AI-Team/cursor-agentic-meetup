@@ -1,0 +1,33 @@
+columns:
+  - type: pk
+  - name: source_module
+    length: 127
+  - name: source_entity_type
+    length: 127
+  - name: source_entity_id
+    length: 36
+  - name: target_module
+    length: 127
+  - name: target_entity_type
+    length: 127
+  - name: target_entity_id
+    length: 36
+  - name: link_type
+    length: 63
+  - name: metadata
+    type: json
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+
+indexes:
+  - columns:
+      - source_module
+      - source_entity_type
+      - source_entity_id
+  - columns:
+      - target_module
+      - target_entity_type
+      - target_entity_id
+  - columns:
+      - link_type

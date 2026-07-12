@@ -1,0 +1,43 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: name
+    type: varchar
+    length: 127
+  - name: description
+    type: text
+    isNullable: true
+  - name: public_uuid
+    type: varchar
+    length: 36
+  - name: status
+    type: enum
+    enum:
+      - active
+      - inactive
+    default: active
+  - name: require_token
+    type: boolean
+    default: false
+  - name: token_hash
+    type: varchar
+    length: 128
+    isNullable: true
+  - name: allowed_ips
+    type: json
+    isNullable: true
+  - name: body_schema
+    type: json
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true
+  - columns:
+      - public_uuid
+    isUnique: true
+  - columns:
+      - status
+

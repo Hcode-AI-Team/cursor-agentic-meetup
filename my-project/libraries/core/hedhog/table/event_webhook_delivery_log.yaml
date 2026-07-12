@@ -1,0 +1,66 @@
+columns:
+  - type: pk
+  - type: fk
+    name: event_webhook_id
+    isNullable: true
+    references:
+      table: event_webhook
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - type: fk
+    name: integration_event_catalog_id
+    isNullable: true
+    references:
+      table: integration_event_catalog
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - name: outbox_event_id
+    type: int
+    isNullable: true
+  - name: event_name
+    type: varchar
+    length: 255
+  - name: method
+    type: varchar
+    length: 15
+  - name: url
+    type: text
+  - name: status
+    type: enum
+    enum:
+      - success
+      - failed
+  - name: http_status
+    type: int
+    isNullable: true
+  - name: duration_ms
+    type: int
+    default: 0
+  - name: attempt_count
+    type: int
+    default: 1
+  - name: error_message
+    type: text
+    isNullable: true
+  - name: request_summary
+    type: json
+    isNullable: true
+  - name: response_summary
+    type: json
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - event_webhook_id
+  - columns:
+      - integration_event_catalog_id
+  - columns:
+      - event_name
+  - columns:
+      - status
+  - columns:
+      - created_at
+

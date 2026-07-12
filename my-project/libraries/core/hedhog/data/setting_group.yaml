@@ -1,0 +1,2199 @@
+- slug: general
+  icon: settings
+  name:
+    en: General
+    pt: Geral
+  description:
+    en: General system settings and basic configurations
+    pt: Configurações gerais do sistema e configurações básicas
+  relations:
+    setting:
+      - slug: user-avatar-cache-max-age
+        type: number
+        component: input-number
+        name:
+          en: User Avatar Cache Duration (seconds)
+          pt: Duração do Cache do Avatar do Usuário (segundos)
+        description:
+          en: How long browsers cache user avatar images (in seconds).
+          pt: Por quanto tempo os navegadores armazenam em cache as imagens de avatar de usuários (em segundos).
+        value: 3600
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+      - slug: api-body-size-limit
+        type: number
+        component: input-number
+        name:
+          en: API Body Size Limit (MB)
+          pt: Limite do Corpo da Requisição (MB)
+        description:
+          en: Maximum size in megabytes for incoming API request bodies. Applies dynamically without restart (50 = 50 MB)
+          pt: Tamanho máximo em megabytes para corpos de requisição recebidos pela API. Aplica-se dinamicamente sem reiniciar (50 = 50 MB)
+        value: 50
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+      - slug: url
+        type: string
+        name:
+          en: System URL
+          pt: URL do Sistema
+        description:
+          en: The public-facing base URL of the system for client requests and redirects
+          pt: A URL base acessível publicamente do sistema para requisições e redirecionamentos de clientes
+        value: http://localhost:3200
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+      - slug: api-url
+        type: string
+        name:
+          en: API URL
+          pt: URL da API
+        description:
+          en: The endpoint URL where the API server is accessible
+          pt: A URL do endpoint onde o servidor da API está acessível
+        value: http://localhost:3100
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+      - slug: app-urls
+        type: array
+        component: input-tags
+        name:
+          en: App URLs
+          pt: URLs dos Aplicativos
+        description:
+          en: 'Base URLs for specific apps, formatted as "app=https://example.com" (one per tag). Used in transactional email links (e.g. password reset) when the request comes from that app, falling back to System URL otherwise.'
+          pt: 'URLs base de apps específicos, no formato "app=https://exemplo.com" (uma por tag). Usadas em links de e-mails transacionais (ex.: redefinição de senha) quando a solicitação vem desse app, usando a URL do Sistema como alternativa.'
+        value: '["training=http://localhost:3001"]'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+      - slug: installed
+        type: boolean
+        component: switch
+        name:
+          en: Installation Status
+          pt: Status de Instalação
+        description:
+          en: Indicates whether the system has completed initial setup and installation procedures
+          pt: Indica se o sistema completou os procedimentos de instalação e configuração inicial
+        value: false
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+      - slug: pagination-page-sizes
+        type: array
+        component: checkbox
+        name:
+          en: Pagination Page Sizes
+          pt: Tamanhos de Página de Paginação
+        description:
+          en: Available page-size options shown in the items-per-page dropdown on paginated screens throughout the system
+          pt: Opções de tamanho de página exibidas no seletor de itens por página nas telas paginadas de todo o sistema
+        value: '["6","12","24","48","96"]'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: general-system
+        relations:
+          setting_list:
+            - value: '6'
+              order: 0
+            - value: '12'
+              order: 1
+            - value: '24'
+              order: 2
+            - value: '48'
+              order: 3
+            - value: '96'
+              order: 4
+      - slug: maintenance-mode-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Maintenance Mode
+          pt: Habilitar Modo de Manutenção
+        description:
+          en: Show maintenance notice on login and a global alert in authenticated pages
+          pt: Exibir aviso de manutenção no login e alerta global nas páginas autenticadas
+        value: false
+        user_override: false
+        subgroup_id:
+          where:
+            slug: maintenance-mode
+      - slug: cleanup-batch-limit
+        type: number
+        component: input-number
+        name:
+          en: Batch Limit
+          pt: Limite de Lote
+        description:
+          en: Maximum number of records to delete per cleanup task execution. Smaller values prevent long table locks but increase cleanup duration
+          pt: Número máximo de registros a deletar por execução de tarefa de limpeza. Valores menores evitam locks prolongados mas aumentam a duração da limpeza
+        value: 20000
+        user_override: false
+        subgroup_id:
+          where:
+            slug: database-cleanup
+      - slug: session-retention-days
+        type: number
+        component: input-number
+        name:
+          en: Retention Period
+          pt: Período de Retenção
+        description:
+          en: Number of days to retain expired sessions before permanent deletion. Required for audit trails and compliance purposes
+          pt: Número de dias para reter sessões expiradas antes da exclusão permanente. Necessário para trilhas de auditoria e fins de conformidade
+        value: 90
+        user_override: false
+        subgroup_id:
+          where:
+            slug: session-retention
+      - slug: webhook-log-retention-days
+        type: number
+        component: input-number
+        name:
+          en: Webhook Log Retention Period
+          pt: Período de Retenção de Logs de Webhook
+        description:
+          en: Number of days to keep incoming webhook execution logs before automatic deletion
+          pt: Número de dias para manter logs de execução de webhooks de entrada antes da exclusão automática
+        value: 30
+        user_override: false
+        subgroup_id:
+          where:
+            slug: webhook-log-retention
+      - slug: notification-retention-days
+        type: number
+        component: input-number
+        name:
+          en: Notification Retention Period
+          pt: Período de Retenção de Notificações
+        description:
+          en: Number of days to keep user notifications before automatic deletion. Unread notifications are also removed after this period
+          pt: Número de dias para manter notificações de usuários antes da exclusão automática. Notificações não lidas também são removidas após este período
+        value: 30
+        user_override: false
+        subgroup_id:
+          where:
+            slug: notification-retention
+      - slug: stale-async-notification-hours
+        type: number
+        component: input-number
+        name:
+          en: Stale Async Notification Cleanup (hours)
+          pt: Limpeza de Notificações Assíncronas Travadas (horas)
+        description:
+          en: Number of hours an in-progress async notification (progress below 100% and not finished) may run before it is automatically deleted
+          pt: Número de horas que uma notificação assíncrona em andamento (progresso abaixo de 100% e não finalizada) pode ficar antes de ser excluída automaticamente
+        value: 24
+        user_override: false
+        subgroup_id:
+          where:
+            slug: notification-retention
+      - slug: access-log-retention-days
+        type: number
+        component: input-number
+        name:
+          en: Access Log Retention Period
+          pt: Período de Retenção de Logs de Acesso
+        description:
+          en: Number of days to keep system access logs before automatic deletion
+          pt: Número de dias para manter logs de acesso do sistema antes da exclusão automática
+        value: 30
+        user_override: false
+        subgroup_id:
+          where:
+            slug: access-log-retention
+      - slug: queue-worker-offline-cleanup-hours
+        type: number
+        component: input-number
+        name:
+          en: Offline Worker Cleanup (hours)
+          pt: Limpeza de Worker Offline (horas)
+        description:
+          en: Number of hours a worker must be offline before it is automatically deleted
+          pt: Número de horas que um worker deve estar offline antes de ser excluído automaticamente
+        value: 24
+        user_override: false
+        subgroup_id:
+          where:
+            slug: worker-retention
+      - slug: configured-mail
+        type: boolean
+        name:
+          en: Email Configured
+          pt: Email Configurado
+        description:
+          en: Indicates whether email notifications are fully configured and operational
+          pt: Indica se as notificações de email estão totalmente configuradas e operacionais
+        value: false
+        user_override: false
+        component: switch
+        subgroup_id:
+          where:
+            slug: mail-configuration
+      - slug: mail-integration-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Mail Profile
+          pt: Perfil de Email
+        description:
+          en: Select the mail profile to use for sending system notifications
+          pt: Selecione o perfil de email a usar para enviar notificações do sistema
+        value: ''
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mail-configuration
+      - slug: ai-openai-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: OpenAI Profile
+          pt: Perfil OpenAI
+        description:
+          en: Integration profile (type AI / OpenAI) to use for OpenAI features
+          pt: Perfil de integração (tipo IA / OpenAI) a usar para recursos de OpenAI
+        value: ''
+        user_override: false
+        subgroup_id:
+          where:
+            slug: ai-configuration
+      - slug: ai-gemini-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Gemini Profile
+          pt: Perfil Gemini
+        description:
+          en: Integration profile (type AI / Gemini) to use for Gemini features
+          pt: Perfil de integração (tipo IA / Gemini) a usar para recursos de Gemini
+        value: ''
+        user_override: false
+        subgroup_id:
+          where:
+            slug: ai-configuration
+      - slug: mcp-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable MCP Server
+          pt: Habilitar Servidor MCP
+        description:
+          en: Enable or disable the MCP server and AI chat feature
+          pt: Habilitar ou desabilitar o servidor MCP e o recurso de chat de IA
+        value: true
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mcp-configuration
+      - slug: mcp-ai-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: AI Profile
+          pt: Perfil de IA
+        description:
+          en: Integration profile (type AI) to use for MCP chat
+          pt: Perfil de integração (tipo IA) a usar no chat MCP
+        value: ''
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mcp-configuration
+- slug: authentication
+  icon: lock-password
+  name:
+    en: Authentication
+    pt: Autenticação
+  description:
+    en: Configure authentication methods, security policies, and credentials for user access control
+    pt: Configure métodos de autenticação, políticas de segurança e credenciais para controle de acesso de usuários
+  relations:
+    setting:
+      - slug: disable-authentication-with-email-and-password
+        type: boolean
+        component: switch
+        name:
+          en: Disable Email/Password Auth
+          pt: Desabilitar Auth Email/Senha
+        description:
+          en: Prevent user authentication using email and password credentials, enforcing OAuth or passwordless authentication
+          pt: Impedir autenticação de usuários usando credenciais de email e senha, forçando autenticação OAuth ou sem senha
+        value: false
+        user_override: false
+        subgroup_id:
+          where:
+            slug: email-password-auth
+      - slug: require-email-verification
+        type: boolean
+        component: switch
+        name:
+          en: Require Email Verification
+          pt: Exigir Verificação de Email
+        description:
+          en: Require users to verify their email address before account activation and system access
+          pt: Exigir que os usuários verifiquem seus endereços de email antes da ativação da conta e acesso ao sistema
+        value: false
+        user_override: false
+        subgroup_id:
+          where:
+            slug: email-password-auth
+      - slug: password-min-length
+        type: number
+        component: input-number
+        name:
+          en: Minimum Length
+          pt: Comprimento Mínimo
+        description:
+          en: Minimum number of characters required for passwords
+          pt: Número mínimo de caracteres obrigatórios para senhas
+        value: 6
+        user_override: false
+        subgroup_id:
+          where:
+            slug: password-policy
+      - slug: password-min-uppercase
+        type: number
+        component: input-number
+        name:
+          en: Uppercase Letters
+          pt: Letras Maiúsculas
+        description:
+          en: Minimum number of uppercase letters (A-Z) required in passwords
+          pt: Número mínimo de letras maiúsculas (A-Z) obrigatórias em senhas
+        value: 0
+        user_override: false
+        subgroup_id:
+          where:
+            slug: password-policy
+      - slug: password-min-numbers
+        type: number
+        component: input-number
+        name:
+          en: Numeric Digits
+          pt: Dígitos Numéricos
+        description:
+          en: Minimum number of numeric digits (0-9) required in passwords
+          pt: Número mínimo de dígitos numéricos (0-9) obrigatórios em senhas
+        value: 0
+        user_override: false
+        subgroup_id:
+          where:
+            slug: password-policy
+      - slug: password-min-symbols
+        type: number
+        component: input-number
+        name:
+          en: Special Symbols
+          pt: Símbolos Especiais
+        description:
+          en: Minimum number of special characters (!@#$%^&*) required in passwords
+          pt: Número mínimo de caracteres especiais (!@#$%^&*) obrigatórios em senhas
+        value: 0
+        user_override: false
+        subgroup_id:
+          where:
+            slug: password-policy
+      - slug: email-host-whitelist
+        type: array
+        name:
+          en: Allowed Domains
+          pt: Domínios Permitidos
+        description:
+          en: List of email domain names allowed for registration. Leave empty to allow all domains
+          pt: Lista de nomes de domínios de email permitidos para registro. Deixe vazio para permitir todos os domínios
+        value: '[]'
+        user_override: false
+        component: input-tags
+        subgroup_id:
+          where:
+            slug: email-restrictions
+      - slug: email-host-blacklist
+        type: array
+        name:
+          en: Blocked Domains
+          pt: Domínios Bloqueados
+        description:
+          en: List of email domain names blocked from registration and login
+          pt: Lista de nomes de domínios de email bloqueados para registro e login
+        value: '[]'
+        user_override: false
+        component: input-tags
+        subgroup_id:
+          where:
+            slug: email-restrictions
+      - slug: require-mfa
+        type: boolean
+        component: switch
+        name:
+          en: Require MFA
+          pt: Exigir MFA
+        description:
+          en: Enforce multi-factor authentication for all users to enhance security
+          pt: Forçar autenticação multifatorial para todos os usuários para aumentar a segurança
+        value: false
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mfa-general
+      - slug: mfa-issuer
+        type: string
+        name:
+          en: Issuer Name
+          pt: Nome do Emissor
+        description:
+          en: Application name displayed in authenticator apps (e.g., Google Authenticator, Authy)
+          pt: Nome do aplicativo exibido em aplicativos autenticadores (por exemplo, Google Authenticator, Authy)
+        value: Hedhog
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mfa-general
+      - slug: mfa-window
+        type: number
+        component: input-number
+        name:
+          en: Tolerance Window
+          pt: Janela de Tolerância
+        description:
+          en: Number of time periods (30-second intervals) to accept as valid before/after the current token. Higher values increase security tolerance
+          pt: Número de períodos de tempo (intervalos de 30 segundos) para aceitar como válido antes/depois do token atual. Valores maiores aumentam a tolerância de segurança
+        value: 1
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mfa-totp
+      - slug: mfa-setp
+        type: number
+        component: input-number
+        name:
+          en: Time Step (seconds)
+          pt: Intervalo de Tempo (segundos)
+        description:
+          en: Duration in seconds each one-time password code remains valid. Standard is 30 seconds
+          pt: Duração em segundos que cada código de senha única permanece válido. O padrão é 30 segundos
+        value: 30
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mfa-totp
+      - slug: mfa-email-code-length
+        type: number
+        component: input-number
+        name:
+          en: Code Length
+          pt: Comprimento do Código
+        description:
+          en: Number of digits for email-based MFA codes sent to user email
+          pt: Número de dígitos para códigos de MFA baseados em email enviados para o email do usuário
+        value: 6
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mfa-email
+      - slug: mfa-challenge-expiration-minutes
+        type: number
+        component: input-number
+        name:
+          en: Challenge Expiration
+          pt: Expiração do Desafio
+        description:
+          en: Minutes before an MFA challenge expires and becomes invalid
+          pt: Minutos antes de um desafio de MFA expirar e se tornar inválido
+        value: 15
+        user_override: false
+        subgroup_id:
+          where:
+            slug: mfa-general
+      - slug: access-token-expiration-minutes
+        type: number
+        component: input-number
+        name:
+          en: Access Token Lifetime
+          pt: Duração do Token de Acesso
+        description:
+          en: Minutes before an access token expires. Shorter durations improve security but increase token refresh frequency
+          pt: Minutos antes de um token de acesso expirar. Durações mais curtas melhoram a segurança mas aumentam a frequência de atualização de tokens
+        value: 15
+        user_override: false
+        subgroup_id:
+          where:
+            slug: token-configuration
+      - slug: refresh-token-expiration-minutes
+        type: number
+        component: input-number
+        name:
+          en: Refresh Token Lifetime
+          pt: Duração do Token de Atualização
+        description:
+          en: Minutes before a refresh token expires. Used to obtain new access tokens without re-authentication
+          pt: Minutos antes de um token de atualização expirar. Usado para obter novos tokens de acesso sem re-autenticação
+        value: 43200
+        user_override: false
+        subgroup_id:
+          where:
+            slug: token-configuration
+      - slug: max-concurrent-sessions
+        type: number
+        component: input-number
+        name:
+          en: Max Concurrent Sessions
+          pt: Máximo de Sessões Simultâneas
+        description:
+          en: Maximum number of active sessions per user (0 = unlimited). Oldest sessions expire automatically when limit is reached
+          pt: Número máximo de sessões ativas por usuário (0 = ilimitado). As sessões mais antigas expiram automaticamente quando o limite é atingido
+        value: 0
+        user_override: false
+        subgroup_id:
+          where:
+            slug: session-management
+- slug: localization
+  icon: world
+  name:
+    en: Localization
+    pt: Localização
+  description:
+    en: Configure language, timezone, and date/time formatting globally or per-user preference
+    pt: Configure idioma, fuso horário e formatação de data/hora globalmente ou por preferência do usuário
+  relations:
+    setting:
+      - slug: language
+        type: string
+        name:
+          en: Default Language
+          pt: Idioma Padrão
+        description:
+          en: System default language for all users. Each user can override this with their own preference
+          pt: Idioma padrão do sistema para todos os usuários. Cada usuário pode substituir isso com sua própria preferência
+        value: en
+        user_override: true
+        component: combobox
+        relations:
+          setting_list:
+            - value: en
+              order: 0
+            - value: pt
+              order: 1
+        subgroup_id:
+          where:
+            slug: regional-settings
+      - slug: timezone
+        type: string
+        component: combobox
+        name:
+          en: Timezone
+          pt: Fuso Horário
+        description:
+          en: Default timezone for the system. Users can override this setting based on their location
+          pt: Fuso horário padrão para o sistema. Os usuários podem substituir essa configuração com base em sua localização
+        value: UTC
+        user_override: true
+        relations:
+          setting_list:
+            - value: UTC
+              order: 0
+            - value: America/Sao_Paulo
+              order: 1
+            - value: America/New_York
+              order: 2
+            - value: America/Los_Angeles
+              order: 3
+            - value: Europe/London
+              order: 4
+            - value: Europe/Paris
+              order: 5
+            - value: Asia/Tokyo
+              order: 6
+            - value: Australia/Sydney
+              order: 7
+        subgroup_id:
+          where:
+            slug: regional-settings
+      - slug: time-format
+        type: string
+        component: combobox
+        name:
+          en: Time Format
+          pt: Formato de Hora
+        description:
+          en: How times are displayed throughout the system (24-hour or 12-hour format)
+          pt: Como os horários são exibidos em todo o sistema (formato 24 horas ou 12 horas)
+        value: HH:mm:ss
+        user_override: true
+        relations:
+          setting_list:
+            - value: HH:mm:ss
+              order: 0
+            - value: hh:mm:ss a
+              order: 1
+            - value: HH:mm
+              order: 2
+            - value: hh:mm a
+              order: 3
+            - value: hh:mm
+              order: 4
+        subgroup_id:
+          where:
+            slug: date-time-formats
+      - slug: date-format
+        type: string
+        component: combobox
+        name:
+          en: Date Format
+          pt: Formato de Data
+        description:
+          en: How dates are displayed throughout the system
+          pt: Como as datas são exibidas em todo o sistema
+        value: dd/MM/yyyy
+        user_override: true
+        relations:
+          setting_list:
+            - value: dd/MM/yyyy
+              order: 0
+            - value: MM/dd/yyyy
+              order: 1
+            - value: yyyy-MM-dd
+              order: 2
+        subgroup_id:
+          where:
+            slug: date-time-formats
+      - slug: currency
+        type: string
+        component: combobox
+        name:
+          en: Currency
+          pt: Moeda
+        description:
+          en: Default currency used to format monetary values throughout the system
+          pt: Moeda padrão usada para formatar valores monetários em todo o sistema
+        value: BRL
+        user_override: true
+        relations:
+          setting_list:
+            - value: BRL
+              order: 0
+            - value: USD
+              order: 1
+            - value: EUR
+              order: 2
+            - value: GBP
+              order: 3
+        subgroup_id:
+          where:
+            slug: currency-format
+- slug: oauth
+  icon: brand-auth0
+  name:
+    en: OAuth
+    pt: OAuth
+  description:
+    en: Configure OAuth providers and authentication settings for third-party identity integration
+    pt: Configure provedores OAuth e configurações de autenticação para integração de identidade de terceiros
+  relations:
+    setting:
+      - slug: oauth-role-assignment
+        type: array
+        component: checkbox
+        name:
+          en: Default Role
+          pt: Função Padrão
+        description:
+          en: Role automatically assigned to new users registering via OAuth providers. If not set, the system default role is used
+          pt: Função atribuída automaticamente a novos usuários registrados via provedores OAuth. Se não definido, a função padrão do sistema é usada
+        value: ""
+        user_override: false
+        relations:
+          setting_list:
+            - value: admin
+              order: 0
+            - value: admin-access
+              order: 1
+            - value: user
+              order: 2
+        subgroup_id:
+          where:
+            slug: oauth-general
+      - slug: oauth-google-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Google OAuth Profile
+          pt: Perfil OAuth Google
+        description:
+          en: Integration profile (type OAuth / Google) used for Google authentication
+          pt: Perfil de integração (tipo OAuth / Google) utilizado para autenticação com Google
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: google
+      - slug: oauth-google-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Google
+          pt: Habilitar Google
+        description:
+          en: Enable or disable Google OAuth without removing the configured profile
+          pt: Habilitar ou desabilitar OAuth do Google sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: google
+      - slug: oauth-google-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during Google OAuth flow
+          pt: Permissões solicitadas ao usuário durante o fluxo OAuth do Google
+        value: '["email","profile"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: email
+              order: 0
+            - value: profile
+              order: 1
+            - value: openid
+              order: 2
+        subgroup_id:
+          where:
+            slug: google
+      - slug: oauth-facebook-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Facebook OAuth Profile
+          pt: Perfil OAuth Facebook
+        description:
+          en: Integration profile (type OAuth / Facebook) used for Facebook authentication
+          pt: Perfil de integração (tipo OAuth / Facebook) utilizado para autenticação com Facebook
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: facebook
+      - slug: oauth-facebook-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Facebook
+          pt: Habilitar Facebook
+        description:
+          en: Enable or disable Facebook OAuth without removing the configured profile
+          pt: Habilitar ou desabilitar OAuth do Facebook sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: facebook
+      - slug: oauth-facebook-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during Facebook OAuth flow
+          pt: Permissões solicitadas ao usuário durante o fluxo OAuth do Facebook
+        value: '["id","emails","name","displayName","photos"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: id
+              order: 0
+            - value: emails
+              order: 1
+            - value: name
+              order: 2
+            - value: displayName
+              order: 3
+            - value: photos
+              order: 4
+        subgroup_id:
+          where:
+            slug: facebook
+      - slug: oauth-github-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: GitHub OAuth Profile
+          pt: Perfil OAuth GitHub
+        description:
+          en: Integration profile (type OAuth / GitHub) used for GitHub authentication
+          pt: Perfil de integração (tipo OAuth / GitHub) utilizado para autenticação com GitHub
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: github
+      - slug: oauth-github-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable GitHub
+          pt: Habilitar GitHub
+        description:
+          en: Enable or disable GitHub OAuth without removing the configured profile
+          pt: Habilitar ou desabilitar OAuth do GitHub sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: github
+      - slug: oauth-github-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during GitHub OAuth flow
+          pt: Permissões solicitadas ao usuário durante o fluxo OAuth do GitHub
+        value: '["read:user","user:email"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: read:user
+              order: 0
+            - value: user:email
+              order: 1
+        subgroup_id:
+          where:
+            slug: github
+      - slug: oauth-microsoft-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Microsoft OAuth Profile
+          pt: Perfil OAuth Microsoft
+        description:
+          en: Integration profile (type OAuth / Microsoft) used for Microsoft authentication
+          pt: Perfil de integração (tipo OAuth / Microsoft) utilizado para autenticação com Microsoft
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: microsoft
+      - slug: oauth-microsoft-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Microsoft
+          pt: Habilitar Microsoft
+        description:
+          en: Enable or disable Microsoft OAuth without removing the configured profile
+          pt: Habilitar ou desabilitar OAuth da Microsoft sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: microsoft
+      - slug: oauth-microsoft-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during Microsoft OAuth flow
+          pt: Permissões solicitadas ao usuário durante o fluxo OAuth da Microsoft
+        value: '["openid","profile","email","User.Read","offline_access"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: openid
+              order: 0
+            - value: profile
+              order: 1
+            - value: email
+              order: 2
+            - value: User.Read
+              order: 3
+            - value: offline_access
+              order: 4
+        subgroup_id:
+          where:
+            slug: microsoft
+      - slug: oauth-microsoft-entra-id-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Microsoft Entra ID OAuth Profile
+          pt: Perfil OAuth Microsoft Entra ID
+        description:
+          en: Integration profile (type OAuth / Microsoft Entra ID) used for Microsoft Entra ID authentication
+          pt: Perfil de integração (tipo OAuth / Microsoft Entra ID) utilizado para autenticação com Microsoft Entra ID
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: microsoft-entra-id
+      - slug: oauth-microsoft-entra-id-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Microsoft Entra ID
+          pt: Habilitar Microsoft Entra ID
+        description:
+          en: Enable or disable Microsoft Entra ID OAuth without removing the configured profile
+          pt: Habilitar ou desabilitar OAuth do Microsoft Entra ID sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: microsoft-entra-id
+      - slug: oauth-microsoft-entra-id-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during Microsoft Entra ID OAuth flow
+          pt: Permissões solicitadas ao usuário durante o fluxo OAuth do Microsoft Entra ID
+        value: '["openid","profile","email","User.Read","offline_access"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: openid
+              order: 0
+            - value: profile
+              order: 1
+            - value: email
+              order: 2
+        subgroup_id:
+          where:
+            slug: microsoft-entra-id
+      - slug: oauth-apple-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Apple OAuth Profile
+          pt: Perfil OAuth Apple
+        description:
+          en: Integration profile (type OAuth / Apple) used for Sign in with Apple
+          pt: Perfil de integração (tipo OAuth / Apple) utilizado para autenticação com a Apple
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: apple
+      - slug: oauth-apple-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Apple
+          pt: Habilitar Apple
+        description:
+          en: Enable or disable Sign in with Apple without removing the configured profile
+          pt: Habilitar ou desabilitar login com Apple sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: apple
+      - slug: oauth-apple-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during Sign in with Apple
+          pt: Permissões solicitadas ao usuário durante o fluxo de login com a Apple
+        value: '["name","email"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: name
+              order: 0
+            - value: email
+              order: 1
+        subgroup_id:
+          where:
+            slug: apple
+      - slug: oauth-linkedin-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: LinkedIn OAuth Profile
+          pt: Perfil OAuth LinkedIn
+        description:
+          en: Integration profile (type OAuth / LinkedIn) used for LinkedIn authentication
+          pt: Perfil de integração (tipo OAuth / LinkedIn) utilizado para autenticação com o LinkedIn
+        value: ""
+        user_override: false
+        subgroup_id:
+          where:
+            slug: linkedin
+      - slug: oauth-linkedin-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable LinkedIn
+          pt: Habilitar LinkedIn
+        description:
+          en: Enable or disable LinkedIn OAuth without removing the configured profile
+          pt: Habilitar ou desabilitar OAuth do LinkedIn sem remover o perfil configurado
+        value: 'false'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: linkedin
+      - slug: oauth-linkedin-scopes
+        type: array
+        component: checkbox
+        name:
+          en: OAuth Scopes
+          pt: Escopos OAuth
+        description:
+          en: Permissions requested from the user during LinkedIn OAuth flow
+          pt: Permissões solicitadas ao usuário durante o fluxo OAuth do LinkedIn
+        value: '["openid","profile","email"]'
+        user_override: false
+        relations:
+          setting_list:
+            - value: openid
+              order: 0
+            - value: profile
+              order: 1
+            - value: email
+              order: 2
+        subgroup_id:
+          where:
+            slug: linkedin
+- slug: appearance
+  icon: palette
+  name:
+    en: Appearance
+    pt: Aparência
+  description:
+    en: Customize visual appearance, themes, colors, branding, and UI layout for the entire system
+    pt: Customize aparência visual, temas, cores, marca e layout da UI para todo o sistema
+  relations:
+    setting:
+      - slug: theme-mode
+        type: string
+        name:
+          en: Theme Mode
+          pt: Modo de Tema
+        description:
+          en: Select between light, dark, or system-default theme mode
+          pt: Selecione entre modo de tema claro, escuro ou padrão do sistema
+        value: system
+        component: combobox
+        user_override: true
+        relations:
+          setting_list:
+            - value: light
+              order: 0
+            - value: dark
+              order: 1
+            - value: system
+
+              order: 2
+        subgroup_id:
+          where:
+            slug: theme-selector
+      - slug: theme-primary-light
+        type: string
+        name:
+          en: Primary Color
+          pt: Cor Primária
+        description:
+          en: Main brand color used for buttons, links, and highlights in light theme
+          pt: Cor de marca principal usada para botões, links e realces em tema claro
+        value: "#ff760c"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#f59e0b"
+              order: 0
+            - value: "#3B82F6"
+              order: 1
+            - value: "#22C55E"
+              order: 2
+            - value: "#8B5CF6"
+              order: 3
+            - value: "#EF4444"
+              order: 4
+            - value: "#ff760c"
+              order: 5
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-primary-foreground-light
+        type: string
+        name:
+          en: Primary Contrast
+          pt: Contraste Primário
+        description:
+          en: Text/foreground color for primary buttons and elements in light theme
+          pt: Cor de texto/foreground para botões primários e elementos em tema claro
+        value: "#ffffff"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#ffffff"
+              order: 0
+            - value: "#fafafa"
+              order: 1
+            - value: "#f4f4f5"
+              order: 2
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-secondary-light
+        type: string
+        name:
+          en: Secondary Color
+          pt: Cor Secundária
+        description:
+          en: Secondary accent color for less prominent UI elements in light theme
+          pt: Cor de acento secundária para elementos de UI menos proeminentes em tema claro
+        value: "#f4f4f5"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#f4f4f5"
+              order: 0
+            - value: "#e4e4e7"
+
+              order: 1
+            - value: "#d4d4d8"
+              order: 2
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-secondary-foreground-light
+        type: string
+        name:
+          en: Secondary Contrast
+          pt: Contraste Secundário
+        description:
+          en: Text/foreground color for secondary elements in light theme
+          pt: Cor de texto/foreground para elementos secundários em tema claro
+        value: "#18181b"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#18181b"
+              order: 0
+            - value: "#09090b"
+              order: 1
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-accent-light
+        type: string
+        name:
+          en: Accent Color
+          pt: Cor de Acento
+        description:
+          en: Accent color for interactive elements and focus states in light theme
+          pt: Cor de acento para elementos interativos e estados de foco em tema claro
+        value: "#f4f4f5"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#f4f4f5"
+              order: 0
+            - value: "#e4e4e7"
+              order: 1
+            - value: "#d4d4d8"
+              order: 2
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-accent-foreground-light
+        type: string
+        name:
+          en: Accent Contrast
+          pt: Contraste de Acento
+        description:
+          en: Text/foreground color for accented elements in light theme
+          pt: Cor de texto/foreground para elementos com acento em tema claro
+        value: "#18181b"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#18181b"
+              order: 0
+            - value: "#09090b"
+              order: 1
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-muted-light
+        type: string
+        name:
+          en: Muted Color
+          pt: Cor Suave
+        description:
+          en: Subtle background color for disabled or subtle UI elements in light theme
+          pt: Cor de fundo sutil para elementos de UI desabilitados ou sutis em tema claro
+        value: "#f4f4f5"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#f4f4f5"
+              order: 0
+            - value: "#e4e4e7"
+              order: 1
+            - value: "#d4d4d8"
+              order: 2
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-muted-foreground-light
+        type: string
+        name:
+          en: Muted Contrast
+          pt: Contraste Suave
+        description:
+          en: Text/foreground color for muted or disabled elements in light theme
+          pt: Cor de texto/foreground para elementos silenciosos ou desabilitados em tema claro
+        value: "#71717a"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#71717a"
+              order: 0
+            - value: "#52525b"
+              order: 1
+            - value: "#3f3f46"
+
+              order: 2
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-background-light
+        type: string
+        name:
+          en: Page Background
+          pt: Fundo da Página
+        description:
+          en: Main background color for page content in light theme
+          pt: Cor de fundo principal para conteúdo da página em tema claro
+        value: "#ffffff"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#ffffff"
+
+              order: 0
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-background-foreground-light
+        type: string
+        name:
+          en: Page Text Color
+          pt: Cor do Texto da Página
+        description:
+          en: Default text color for page content in light theme
+          pt: Cor de texto padrão para conteúdo da página em tema claro
+        value: "#09090b"
+        component: color-picker
+        relations:
+          setting_list:
+              - value: "#09090b"
+                order: 0
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-card-light
+        type: string
+        name:
+          en: Card Background
+          pt: Fundo da Card
+        description:
+          en: Background color for cards and panels in light theme
+          pt: Cor de fundo para cards e painéis em tema claro
+        value: "#ffffff"
+        component: color-picker
+        relations:
+          setting_list:
+              - value: "#ffffff"
+                order: 0
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-card-foreground-light
+        type: string
+        name:
+          en: Card Text Color
+          pt: Cor do Texto da Card
+        description:
+          en: Text color for content within cards in light theme
+          pt: Cor do texto para conteúdo em cards em tema claro
+        value: "#09090b"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#09090b"
+              order: 0
+        subgroup_id:
+          where:
+            slug: light-theme-colors
+      - slug: theme-primary-dark
+        type: string
+        name:
+          en: Primary Color
+          pt: Cor Primária
+        description:
+          en: Main brand color used for buttons, links, and highlights in dark theme
+          pt: Cor de marca principal usada para botões, links e realces em tema escuro
+        value: "#ff760c"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#f59e0b"
+              order: 0
+            - value: "#3B82F6"
+              order: 1
+            - value: "#22C55E"
+              order: 2
+            - value: "#8B5CF6"
+              order: 3
+            - value: "#EF4444"
+              order: 4
+            - value: "#ff760c"
+              order: 5
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-primary-foreground-dark
+        type: string
+        name:
+          en: Primary Contrast
+          pt: Contraste Primário
+        description:
+          en: Text/foreground color for primary buttons and elements in dark theme
+          pt: Cor de texto/foreground para botões primários e elementos em tema escuro
+        value: "#ffffff"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#ffffff"
+              order: 0
+            - value: "#fafafa"
+              order: 1
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-secondary-dark
+        type: string
+        name:
+          en: Secondary Color
+          pt: Cor Secundária
+        description:
+          en: Secondary accent color for less prominent UI elements in dark theme
+          pt: Cor de acento secundária para elementos de UI menos proeminentes em tema escuro
+        value: "#27272a"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#27272a"
+              order: 0
+            - value: "#3f3f46"
+              order: 1
+            - value: "#52525b"
+              order: 2
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-secondary-foreground-dark
+        type: string
+        name:
+          en: Secondary Contrast
+          pt: Contraste Secundário
+        description:
+          en: Text/foreground color for secondary elements in dark theme
+          pt: Cor de texto/foreground para elementos secundários em tema escuro
+        value: "#fafafa"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#fafafa"
+              order: 0
+            - value: "#f4f4f5"
+              order: 1
+            - value: "#e4e4e7"
+              order: 2
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-accent-dark
+        type: string
+        name:
+          en: Accent Color
+          pt: Cor de Acento
+        description:
+          en: Accent color for interactive elements and focus states in dark theme
+          pt: Cor de acento para elementos interativos e estados de foco em tema escuro
+        value: "#27272a"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#27272a"
+              order: 0
+            - value: "#3f3f46"
+              order: 1
+            - value: "#52525b"
+
+              order: 2
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-accent-foreground-dark
+        type: string
+        name:
+          en: Accent Contrast
+          pt: Contraste de Acento
+        description:
+          en: Text/foreground color for accented elements in dark theme
+          pt: Cor de texto/foreground para elementos com acento em tema escuro
+        value: "#fafafa"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#fafafa"
+              order: 0
+            - value: "#f4f4f5"
+              order: 1
+            - value: "#e4e4e7"
+
+              order: 2
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-muted-dark
+        type: string
+        name:
+          en: Muted Color
+          pt: Cor Suave
+        description:
+          en: Subtle background color for disabled or subtle UI elements in dark theme
+          pt: Cor de fundo sutil para elementos de UI desabilitados ou sutis em tema escuro
+        value: "#27272a"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#27272a"
+              order: 0
+            - value: "#3f3f46"
+              order: 1
+            - value: "#52525b"
+              order: 2
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-muted-foreground-dark
+        type: string
+        name:
+          en: Muted Contrast
+          pt: Contraste Suave
+        description:
+          en: Text/foreground color for muted or disabled elements in dark theme
+          pt: Cor de texto/foreground para elementos silenciosos ou desabilitados em tema escuro
+        value: "#a1a1aa"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#a1a1aa"
+              order: 0
+            - value: "#71717a"
+              order: 1
+            - value: "#52525b"
+              order: 2
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-background-dark
+        type: string
+        name:
+          en: Page Background
+          pt: Fundo da Página
+        description:
+          en: Main background color for page content in dark theme
+          pt: Cor de fundo principal para conteúdo da página em tema escuro
+        value: "#09090b"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#09090b"
+              order: 0
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-background-foreground-dark
+        type: string
+        name:
+          en: Page Text Color
+          pt: Cor do Texto da Página
+        description:
+          en: Default text color for page content in dark theme
+          pt: Cor de texto padrão para conteúdo da página em tema escuro
+        value: "#fafafa"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#fafafa"
+              order: 0
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-card-dark
+        type: string
+        name:
+          en: Card Background
+          pt: Fundo da Card
+        description:
+          en: Background color for cards and panels in dark theme
+          pt: Cor de fundo para cards e painéis em tema escuro
+        value: "#09090b"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#09090b"
+              order: 0
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-card-foreground-dark
+        type: string
+        name:
+          en: Card Text Color
+          pt: Cor do Texto da Card
+        description:
+          en: Text color for content within cards in dark theme
+          pt: Cor do texto para conteúdo em cards em tema escuro
+        value: "#fafafa"
+        component: color-picker
+        relations:
+          setting_list:
+            - value: "#fafafa"
+              order: 0
+        subgroup_id:
+          where:
+            slug: dark-theme-colors
+      - slug: theme-radius
+        type: string
+        name:
+          en: Border Radius
+          pt: Raio da Borda
+        description:
+          en: Global border radius value in rem units (affects corners of buttons, cards, etc.)
+          pt: Valor de raio de borda global em unidades rem (afeta cantos de botões, cards, etc.)
+        value: "0.5"
+        subgroup_id:
+          where:
+            slug: theme-customization
+      - slug: theme-font
+        type: string
+        name:
+          en: Font Family
+          pt: Família de Fontes
+        description:
+          en: CSS font stack used throughout the system
+          pt: Stack de fontes CSS usado em todo o sistema
+        value: ui-sans-serif, system-ui, sans-serif
+        subgroup_id:
+          where:
+            slug: theme-customization
+      - slug: theme-text-size
+        type: string
+        name:
+          en: Base Text Size
+          pt: Tamanho de Texto Base
+        description:
+          en: Scale factor for text sizes (1.0 = normal, >1.0 = larger, <1.0 = smaller)
+          pt: Fator de escala para tamanhos de texto (1.0 = normal, >1.0 = maior, <1.0 = menor)
+        value: "1"
+        subgroup_id:
+          where:
+            slug: theme-customization
+      - slug: theme-spacing
+        type: string
+        name:
+          en: Spacing Density
+          pt: Densidade de Espaçamento
+        description:
+          en: Global spacing scale applied to paddings, gaps and component sizes
+          pt: Escala de espaçamento global aplicada a paddings, gaps e tamanhos de componentes
+        value: comfortable
+        component: combobox
+        user_override: true
+        relations:
+          setting_list:
+            - value: compact
+              order: 0
+            - value: comfortable
+              order: 1
+            - value: spacious
+              order: 2
+        subgroup_id:
+          where:
+            slug: theme-customization
+      - slug: theme-zoom
+        type: string
+        name:
+          en: Interface Zoom
+          pt: Zoom da Interface
+        description:
+          en: Global zoom level applied to the whole interface (like browser zoom)
+          pt: Nível de zoom global aplicado a toda a interface (como o zoom do navegador)
+        value: 100%
+        component: combobox
+        user_override: true
+        relations:
+          setting_list:
+            - value: 80%
+              order: 0
+            - value: 90%
+              order: 1
+            - value: 100%
+              order: 2
+            - value: 110%
+              order: 3
+            - value: 125%
+              order: 4
+            - value: 150%
+              order: 5
+        subgroup_id:
+          where:
+            slug: theme-customization
+      - slug: menu-width
+        type: string
+        name:
+          en: Sidebar Width
+          pt: Largura da Barra Lateral
+        description:
+          en: Width of the left sidebar menu in rem units
+          pt: Largura do menu da barra lateral esquerda em unidades rem
+        value: "18"
+        subgroup_id:
+          where:
+            slug: theme-customization
+      - slug: image-url
+        type: string
+        component: input-file
+        name:
+          en: Logo Image
+          pt: Imagem do Logo
+        description:
+          en: URL to the system logo/brand image (SVG or PNG recommended)
+          pt: URL para a imagem do logo/marca do sistema (SVG ou PNG recomendado)
+        value: /logo.svg
+        subgroup_id:
+          where:
+            slug: branding
+      - slug: icon-url
+        type: string
+        component: input-file
+        name:
+          en: Favicon
+          pt: Favicon
+        description:
+          en: URL to the system favicon displayed in browser tabs
+          pt: URL para o favicon do sistema exibido nas abas do navegador
+        value: /logo.svg
+        subgroup_id:
+          where:
+            slug: branding
+      - slug: system-name
+        type: string
+        name:
+          en: System Name
+          pt: Nome do Sistema
+        description:
+          en: Display name of the system shown in headers and browser titles
+          pt: Nome de exibição do sistema mostrado em headers e títulos de navegador
+        value: Hedhog
+        subgroup_id:
+          where:
+            slug: branding
+      - slug: system-slogan
+        type: string
+        name:
+          en: Tagline
+          pt: Slogan
+        description:
+          en: Short tagline or subtitle displayed under the system name
+          pt: Slogan curto ou subtítulo exibido sob o nome do sistema
+        value: Administration Panel
+        subgroup_id:
+          where:
+            slug: branding
+- slug: file-storage
+  icon: folder
+  name:
+    en: File Storage
+    pt: Arquivos
+  description:
+    en: Configure file storage backend, accepted file types, and size limits for uploads
+    pt: Configure backend de armazenamento de arquivos, tipos de arquivo aceitos e limites de tamanho para uploads
+  relations:
+    setting:
+      - slug: file-storage-profile-id
+        type: string
+        component: entity-picker
+        name:
+          en: Storage Profile
+          pt: Perfil de Armazenamento
+        description:
+          en: Select the integration profile (type Storage) to use for file storage
+          pt: Selecione o perfil de integração (tipo Armazenamento) a usar para armazenamento de arquivos
+        value: ''
+        subgroup_id:
+          where:
+            slug: storage-general
+      - slug: storage-accept-mimetype
+        type: array
+        name:
+          en: Allowed File Types
+          pt: Tipos de Arquivo Permitidos
+        description:
+          en: MIME types accepted for file uploads (e.g., images, documents, videos)
+          pt: Tipos MIME aceitos para upload de arquivos (por exemplo, imagens, documentos, vídeos)
+        value: '["application/pdf","image/jpeg","image/png","image/gif"]'
+        component: checkbox
+        relations:
+          setting_list:
+            - value: application/pdf
+              order: 0
+            - value: image/jpeg
+              order: 1
+            - value: image/png
+              order: 2
+            - value: image/gif
+              order: 3
+            - value: image/webp
+              order: 4
+            - value: audio/mp3
+              order: 5
+            - value: video/mp4
+              order: 6
+            - value: application/zip
+              order: 7
+            - value: text/plain
+              order: 8
+            - value: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+              order: 9
+            - value: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+              order: 10
+            - value: application/vnd.openxmlformats-officedocument.presentationml.presentation
+              order: 11
+            - value: audio/mpeg
+              order: 12
+            - value: audio/mp4
+              order: 13
+            - value: audio/ogg
+              order: 14
+            - value: audio/wav
+              order: 15
+            - value: audio/x-wav
+              order: 16
+            - value: audio/flac
+              order: 17
+            - value: audio/wav
+              order: 15
+            - value: audio/x-wav
+              order: 16
+            - value: audio/flac
+              order: 17
+        subgroup_id:
+          where:
+            slug: storage-general
+      - slug: storage-max-size
+        type: number
+        name:
+          en: Max File Size
+          pt: Tamanho Máximo do Arquivo
+        description:
+          en: Maximum file size in bytes (10485760 = 10 MB, 52428800 = 50 MB)
+          pt: Tamanho máximo do arquivo em bytes (10485760 = 10 MB, 52428800 = 50 MB)
+        value: 10485760
+        subgroup_id:
+          where:
+            slug: storage-general
+      - slug: image-compression-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable Image Compression
+          pt: Habilitar Compressão de Imagens
+        description:
+          en: Automatically compress uploaded images to reduce file size
+          pt: Comprime automaticamente imagens enviadas para reduzir o tamanho do arquivo
+        value: 'true'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+      - slug: image-compression-quality
+        type: number
+        component: input-number
+        name:
+          en: Compression Quality (1–100)
+          pt: Qualidade de Compressão (1–100)
+        description:
+          en: Image quality after compression. Higher values preserve more detail but produce larger files (default 80)
+          pt: Qualidade da imagem após compressão. Valores maiores preservam mais detalhes mas produzem arquivos maiores (padrão 80)
+        value: 80
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+      - slug: image-compression-types
+        type: array
+        component: checkbox
+        name:
+          en: Compress These Image Types
+          pt: Comprimir Estes Tipos de Imagem
+        description:
+          en: MIME types that will be automatically compressed on upload
+          pt: Tipos MIME que serão comprimidos automaticamente no upload
+        value: '["image/jpeg","image/png","image/webp"]'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+        relations:
+          setting_list:
+            - value: image/jpeg
+              order: 0
+            - value: image/png
+              order: 1
+            - value: image/webp
+              order: 2
+            - value: image/bmp
+              order: 3
+            - value: image/tiff
+              order: 4
+      - slug: image-webp-conversion-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Enable WebP Conversion
+          pt: Habilitar Conversão para WebP
+        description:
+          en: Automatically convert uploaded images to WebP format for better compression and web performance
+          pt: Converte automaticamente imagens enviadas para formato WebP para melhor compressão e performance web
+        value: 'true'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+      - slug: image-webp-convert-types
+        type: array
+        component: checkbox
+        name:
+          en: Convert These Types to WebP
+          pt: Converter Estes Tipos para WebP
+        description:
+          en: MIME types that will be automatically converted to WebP on upload. WebP conversion takes priority over regular compression when both are enabled
+          pt: Tipos MIME que serão convertidos automaticamente para WebP no upload. A conversão para WebP tem prioridade sobre compressão simples quando ambas estão ativas
+        value: '["image/jpeg","image/png"]'
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+        relations:
+          setting_list:
+            - value: image/jpeg
+              order: 0
+            - value: image/png
+              order: 1
+            - value: image/gif
+              order: 2
+            - value: image/bmp
+              order: 3
+            - value: image/tiff
+              order: 4
+      - slug: image-max-dimension
+        type: number
+        component: input-number
+        name:
+          en: Max Image Dimension (px)
+          pt: Dimensão Máxima da Imagem (px)
+        description:
+          en: Largest allowed width/height for uploaded images without a specific target size. Bigger images are scaled down keeping aspect ratio. 0 disables this cap (default 1920)
+          pt: Maior largura/altura permitida para imagens enviadas sem tamanho-alvo específico. Imagens maiores são reduzidas mantendo a proporção. 0 desativa este limite (padrão 1920)
+        value: 1920
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+      - slug: image-cache-ttl-seconds
+        type: number
+        component: input-number
+        name:
+          en: Image Cache Duration (seconds)
+          pt: Duração do Cache de Imagens (segundos)
+        description:
+          en: How long browsers cache images served by the dedicated image endpoint (in seconds). Default 2592000 = 30 days
+          pt: Por quanto tempo os navegadores armazenam em cache as imagens servidas pelo endpoint dedicado de imagens (em segundos). Padrão 2592000 = 30 dias
+        value: 2592000
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+      - slug: file-cache-ttl-seconds
+        type: number
+        component: input-number
+        name:
+          en: File Cache Duration (seconds)
+          pt: Duração do Cache de Arquivos (segundos)
+        description:
+          en: How long browsers cache generic files served by the open endpoint (in seconds). Default 86400 = 1 day
+          pt: Por quanto tempo os navegadores armazenam em cache os arquivos genéricos servidos pelo endpoint de abertura (em segundos). Padrão 86400 = 1 dia
+        value: 86400
+        user_override: false
+        subgroup_id:
+          where:
+            slug: image-optimization
+- slug: integration
+  icon: webhook
+  name:
+    en: Integration
+    pt: Integração
+  description:
+    en: Configure event-driven architecture with outbox pattern for reliable cross-module event processing
+    pt: Configure arquitetura orientada por eventos com padrão outbox para processamento confiável de eventos entre módulos
+  relations:
+    setting:
+      - slug: outbox-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Outbox System
+          pt: Sistema de Caixa de Saída
+        description:
+          en: Enable the event outbox system for reliable event delivery across modules
+          pt: Habilitar o sistema de caixa de saída de eventos para entrega confiável de eventos entre módulos
+        value: true
+        user_override: false
+        subgroup_id:
+          where:
+            slug: outbox-general
+      - slug: outbox-processor-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Background Processor
+          pt: Processador em Segundo Plano
+        description:
+          en: Enable the background job that processes and publishes pending events
+          pt: Habilitar o trabalho em segundo plano que processa e publica eventos pendentes
+        value: true
+        user_override: false
+        subgroup_id:
+          where:
+            slug: outbox-general
+      - slug: outbox-startup-drain-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Startup Drain
+          pt: Drenagem na Inicialização
+        description:
+          en: Process all pending events immediately on application startup before accepting traffic
+          pt: Processar todos os eventos pendentes imediatamente na inicialização da aplicação antes de aceitar tráfego
+        value: true
+        user_override: false
+        subgroup_id:
+          where:
+            slug: startup-behavior
+      - slug: outbox-startup-drain-batch-size
+        type: number
+        component: input-number
+        name:
+          en: Batch Size
+          pt: Tamanho de Lote
+        description:
+          en: Number of events processed per iteration during startup drain
+          pt: Número de eventos processados por iteração durante a drenagem na inicialização
+        value: 50
+        user_override: false
+        subgroup_id:
+          where:
+            slug: startup-behavior
+      - slug: outbox-batch-size
+        type: number
+        component: input-number
+        name:
+          en: Batch Size
+          pt: Tamanho do Lote
+        description:
+          en: Number of events to process in each background processor iteration during normal operation
+          pt: Número de eventos a processar em cada iteração do processador em segundo plano durante operação normal
+        value: 10
+        user_override: false
+        subgroup_id:
+          where:
+            slug: processing-config
+      - slug: outbox-polling-interval-ms
+        type: number
+        component: input-number
+        name:
+          en: Active Poll Interval
+          pt: Intervalo de Sondagem Ativa
+        description:
+          en: Milliseconds between processor polls when events are pending. Lower values = faster processing but higher CPU
+          pt: Milissegundos entre sondagens quando eventos estão pendentes. Valores menores = processamento mais rápido mas maior CPU
+        value: 5000
+        user_override: false
+        subgroup_id:
+          where:
+            slug: processing-config
+      - slug: outbox-idle-polling-interval-ms
+        type: number
+        component: input-number
+        name:
+          en: Idle Poll Interval
+          pt: Intervalo de Sondagem Ociosa
+        description:
+          en: Milliseconds between processor polls when no events are waiting. Higher values = lower CPU usage during idle
+          pt: Milissegundos entre sondagens quando não há eventos esperando. Valores maiores = menor uso de CPU em ocioso
+        value: 30000
+        user_override: false
+        subgroup_id:
+          where:
+            slug: processing-config
+      - slug: outbox-processing-lease-ms
+        type: number
+        component: input-number
+        name:
+          en: Processing Lock Duration
+          pt: Duração do Lock de Processamento
+        description:
+          en: Milliseconds an event stays locked while being processed before becoming available for retry
+          pt: Milissegundos que um evento fica bloqueado durante o processamento antes de ficar disponível para reprocessamento
+        value: 30000
+        user_override: false
+        subgroup_id:
+          where:
+            slug: retry-config
+      - slug: outbox-max-attempts
+        type: number
+        component: input-number
+        name:
+          en: Max Retry Attempts
+          pt: Máximo de Tentativas de Reprocessamento
+        description:
+          en: Maximum number of times an event is retried before being moved to dead letter queue
+          pt: Número máximo de vezes que um evento é reprocessado antes de ser movido para fila de letra morta
+        value: 3
+        user_override: false
+        subgroup_id:
+          where:
+            slug: retry-config
+      - slug: outbox-retry-base-delay-ms
+        type: number
+        component: input-number
+        name:
+          en: Retry Base Delay
+          pt: Atraso Base de Reprocessamento
+        description:
+          en: Initial delay in milliseconds for exponential backoff. Increases by 2x with each retry attempt
+          pt: Atraso inicial em milissegundos para retirada exponencial. Aumenta 2x a cada tentativa de reprocessamento
+        value: 1000
+        user_override: false
+        subgroup_id:
+          where:
+            slug: retry-config
+      - slug: outbox-dead-letter-enabled
+        type: boolean
+        component: switch
+        name:
+          en: Dead Letter Queue
+          pt: Fila de Letra Morta
+        description:
+          en: Move permanently failed events to dead letter status for manual review and recovery
+          pt: Mover eventos com falha permanente para status de letra morta para revisão e recuperação manuais
+        value: true
+        user_override: false
+        subgroup_id:
+          where:
+            slug: retry-config
+
+- slug: pdf
+  icon: file-text
+  name:
+    en: PDF
+    pt: PDF
+  description:
+    en: Visual identity settings for PDF document generation
+    pt: Configurações de identidade visual para geração de documentos PDF
+  relations:
+    setting:
+      - slug: pdf-company-name
+        type: string
+        name:
+          en: Company Name
+          pt: Nome da Empresa
+        description:
+          en: Company name displayed in PDF headers and footers
+          pt: Nome da empresa exibido nos cabeçalhos e rodapés dos PDFs
+        value: hcode
+        user_override: false
+      - slug: pdf-logo
+        type: string
+        name:
+          en: Logo URL
+          pt: URL do Logo
+        description:
+          en: URL or data URI of the logo image for PDFs. Leave empty to use default CSS wordmark.
+          pt: URL ou data URI da imagem do logo para PDFs. Deixe vazio para usar o wordmark CSS padrão.
+        value: ''
+        user_override: false
+      - slug: pdf-consulting-color
+        type: string
+        name:
+          en: Consulting Primary Color
+          pt: Cor Principal Consulting
+        description:
+          en: Primary hex color for Consulting area PDFs (default #2D669E)
+          pt: Cor hexadecimal principal para PDFs da área Consulting (padrão #2D669E)
+        value: '#2D669E'
+        user_override: false
+      - slug: pdf-training-color
+        type: string
+        name:
+          en: Training Primary Color
+          pt: Cor Principal Training
+        description:
+          en: Primary hex color for Training area PDFs (default #FF760C)
+          pt: Cor hexadecimal principal para PDFs da área Training (padrão #FF760C)
+        value: '#FF760C'
+        user_override: false
+      - slug: pdf-research-color
+        type: string
+        name:
+          en: Research Primary Color
+          pt: Cor Principal Research
+        description:
+          en: Primary hex color for Research area PDFs (default #9400B5)
+          pt: Cor hexadecimal principal para PDFs da área Research (padrão #9400B5)
+        value: '#9400B5'
+        user_override: false
+

@@ -1,0 +1,24 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: provider
+    type: enum
+    enum:
+      - openai
+      - gemini
+    default: openai
+  - name: model
+    isNullable: true
+    length: 127
+  - name: instructions
+    type: text
+    isNullable: true
+  - name: external_agent_id
+    isNullable: true
+    length: 127
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true

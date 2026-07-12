@@ -1,0 +1,215 @@
+# Email providers
+- slug: smtp
+  type_id:
+    where:
+      slug: email
+  name:
+    en: SMTP
+    pt: SMTP
+
+- slug: gmail
+  type_id:
+    where:
+      slug: email
+  name:
+    en: Gmail
+    pt: Gmail
+
+- slug: ses
+  type_id:
+    where:
+      slug: email
+  name:
+    en: Amazon SES
+    pt: Amazon SES
+
+# WhatsApp providers
+- slug: evolution-api
+  type_id:
+    where:
+      slug: whatsapp
+  name:
+    en: Evolution API
+    pt: Evolution API
+
+- slug: whatsapp-official
+  type_id:
+    where:
+      slug: whatsapp
+  name:
+    en: WhatsApp Official API
+    pt: API Oficial do WhatsApp
+
+# Storage providers
+- slug: local
+  type_id:
+    where:
+      slug: storage
+  name:
+    en: Local Filesystem
+    pt: Sistema de Arquivos Local
+
+- slug: s3
+  type_id:
+    where:
+      slug: storage
+  name:
+    en: Amazon S3
+    pt: Amazon S3
+
+- slug: gcs
+  type_id:
+    where:
+      slug: storage
+  name:
+    en: Google Cloud Storage
+    pt: Google Cloud Storage
+
+- slug: azure-blob
+  type_id:
+    where:
+      slug: storage
+  name:
+    en: Azure Blob Storage
+    pt: Azure Blob Storage
+
+- slug: s3-compatible
+  type_id:
+    where:
+      slug: storage
+  name:
+    en: S3-Compatible (MinIO, Wasabi...)
+    pt: S3-Compatível (MinIO, Wasabi...)
+
+# AI providers
+- slug: openai
+  type_id:
+    where:
+      slug: ai
+  name:
+    en: OpenAI
+    pt: OpenAI
+
+- slug: gemini
+  type_id:
+    where:
+      slug: ai
+  name:
+    en: Google Gemini
+    pt: Google Gemini
+
+- slug: claude
+  type_id:
+    where:
+      slug: ai
+  name:
+    en: Anthropic Claude
+    pt: Anthropic Claude
+
+# Video providers
+- slug: luma
+  type_id:
+    where:
+      slug: video
+  name:
+    en: Luma Dream Machine
+    pt: Luma Dream Machine
+
+# OAuth providers
+- slug: google-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: Google
+    pt: Google
+
+- slug: github-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: GitHub
+    pt: GitHub
+
+- slug: microsoft-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: Microsoft
+    pt: Microsoft
+
+- slug: facebook-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: Facebook
+    pt: Facebook
+
+- slug: microsoft-entra-id-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: Microsoft Entra ID
+    pt: Microsoft Entra ID
+
+- slug: apple-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: Apple
+    pt: Apple
+
+- slug: linkedin-oauth
+  type_id:
+    where:
+      slug: oauth
+  name:
+    en: LinkedIn
+    pt: LinkedIn
+
+# Payment providers
+- slug: stripe
+  type_id:
+    where:
+      slug: payment
+  name:
+    en: Stripe
+    pt: Stripe
+
+- slug: mercado_pago
+  type_id:
+    where:
+      slug: payment
+  name:
+    en: Mercado Pago
+    pt: Mercado Pago
+
+# CAPTCHA providers
+- slug: recaptcha
+  type_id:
+    where:
+      slug: captcha
+  name:
+    en: Google reCAPTCHA
+    pt: Google reCAPTCHA
+
+- slug: cloudflare-turnstile
+  type_id:
+    where:
+      slug: captcha
+  name:
+    en: Cloudflare Turnstile
+    pt: Cloudflare Turnstile
+
+- slug: altcha
+  type_id:
+    where:
+      slug: captcha
+  name:
+    en: ALTCHA
+    pt: ALTCHA

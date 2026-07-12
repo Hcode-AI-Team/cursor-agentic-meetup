@@ -1,0 +1,473 @@
+- slug: auth-sign-up-confirm-email
+  subject:
+    en: Welcome to HedHog! Please confirm your email
+    pt: Bem-vindo ao HedHog! Por favor, confirme seu e-mail
+  body:
+    en: |
+      Hello {{name}},<br>
+      Thank you for signing up for a HedHog account! 
+      To complete your registration, please confirm your email address 
+      by using the code below:<br>
+      Confirmation Code: {{code}}<br>
+      If you did not sign up for a HedHog account, please ignore this email.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Obrigado por se inscrever para uma conta HedHog! 
+      Para completar seu registro, por favor confirme seu endereço de e-mail 
+      usando o código abaixo:<br>
+      Código de Confirmação: {{code}}<br>
+      Se você não se inscreveu para uma conta HedHog, 
+      por favor ignore este e-mail.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: code
+- slug: auth-email-verification-code
+  subject:
+    en: Your verification code
+    pt: Seu código de verificação
+  body:
+    en: |
+      Hello {{name}},<br>
+      Please use the following verification code to continue:<br>
+      Verification Code: <strong>{{code}}</strong><br>
+      This code will expire in a few minutes. If you did not request this code, please ignore this email.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Por favor, use o seguinte código de verificação para continuar:<br>
+      Código de Verificação: <strong>{{code}}</strong><br>
+      Este código expirará em alguns minutos. Se você não solicitou este código, por favor ignore este e-mail.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: code
+- slug: auth-login-new-device
+  subject:
+    en: New login from a new device
+    pt: Novo login de um novo dispositivo
+  body:
+    en: |
+      Hello {{name}},<br>
+      We noticed a login to your HedHog account from a new device.<br>
+      Here are the details of the login:<br>
+      • User Agent: {{userAgent}}<br>
+      • IP Address: {{ipAddress}}<br>
+      • Location: {{location}}<br>
+      If this was you, no further action is needed. 
+      If you did not recognize this activity, 
+      please secure your account immediately.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Notamos um login na sua conta HedHog a partir de um novo dispositivo.<br>
+      Aqui estão os detalhes do login:<br>
+      • Agente do Usuário: {{userAgent}}<br>
+      • Endereço IP: {{ipAddress}}<br>
+      • Localização: {{location}}<br>
+      Se foi você, nenhuma ação adicional é necessária. 
+      Se você não reconheceu esta atividade, 
+      por favor, proteja sua conta imediatamente.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: userAgent
+      - name: ipAddress
+      - name: location
+      - name: name
+- slug: auth-forget-password
+  subject:
+    en: Reset your HedHog password
+    pt: Redefina sua senha do HedHog
+  body:
+    en: |
+      Hello {{name}},<br>
+      We received a request to reset the password for your HedHog account. 
+      To proceed with resetting your password, please use the link below:<br>
+      Reset Link: <a href="{{link}}">{{link}}</a><br>
+      If you did not request a password reset, please ignore this email.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Recebemos uma solicitação para redefinir a senha da sua conta HedHog. 
+      Para prosseguir com a redefinição da sua senha, 
+      por favor use o link abaixo:<br>
+      Link de Redefinição: <a href="{{link}}">{{link}}</a><br>
+      Se você não solicitou uma redefinição de senha, 
+      por favor ignore este e-mail.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: code
+- slug: auth-forget-password-confirmation
+  subject:
+    en: Your HedHog password has been reset
+    pt: Sua senha do HedHog foi redefinida
+  body:
+    en: |
+      Hello {{name}},<br>
+      Your HedHog password has been successfully reset. 
+      If you did not perform this action, 
+      please contact our support team immediately.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Sua senha do HedHog foi redefinida com sucesso. 
+      Se você não realizou esta ação, por favor entre em contato com nossa equipe de suporte imediatamente.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+- slug: auth-change-password-notification
+  subject:
+    en: Your HedHog password has been changed
+    pt: Sua senha do HedHog foi alterada
+  body:
+    en: |
+      Hello {{name}},<br>
+      We wanted to inform you that the password for your HedHog account 
+      has been changed. If you did not make this change, 
+      please secure your account immediately.<br>
+      Here are the details of the login:<br>
+      • User Agent: {{userAgent}}<br>
+      • IP Address: {{ipAddress}}<br>
+      • Location: {{location}}<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Queríamos informar que a senha da sua conta HedHog foi alterada. 
+      Se você não fez essa alteração, 
+      por favor proteja sua conta imediatamente.<br>
+      Aqui estão os detalhes do login:<br>
+      • Agente do Usuário: {{userAgent}}<br>
+      • Endereço IP: {{ipAddress}}<br>
+      • Localização: {{location}}<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: userAgent
+      - name: ipAddress
+      - name: location
+      - name: name
+- slug: auth-mfa-code
+  subject:
+    en: Your HedHog MFA Code
+    pt: Seu Código MFA do HedHog
+  body:
+    en: |
+      Hello {{name}},<br>
+      Your MFA code is: {{code}}<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Seu código MFA é: {{code}}<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: code
+      - name: name
+- slug: auth-sign-up
+  subject:
+    en: Welcome to HedHog!
+    pt: Bem-vindo ao HedHog!
+  body:
+    en: |
+      Hello {{name}},<br>
+      Thank you for registering with HedHog! 
+      Your account has been successfully created.<br>
+      You can now log in and start using all the features available to you.<br>
+      If you have any questions or need assistance, please don't hesitate to contact us.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Obrigado por se registrar no HedHog! 
+      Sua conta foi criada com sucesso.<br>
+      Agora você pode fazer login e começar a usar todos os recursos disponíveis.<br>
+      Se você tiver alguma dúvida ou precisar de ajuda, não hesite em nos contatar.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+- slug: contact-us-client
+  subject:
+    en: Thank you for contacting us
+    pt: Obrigado por entrar em contato
+  body:
+    en: |
+      Hello {{name}},<br>
+      Thank you for reaching out to us! We have received your message 
+      and our team will review it as soon as possible.<br>
+      We typically respond within 24-48 hours during business days. 
+      If your matter is urgent, please let us know in your message.<br>
+      We appreciate your patience and look forward to assisting you.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Obrigado por entrar em contato conosco! Recebemos sua mensagem 
+      e nossa equipe irá analisá-la o mais breve possível.<br>
+      Geralmente respondemos em 24-48 horas durante dias úteis. 
+      Se o seu assunto for urgente, por favor nos avise em sua mensagem.<br>
+      Agradecemos sua paciência e esperamos poder ajudá-lo.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+- slug: contact-us-response
+  subject:
+    en: Response to your message
+    pt: Resposta à sua mensagem
+  body:
+    en: |
+      Hello {{name}},<br>
+      Thank you for your message:<br>
+      <blockquote style="border-left: 3px solid #ddd; padding-left: 15px; margin: 15px 0; color: #666;">
+        {{message}}
+      </blockquote>
+      Here is our response:<br>
+      <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+        {{response}}
+      </div>
+      If you have any additional questions, please don't hesitate to reach out again.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Obrigado pela sua mensagem:<br>
+      <blockquote style="border-left: 3px solid #ddd; padding-left: 15px; margin: 15px 0; color: #666;">
+        {{message}}
+      </blockquote>
+      Aqui está nossa resposta:<br>
+      <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
+        {{response}}
+      </div>
+      Se você tiver alguma dúvida adicional, não hesite em entrar em contato novamente.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: message
+      - name: response
+- slug: contact-us-to
+  subject:
+    en: New contact message from {{name}}
+    pt: Nova mensagem de contato de {{name}}
+  body:
+    en: |
+      <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px;">
+        <h2 style="color: #333; margin-top: 0;">New Contact Message</h2>
+        
+        <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+          <p style="margin: 5px 0;"><strong>Name:</strong> {{name}}</p>
+          <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a></p>
+          <p style="margin: 5px 0;"><strong>Date:</strong> {{datetime}}</p>
+        </div>
+        
+        <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+          <p style="margin: 0 0 10px 0;"><strong>Message:</strong></p>
+          <div style="color: #555; line-height: 1.6;">
+            {{message}}
+          </div>
+        </div>
+        
+        <p style="color: #666; font-size: 0.9em; margin-bottom: 0;">
+          Please respond to this message through the admin panel.
+        </p>
+      </div>
+    pt: |
+      <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px;">
+        <h2 style="color: #333; margin-top: 0;">Nova Mensagem de Contato</h2>
+        
+        <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+          <p style="margin: 5px 0;"><strong>Nome:</strong> {{name}}</p>
+          <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a></p>
+          <p style="margin: 5px 0;"><strong>Data:</strong> {{datetime}}</p>
+        </div>
+        
+        <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+          <p style="margin: 0 0 10px 0;"><strong>Mensagem:</strong></p>
+          <div style="color: #555; line-height: 1.6;">
+            {{message}}
+          </div>
+        </div>
+        
+        <p style="color: #666; font-size: 0.9em; margin-bottom: 0;">
+          Por favor, responda a esta mensagem através do painel administrativo.
+        </p>
+      </div>
+  relations:
+    mail_var:
+      - name: name
+      - name: email
+      - name: message
+      - name: datetime
+
+- slug: billing-payment-receipt
+  subject:
+    en: Payment confirmed for {{amount}}
+    pt: Pagamento confirmado de {{amount}}
+  body:
+    en: |
+      Hello {{name}},<br>
+      Your payment has been confirmed successfully.<br>
+      <strong>Amount:</strong> {{amount}}<br>
+      <strong>Provider:</strong> {{provider}}<br>
+      <strong>Paid at:</strong> {{paidAt}}<br>
+      <strong>Transaction ID:</strong> {{transactionId}}<br>
+      Thank you for your payment.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Seu pagamento foi confirmado com sucesso.<br>
+      <strong>Valor:</strong> {{amount}}<br>
+      <strong>Provedor:</strong> {{provider}}<br>
+      <strong>Pago em:</strong> {{paidAt}}<br>
+      <strong>ID da Transação:</strong> {{transactionId}}<br>
+      Obrigado pelo seu pagamento.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: amount
+      - name: provider
+      - name: paidAt
+      - name: transactionId
+
+- slug: billing-payment-failed
+  subject:
+    en: We could not process your payment
+    pt: Não foi possível processar seu pagamento
+  body:
+    en: |
+      Hello {{name}},<br>
+      We could not process your payment for invoice <strong>{{invoiceNumber}}</strong>.<br>
+      <strong>Amount:</strong> {{amount}}<br>
+      Please review your payment method and complete the payment using the link below:<br>
+      <a href="{{paymentUrl}}">{{paymentUrl}}</a><br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Não foi possível processar seu pagamento para a fatura <strong>{{invoiceNumber}}</strong>.<br>
+      <strong>Valor:</strong> {{amount}}<br>
+      Revise sua forma de pagamento e conclua o pagamento usando o link abaixo:<br>
+      <a href="{{paymentUrl}}">{{paymentUrl}}</a><br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: invoiceNumber
+      - name: amount
+      - name: paymentUrl
+
+- slug: billing-invoice-created
+  subject:
+    en: Your invoice {{invoiceNumber}} is now available
+    pt: Sua fatura {{invoiceNumber}} já está disponível
+  body:
+    en: |
+      Hello {{name}},<br>
+      A new invoice has been generated for your account.<br>
+      <strong>Invoice:</strong> {{invoiceNumber}}<br>
+      <strong>Amount:</strong> {{amount}}<br>
+      <strong>Due date:</strong> {{dueDate}}<br>
+      You can view the invoice here:<br>
+      <a href="{{invoiceUrl}}">{{invoiceUrl}}</a><br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Uma nova fatura foi gerada para sua conta.<br>
+      <strong>Fatura:</strong> {{invoiceNumber}}<br>
+      <strong>Valor:</strong> {{amount}}<br>
+      <strong>Vencimento:</strong> {{dueDate}}<br>
+      Você pode visualizar a fatura aqui:<br>
+      <a href="{{invoiceUrl}}">{{invoiceUrl}}</a><br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: invoiceNumber
+      - name: amount
+      - name: dueDate
+      - name: invoiceUrl
+
+- slug: billing-subscription-canceled
+  subject:
+    en: Your subscription to {{productName}} has been canceled
+    pt: Sua assinatura de {{productName}} foi cancelada
+  body:
+    en: |
+      Hello {{name}},<br>
+      Your subscription to <strong>{{productName}}</strong> has been canceled.<br>
+      <strong>Access until:</strong> {{endsAt}}<br>
+      If this was not expected, please contact our team.<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Sua assinatura de <strong>{{productName}}</strong> foi cancelada.<br>
+      <strong>Acesso até:</strong> {{endsAt}}<br>
+      Se isso não era esperado, entre em contato com nossa equipe.<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: productName
+      - name: endsAt
+
+- slug: billing-refund-confirmed
+  subject:
+    en: Your refund of {{amount}} has been confirmed
+    pt: Seu reembolso de {{amount}} foi confirmado
+  body:
+    en: |
+      Hello {{name}},<br>
+      Your refund has been confirmed successfully.<br>
+      <strong>Amount:</strong> {{amount}}<br>
+      <strong>Refund ID:</strong> {{refundId}}<br>
+      <strong>Processed at:</strong> {{processedAt}}<br>
+      Best regards,<br>
+      The HedHog Team
+    pt: |
+      Olá {{name}},<br>
+      Seu reembolso foi confirmado com sucesso.<br>
+      <strong>Valor:</strong> {{amount}}<br>
+      <strong>ID do Reembolso:</strong> {{refundId}}<br>
+      <strong>Processado em:</strong> {{processedAt}}<br>
+      Atenciosamente,<br>
+      A equipe HedHog
+  relations:
+    mail_var:
+      - name: name
+      - name: amount
+      - name: refundId
+      - name: processedAt
+      

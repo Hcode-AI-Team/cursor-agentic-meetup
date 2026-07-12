@@ -1,0 +1,23 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: type
+    type: enum
+    values:
+      - webauthn
+      - totp
+      - email
+  - name: name
+  - name: verified_at
+    type: datetime
+    isNullable: true
+  - name: suspended_until
+    type: datetime
+    isNullable: true
+  - type: created_at
+  - type: updated_at

@@ -1,0 +1,12 @@
+# Dashboard Widget Previews
+#
+# Place one .webp file per dashboard component, named exactly by the component slug.
+# Example: active-users-card.webp, user-sessions.webp
+#
+# These files are copied by `hedhog add` / `hedhog dev apply` to:
+#   apps/admin/public/libraries/core/dashboard-previews/<slug>.webp
+#
+# The admin selector loads them as:
+#   /libraries/core/dashboard-previews/<slug>.webp
+#
+# If a file is missing, the selector card falls back gracefully (image hidden).

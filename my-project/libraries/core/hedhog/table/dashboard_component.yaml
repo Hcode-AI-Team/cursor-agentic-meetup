@@ -1,0 +1,46 @@
+columns:
+  - type: pk
+  - type: slug
+    locale:
+      en: Slug
+      pt: Slug
+  - name: library_slug
+    type: varchar
+    length: 120
+    default: core
+    locale:
+      en: Library Slug
+      pt: Slug da Library
+  - name: min_width
+    type: int
+    default: 1
+  - name: max_width
+    type: int
+    isNullable: true
+  - name: min_height
+    type: int
+    default: 1
+  - name: max_height
+    type: int
+    isNullable: true
+  - name: width
+    type: int
+  - name: height
+    type: int
+  - name: is_resizable
+    type: boolean
+    default: true
+  - name: name
+    type: locale_varchar
+    length: 255
+    locale:
+      en: Name
+      pt: Nome
+  - name: description
+    type: locale_varchar
+    length: 512
+    locale:
+      en: Description
+      pt: Descrição
+  - type: created_at
+  - type: updated_at

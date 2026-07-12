@@ -1,0 +1,74 @@
+# Dependências (maior peso do monorepo — centenas de MB)
+node_modules/
+.pnp
+.pnp.js
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Builds e artefatos de compilação
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+
+# Turborepo / cache de build
+.turbo/
+
+# Testes e cobertura
+.nyc_output/
+coverage/
+test-results/
+playwright/.cache/
+playwright-report/
+blob-report/
+
+# Deploy / hosting
+.vercel/
+
+# Logs e debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDEs e editores
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# SO e misc
+.DS_Store
+Thumbs.db
+*.pem
+tmp/
+
+# HedHog / projeto local
+hedhog.json
+.build-lock-*
+.npmrc
+.claude/settings.local.json
+libraries/core/tsconfig.tsbuildinfo
+
+# Jest — artefatos gerados
+jest.config.js
+jest.config.js.map
+jest.config.d.ts
+jest.config.d.ts.map
+
+# Repositório git aninhado (my-project veio com .git próprio)
+my-project/.git/

@@ -1,0 +1,45 @@
+columns:
+  - type: pk
+  - name: event_name
+    length: 255
+  - name: source_module
+    length: 127
+  - name: aggregate_type
+    length: 127
+  - name: aggregate_id
+    length: 36
+  - name: payload
+    type: json
+  - name: status
+    type: enum
+    enum:
+      - pending
+      - processing
+      - processed
+      - failed
+      - dead_letter
+    default: pending
+  - name: attempt_count
+    type: int
+    default: 0
+  - name: last_error
+    length: 1023
+    isNullable: true
+  - name: available_at
+    type: timestamptz
+  - name: processed_at
+    type: timestamptz
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+
+indexes:
+  - columns:
+      - status
+      - available_at
+  - columns:
+      - source_module
+      - aggregate_type
+      - aggregate_id
+  - columns:
+      - created_at

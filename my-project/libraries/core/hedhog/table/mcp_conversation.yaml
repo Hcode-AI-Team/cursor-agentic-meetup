@@ -1,0 +1,12 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: title
+    isNullable: true
+  - type: created_at
+  - type: updated_at

@@ -1,0 +1,31 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: SET NULL
+    isNullable: true
+  - name: ip
+    length: 45
+    isNullable: true
+  - name: user_agent
+    type: text
+    isNullable: true
+  - name: method
+    length: 10
+    isNullable: true
+  - name: path
+    length: 2048
+    isNullable: true
+  - name: mcp_tool
+    length: 255
+    isNullable: true
+  - name: mcp_prompt
+    type: text
+    isNullable: true
+  - type: created_at
+indexes:
+  - fields: [user_id]
+  - fields: [created_at]

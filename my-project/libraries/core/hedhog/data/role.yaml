@@ -1,0 +1,50 @@
+- slug: admin
+  name:
+    en: Administrator
+    pt: Administrador
+  description:
+    en: System administrator with full access.
+    pt: Administrador do sistema com acesso total.
+- slug: admin-access
+  name:
+    en: Admin Access
+    pt: Acesso de Administrador
+  description:
+    en: Access to administrative features.
+    pt: Acesso a funcionalidades administrativas.
+- slug: admin-user
+  name:
+    en: Admin User
+    pt: Administrador de Usuário
+  description:
+    en: Access to administrative privileges related to users.
+    pt: Acesso a privilégios administrativos relacionados á usuários.
+- slug: admin-mail
+  name:
+    en: Admin Mail
+    pt: Administrador de E-mails
+  description:
+    en: Access to administrative privileges related to e-mails.
+    pt: Acesso a privilégios administrativos relacionados á e-mails.
+- slug: user
+  name:
+    en: User
+    pt: Usuário
+  description:
+    en: Public user who can register and log in.
+    pt: Usuário público que pode se registrar e fazer login.
+- slug: email-integration-search
+  name:
+    en: Email Integration Search
+    pt: Busca de Integração de Email
+  description:
+    en: Access to search and select email integration profiles.
+    pt: Acesso para buscar e selecionar perfis de integração de email.
+- slug: integration-manager
+  name:
+    en: Integration Manager
+    pt: Gerente de Integrações
+  description:
+    en: Access to manage integration profiles and their credentials.
+    pt: Acesso para gerenciar perfis de integração e suas credenciais.
+

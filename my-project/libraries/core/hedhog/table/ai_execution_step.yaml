@@ -1,0 +1,65 @@
+columns:
+  - type: pk
+  - name: execution_id
+    type: fk
+    references:
+      table: ai_execution
+      column: id
+      onDelete: CASCADE
+  - name: step_order
+    type: int
+    default: 0
+  - name: type
+    type: enum
+    enum:
+      - prompt
+      - tool_call
+      - tool_result
+      - output
+      - error
+    default: prompt
+  - name: provider
+    isNullable: true
+    length: 50
+  - name: model
+    isNullable: true
+    length: 100
+  - name: tool_name
+    isNullable: true
+  - name: tokens_input
+    type: int
+    default: 0
+  - name: tokens_output
+    type: int
+    default: 0
+  - name: cost_usd
+    type: decimal
+    precision: 10
+    scale: 6
+    default: 0
+  - name: duration_ms
+    type: int
+    default: 0
+  - name: input_summary
+    type: text
+    isNullable: true
+  - name: output_summary
+    type: text
+    isNullable: true
+  - name: success
+    type: boolean
+    default: true
+  - name: error
+    type: text
+    isNullable: true
+  - type: created_at
+indices:
+  - columns:
+      - execution_id
+      - step_order
+  - columns:
+      - execution_id
+  - columns:
+      - type
+  - columns:
+      - tool_name

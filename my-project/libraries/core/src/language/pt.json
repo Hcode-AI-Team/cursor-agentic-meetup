@@ -1,0 +1,178 @@
+{
+  "settingNotFound": "Configuração não encontrada ou o usuário não pode substituir.",
+  "userNotFound": "Usuário não encontrado.",
+  "roleNotFound": "Função não encontrada.",
+  "accessDenied": "Acesso negado.",
+  "defaultRoleNotFound": "Função de usuário padrão não encontrada.",
+  "defaultNameMfaEmail": "MFA de E-mail Padrão",
+  "urlSettingMissing": "Configuração de URL está faltando.",
+  "userIdentifierNotFound": "Identificador de usuário não encontrado.",
+  "invalidMfaCode": "Código MFA inválido.",
+  "invalidRecoveryCode": "Código de recuperação inválido.",
+  "noEmailMfaFound": "Nenhum método de MFA por e-mail encontrado para este usuário.",
+  "webauthnNotConfigured": "WebAuthn não configurado.",
+  "challengeNotFound": "Desafio não encontrado ou expirado.",
+  "verificationFailed": "Verificação falhou.",
+  "userIdsRequired": "Pelo menos um ID de usuário é necessário para excluir usuários.",
+  "invalidIds": "IDs inválidos.",
+  "invalidCode": "Código inválido.",
+  "totpNotFound": "Método TOTP não encontrado.",
+  "invalidMfaToken": "Token MFA inválido.",
+  "invalidJsonFile": "Arquivo não contém um JSON válido.",
+  "invalidJsonArray": "O arquivo JSON deve conter um array de settings.",
+  "deleteItemsRequired": "Você deve selecionar pelo menos um item para excluir.",
+  "signup": {
+    "emailExists": "E-mail já está em uso."
+  },
+  "forgot": {
+    "rateLimit": "Muitas solicitações. Por favor, tente novamente mais tarde.",
+    "userNotFound": "Usuário não encontrado."
+  },
+  "challenge": {
+    "invalidOrExpired": "O código informado é inválido ou expirou."
+  },
+  "reset": {
+    "password": {
+      "required": "Senha é obrigatória.",
+      "minLength": "A senha deve ter no mínimo 8 caracteres."
+    },
+    "code": {
+      "required": "Código de redefinição é obrigatório."
+    }
+  },
+  "session": {
+    "userIdRequired": "O ID do usuário é necessário para criar uma sessão.",
+    "ipAddressRequired": "O endereço IP é necessário para criar uma sessão.",
+    "userAgentRequired": "O agente do usuário é necessário para criar uma sessão."
+  },
+  "profile": {
+    "update": {
+      "nameRequired": "Nome é obrigatório."
+    },
+    "emailIdentifierNotFound": "Identificador de email não encontrado.",
+    "defaultNameMfaEmail": "Verificação de Email",
+    "emailVerification": {
+      "pinInvalid": "O PIN deve conter exatamente 6 dígitos.",
+      "pinIsString": "O PIN deve ser uma string."
+    },
+    "changePassword": {
+      "currentPasswordIsString": "A senha atual deve ser uma string.",
+      "newPasswordIsString": "A nova senha deve ser uma string."
+    },
+    "sendEmailVerification": {
+      "emailIsString": "O email deve ser uma string."
+    }
+  },
+  "password": {
+    "weakPassword": "A senha não atende aos requisitos de segurança definidos nas configurações do sistema.",
+    "required": "A senha é obrigatória.",
+    "minLength": "A senha deve ter no mínimo {minLength} caracteres.",
+    "minLowercase": "A senha deve conter pelo menos {minLowercase} letra(s) minúscula(s).",
+    "minUppercase": "A senha deve conter pelo menos {minUppercase} letra(s) maiúscula(s).",
+    "minNumbers": "A senha deve conter pelo menos {minNumbers} número(s).",
+    "minSymbols": "A senha deve conter pelo menos {minSymbols} caractere(s) especial(is)."
+  },
+  "createUser": {
+    "nameRequired": "Nome é obrigatório."
+  },
+  "pinCode": {
+    "invalidLength": "O código PIN deve conter exatamente {length} dígitos.",
+    "required": "O código PIN é obrigatório."
+  },
+  "validation": {
+    "emailRequired": "E-mail é obrigatório.",
+    "emailInvalid": "O e-mail fornecido não é válido.",
+    "currentEmailRequired": "O e-mail atual é obrigatório.",
+    "currentEmailInvalid": "O e-mail atual informado não é válido.",
+    "newEmailRequired": "O novo e-mail é obrigatório.",
+    "newEmailInvalid": "O novo e-mail informado não é válido.",
+    "passwordRequired": "A senha é obrigatória.",
+    "passwordMinLength": "A senha deve ter pelo menos 8 caracteres.",
+    "passwordStrength": "A senha deve ter pelo menos 6 caracteres e conter pelo menos 1 letra minúscula.",
+    "codeMustBeString": "O código deve ser uma string.",
+    "codeRequired": "Código é obrigatório.",
+    "tokenInvalid": "Token inválido.",
+    "tokenMustBeJWT": "Token deve ser um JWT válido.",
+    "methodTypeInvalid": "Tipo de método deve ser totp, email ou recovery.",
+    "streetMustBeString": "O endereço deve ser uma string.",
+    "numberMustBeString": "O número deve ser uma string.",
+    "complementMustBeString": "O complemento deve ser uma string.",
+    "districtMustBeString": "O bairro deve ser uma string.",
+    "cityMustBeString": "A cidade deve ser uma string.",
+    "stateMustBeString": "O estado deve ser uma string.",
+    "postalCodeMustBeString": "O CEP deve ser uma string.",
+    "nameMustBeString": "O nome deve ser uma string.",
+    "nameRequired": "Nome é obrigatório.",
+    "slugMustBeString": "O slug deve ser uma string.",
+    "slugRequired": "O slug é obrigatório.",
+    "descriptionMustBeString": "A descrição deve ser uma string.",
+    "descriptionRequired": "A descrição é obrigatória.",
+    "urlMustBeString": "A URL deve ser uma string.",
+    "urlRequired": "A URL é obrigatória.",
+    "methodMustBeString": "O método deve ser uma string.",
+    "methodMustBeValid": "O método deve ser um método HTTP válido (GET, POST, PUT, DELETE, PATCH, OPTIONS ou HEAD).",
+    "iconMustBeString": "O ícone deve ser uma string.",
+    "orderMustBeNumber": "A ordem deve ser um número.",
+    "tokenMustBe6Digits": "Token deve ser uma string numérica de 6 dígitos.",
+    "stringRequired": "Este campo deve ser uma string.",
+    "numberRequired": "Este campo deve ser um número.",
+    "booleanRequired": "Este campo deve ser um booleano.",
+    "arrayRequired": "Este campo deve ser um array.",
+    "arrayNotEmpty": "Array não pode estar vazio.",
+    "objectRequired": "Este campo deve ser um objeto.",
+    "fieldRequired": "Este campo é obrigatório.",
+    "minLength": "O comprimento mínimo é de {min} caracteres.",
+    "maxLength": "O comprimento máximo é de {max} caracteres.",
+    "dateInvalid": "Formato de data inválido.",
+    "emailMustBeValid": "E-mail deve ser válido.",
+    "colorMustBeString": "Cor deve ser uma string.",
+    "colorRequired": "Cor é obrigatória.",
+    "colorMustBeHex": "Cor deve ser um código hexadecimal válido.",
+    "statusMustBeEnum": "Status deve ser um valor enum válido.",
+    "statusMustBeString": "Status deve ser uma string.",
+    "typeMustBeEnum": "Tipo deve ser um valor enum válido.",
+    "localeMustBeObject": "Locale deve ser um objeto.",
+    "localeRequired": "Locale é obrigatório.",
+    "categoryIdMustBeNumber": "ID da categoria deve ser um número.",
+    "addressesMustBeArray": "Endereços devem ser um array.",
+    "addressTypeIdMustBeInteger": "ID do tipo de endereço deve ser um inteiro.",
+    "contactsMustBeArray": "Contatos devem ser um array.",
+    "contactTypeIdMustBeInteger": "ID do tipo de contato deve ser um inteiro.",
+    "countryCodeMustBeString": "Código do país deve ser uma string.",
+    "documentsMustBeArray": "Documentos devem ser um array.",
+    "documentTypeIdMustBeInteger": "ID do tipo de documento deve ser um inteiro.",
+    "genderInvalid": "Gênero deve ser um valor válido.",
+    "idMustBeInteger": "ID deve ser um inteiro.",
+    "isPrimaryMustBeBoolean": "É primário deve ser um booleano.",
+    "languageLength": "Idioma deve ter exatamente 2 caracteres.",
+    "line1MustBeString": "Linha 1 do endereço deve ser uma string.",
+    "messageMustBeString": "Mensagem deve ser uma string.",
+    "responseMustBeString": "Resposta deve ser uma string.",
+    "themeInvalid": "Tema deve ser um dos seguintes: light, dark ou system.",
+    "tokenFormat": "Token deve estar no formato correto."
+  },
+  "file": {
+    "download": {
+      "not_found": "Arquivo não encontrado.",
+      "invalid_token": "Token de download inválido ou expirado.",
+      "error_title": "Falha no Download",
+      "error_message": "Encontramos um erro ao tentar baixar seu arquivo. O link de download pode ter expirado ou é inválido.",
+      "error_details": "Detalhes do Erro:",
+      "go_back": "Voltar"
+    },
+    "delete": {
+      "some_not_found": "Alguns arquivos não foram encontrados."
+    }
+  },
+  "mail": {
+    "template": {
+      "not_found": "Modelo de e-mail com id {id} não encontrado."
+    }
+  },
+  "mail_sent_not_found": "Registro de e-mail enviado não encontrado.",
+  "validationSslugMustBeString": "O slug deve ser uma string.",
+  "sessionRevoked": "Sessão foi revogada ou expirou.",
+  "dashboardNotFound": "Dashboard não encontrado.",
+  "dashboardComponentNotFound": "Componente de dashboard não encontrado.",
+  "dashboardItemNotFound": "Item de dashboard não encontrado."
+}

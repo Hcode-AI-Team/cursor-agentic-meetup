@@ -1,0 +1,33 @@
+columns:
+  - type: pk
+  - name: type
+    type: enum
+    enum:
+      - HTTP
+      - MCP
+    default: HTTP
+  - name: name
+    isNullable: true
+  - name: url
+    isNullable: true
+  - name: method
+    type: enum
+    enum:
+      - GET
+      - POST
+      - PATCH
+      - DELETE
+      - PUT
+      - OPTIONS
+      - HEAD
+    isNullable: true
+  - name: tool_name
+    isNullable: true
+  - name: description
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - tool_name
+    isUnique: true

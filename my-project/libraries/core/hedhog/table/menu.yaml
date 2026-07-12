@@ -1,0 +1,24 @@
+columns:
+  - type: pk
+  - name: menu_id
+    type: fk
+    isNullable: true
+    references:
+      table: menu
+      column: id
+      onDelete: CASCADE
+  - type: slug
+  - name: url
+    isNullable: true
+    length: 255
+  - name: order
+    type: int
+    default: 10
+  - name: icon
+    length: 255
+  - name: name
+    type: locale_varchar
+    length: 255
+    locale: {}
+  - type: created_at
+  - type: updated_at

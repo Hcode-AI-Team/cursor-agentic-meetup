@@ -1,0 +1,10 @@
+- code: en
+  region: US
+  name: English (United States)
+- code: pt
+  region: BR
+  name: Português (Brasil)
+- code: es
+  region: ES
+  name: Español (España)
+  enabled: false

@@ -1,0 +1,18 @@
+- slug: default
+  icon: shield-check
+  is_template: true
+  name:
+    en: Admin Access Overview
+    pt: Visão Geral de Acesso Administrativo
+- slug: user
+  icon: layout-dashboard
+  is_template: true
+  name:
+    en: My Account
+    pt: Minha Conta
+- slug: config
+  icon: settings-2
+  is_template: true
+  name:
+    en: System Setup Wizard
+    pt: Assistente de Configuração do Sistema

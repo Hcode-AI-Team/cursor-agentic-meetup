@@ -1,0 +1,30 @@
+columns:
+  - type: pk
+  - name: instruction_id
+    type: fk
+    references:
+      table: ai_instruction
+      column: id
+      onDelete: CASCADE
+  - name: version
+    type: int
+  - name: content
+    type: text
+  - name: change_note
+    isNullable: true
+    length: 500
+  - name: created_by_id
+    type: fk
+    isNullable: true
+    references:
+      table: user
+      column: id
+      onDelete: SET NULL
+  - type: created_at
+indices:
+  - columns:
+      - instruction_id
+      - version
+    isUnique: true
+  - columns:
+      - instruction_id

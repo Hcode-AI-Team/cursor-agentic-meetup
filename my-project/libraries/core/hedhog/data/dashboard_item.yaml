@@ -1,0 +1,266 @@
+- component_id:
+    where:
+      slug: active-users-card
+  dashboard_id:
+    where:
+      slug: default
+  width: 2
+  height: 2
+  x_axis: 0
+  y_axis: 0
+- component_id:
+    where:
+      slug: mail-sent-card
+  dashboard_id:
+    where:
+      slug: default
+  width: 2
+  height: 2
+  x_axis: 4
+  y_axis: 0
+- component_id:
+    where:
+      slug: mail-sent-chart
+  dashboard_id:
+    where:
+      slug: default
+  width: 6
+  height: 5
+  x_axis: 0
+  y_axis: 2
+- component_id:
+    where:
+      slug: permissions-card
+  dashboard_id:
+    where:
+      slug: default
+  width: 2
+  height: 2
+  x_axis: 6
+  y_axis: 0
+- component_id:
+    where:
+      slug: permissions-chart
+  dashboard_id:
+    where:
+      slug: default
+  width: 6
+  height: 5
+  x_axis: 6
+  y_axis: 2
+- component_id:
+    where:
+      slug: session-activity-chart
+  dashboard_id:
+    where:
+      slug: default
+  width: 6
+  height: 5
+  x_axis: 0
+  y_axis: 7
+- component_id:
+    where:
+      slug: sessions-today-card
+  dashboard_id:
+    where:
+      slug: default
+  width: 2
+  height: 2
+  x_axis: 2
+  y_axis: 0
+- component_id:
+    where:
+      slug: menus-card
+  dashboard_id:
+    where:
+      slug: default
+  width: 2
+  height: 2
+  x_axis: 8
+  y_axis: 0
+- component_id:
+    where:
+      slug: routes-card
+  dashboard_id:
+    where:
+      slug: default
+  width: 2
+  height: 2
+  x_axis: 10
+  y_axis: 0
+- component_id:
+    where:
+      slug: user-growth-chart
+  dashboard_id:
+    where:
+      slug: default
+  width: 6
+  height: 5
+  x_axis: 6
+  y_axis: 7
+
+- component_id:
+    where:
+      slug: profile-card
+  dashboard_id:
+    where:
+      slug: user
+  width: 12
+  height: 4
+  x_axis: 0
+  y_axis: 0
+- component_id:
+    where:
+      slug: stat-online-time
+  dashboard_id:
+    where:
+      slug: user
+  width: 3
+  height: 1
+  x_axis: 0
+  y_axis: 4
+- component_id:
+    where:
+      slug: stat-actions-today
+  dashboard_id:
+    where:
+      slug: user
+  width: 3
+  height: 1
+  x_axis: 3
+  y_axis: 4
+- component_id:
+    where:
+      slug: stat-consecutive-days
+  dashboard_id:
+    where:
+      slug: user
+  width: 3
+  height: 1
+  x_axis: 6
+  y_axis: 4
+- component_id:
+    where:
+      slug: stat-access-level
+  dashboard_id:
+    where:
+      slug: user
+  width: 3
+  height: 1
+  x_axis: 9
+  y_axis: 4
+- component_id:
+    where:
+      slug: account-security
+  dashboard_id:
+    where:
+      slug: user
+  width: 5
+  height: 5
+  x_axis: 0
+  y_axis: 9
+- component_id:
+    where:
+      slug: login-history-chart
+  dashboard_id:
+    where:
+      slug: user
+  width: 7
+  height: 4
+  x_axis: 0
+  y_axis: 5
+- component_id:
+    where:
+      slug: email-notifications
+  dashboard_id:
+    where:
+      slug: user
+  width: 7
+  height: 5
+  x_axis: 5
+  y_axis: 9
+- component_id:
+    where:
+      slug: activity-timeline
+  dashboard_id:
+    where:
+      slug: user
+  width: 5
+  height: 3
+  x_axis: 7
+  y_axis: 14
+- component_id:
+    where:
+      slug: user-sessions
+  dashboard_id:
+    where:
+      slug: user
+  width: 5
+  height: 4
+  x_axis: 7
+  y_axis: 4
+- component_id:
+    where:
+      slug: user-roles
+  dashboard_id:
+    where:
+      slug: user
+  width: 7
+  height: 3
+  x_axis: 0
+  y_axis: 14
+
+- component_id:
+    where:
+      slug: mail-config
+  dashboard_id:
+    where:
+      slug: config
+  width: 6
+  height: 4
+  x_axis: 0
+  y_axis: 0
+
+- component_id:
+    where:
+      slug: locale-config 
+  dashboard_id:
+    where:
+      slug: config
+  width: 6
+  height: 6
+  x_axis: 6
+  y_axis: 9
+
+- component_id:
+    where:
+      slug: oauth-config
+  dashboard_id:
+    where:
+      slug: config
+  width: 6
+  height: 5
+  x_axis: 0
+  y_axis: 4
+
+- component_id:
+    where:
+      slug: storage-config
+  dashboard_id:
+    where:
+      slug: config
+  width: 6
+  height: 4
+  x_axis: 6
+  y_axis: 0
+
+- component_id:
+    where:
+      slug: theme-config
+  dashboard_id:
+    where:
+      slug: config
+  width: 6
+  height: 5
+  x_axis: 6
+  y_axis: 4

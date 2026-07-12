@@ -1,0 +1,49 @@
+columns:
+  - type: pk
+  - type: fk
+    name: webhook_integration_id
+    isNullable: true
+    references:
+      table: webhook_integration
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - name: public_uuid
+    type: varchar
+    length: 36
+  - name: status
+    type: enum
+    enum:
+      - success
+      - failed
+  - name: remote_ip
+    type: varchar
+    length: 127
+    isNullable: true
+  - name: duration_ms
+    type: int
+    default: 0
+  - name: error_message
+    type: text
+    isNullable: true
+  - name: payload_summary
+    type: json
+    isNullable: true
+  - name: payload_raw
+    type: json
+    isNullable: true
+  - name: response_summary
+    type: json
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - webhook_integration_id
+  - columns:
+      - public_uuid
+  - columns:
+      - status
+  - columns:
+      - created_at
+

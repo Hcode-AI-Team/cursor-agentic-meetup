@@ -1,0 +1,40 @@
+columns:
+  - type: pk
+  - name: outbox_event_id
+    type: fk
+    references:
+      table: outbox_event
+      column: id
+      onDelete: CASCADE
+  - name: consumer_name
+    length: 255
+  - name: status
+    type: enum
+    enum:
+      - received
+      - processing
+      - processed
+      - failed
+      - skipped
+    default: received
+  - name: attempt_count
+    type: int
+    default: 0
+  - name: last_error
+    length: 1023
+    isNullable: true
+  - name: processed_at
+    type: timestamptz
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+
+indexes:
+  - columns:
+      - outbox_event_id
+      - consumer_name
+    isUnique: true
+  - columns:
+      - status
+  - columns:
+      - created_at

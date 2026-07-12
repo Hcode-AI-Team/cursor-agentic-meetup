@@ -1,0 +1,16 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    isUnique: true
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: hash
+    isUnique: true
+  - name: used_at
+    type: datetime
+    isNullable: true
+  - type: created_at
+  - type: updated_at

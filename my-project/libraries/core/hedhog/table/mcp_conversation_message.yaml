@@ -1,0 +1,23 @@
+columns:
+  - type: pk
+  - name: conversation_id
+    type: fk
+    references:
+      table: mcp_conversation
+      column: id
+      onDelete: CASCADE
+  - name: role
+    type: enum
+    enum:
+      - user
+      - assistant
+      - tool_call
+      - tool_result
+  - name: content
+    type: text
+  - name: tool_name
+    isNullable: true
+  - name: tool_call_id
+    isNullable: true
+  - type: created_at
+  - type: updated_at

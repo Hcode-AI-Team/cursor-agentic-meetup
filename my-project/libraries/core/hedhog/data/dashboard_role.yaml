@@ -1,0 +1,18 @@
+- dashboard_id:
+    where:
+      slug: default
+  role_id:
+    where:
+      slug: admin-access
+- dashboard_id:
+    where:
+      slug: user
+  role_id:
+    where:
+      slug: admin
+- dashboard_id:
+    where:
+      slug: config
+  role_id:
+    where:
+      slug: admin

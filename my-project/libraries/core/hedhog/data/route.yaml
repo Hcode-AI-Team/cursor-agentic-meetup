@@ -1,0 +1,3370 @@
+- url: /access-log
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail/reload
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /user/:userId/verify-identifier/:identifierId
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /auth/refresh
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /auth/logout
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /sessions/revoke-all
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /sessions/revoke-all-other
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /sessions/:sessionId/revoke
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /sessions/user
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+- url: /sessions/active
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+- url: /menu/stats
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/all
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/system
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /menu
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/:menuId/role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/:menuId/role
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/:menuId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/:menuId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /menu/order
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/user
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/menu
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/route
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/screen
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/user
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/menu
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/route
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId/screen
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role/:roleId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /role
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route/:routeId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route/:routeId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route/:routeId/role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route/:routeId/role
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route/:routeId/screen
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /route/:routeId/screen
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen/:screenId/role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen/:screenId/route
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen/:screenId/role
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen/:screenId/route
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen/:screenId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen/:screenId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /screen
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /user
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId/role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId/role/:roleId
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId/role/:roleId
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId/log
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId/menu
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /user/:userId/route
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /user
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId/avatar
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user/:userId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /user/:userId/reset-password
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /user
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-user
+- url: /locale
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /locale/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /locale
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /locale
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /locale/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /locale
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /core/locales
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /core/locales
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /file
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file/open/:token
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file/image/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file/download/:token
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file/open/:id
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file/download/:id
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /file
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /file
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-core/home
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/access/:slug
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/user-dashboards
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/templates
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/:slug
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/order
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/:slug/home
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/:slug
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/:slug/shares
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/:slug/share
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/dashboard/:slug/share/:sharedUserId
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/shareable-users/:slug
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/stats/overview/users
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin-user
+      - where:
+          slug: admin-access
+- url: /dashboard-core/stats/overview/mails
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin-mail
+      - where:
+          slug: admin-access
+- url: /dashboard-core/stats/overview/system
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/config/overview
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/layout/:slug
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/layout/:slug
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/widgets/me
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: user
+      - where:
+          slug: admin-access
+- url: /dashboard-core/widget/:slug
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-core/widget/:slug/:widgetId
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component/user
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /dashboard-component
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component/:id/preview
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin-access
+- url: /dashboard-role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-role
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-role/batch
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-role/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-role/dashboard/:dashboardId/role/:roleId
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component-role
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component-role
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component-role/batch
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component-role/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-component-role/component/:componentId/role/:roleId
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-item
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-item
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-item/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-user
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-user
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-user/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-user/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /dashboard-user
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/export
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/import
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/import/confirm
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/group/:slug
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /setting/user
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/effective
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /setting
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/:settingId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/user/:slug
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/:slug
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /setting/:settingId/options
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /setting
+  method: PUT
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /setting/:settingId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail-sent
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail-sent/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail-sent
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail-sent/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail-sent
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail/:id/html
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail/import
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /mail/test
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Integration Profile ──────────────────────────────────────────────────────
+
+- url: /integration-profile/types
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/providers
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/test
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/export
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/import/validate
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+
+- url: /integration-profile/import/confirm
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: integration-manager
+- url: /ai/chat
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent/id/:agentId
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent/:slug
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent/:agentId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /ai/agent/:slug/chat
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /integration-event-catalog
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /integration-event-catalog
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /integration-event-catalog/options
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /integration-event-catalog/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /integration-event-catalog/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /integration-event-catalog
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/regenerate-uuid
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/regenerate-token
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/duplicate
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/action
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/action
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/action/:actionId
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/action
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/log
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/log/stream
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /webhook-integration/:id/log/:logId/retry
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook/:id/duplicate
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+- url: /event-webhook/:id/log
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.settings.get
+  type: MCP
+  name: Get Effective Settings
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.users.me
+  type: MCP
+  name: Get My Profile
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.users.list
+  type: MCP
+  name: List Users
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.get
+  type: MCP
+  name: Get User
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.create
+  type: MCP
+  name: Create User
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.update
+  type: MCP
+  name: Update User
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.reset-password
+  type: MCP
+  name: Reset User Password
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.delete
+  type: MCP
+  name: Delete Users
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.roles
+  type: MCP
+  name: Get User Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.menus
+  type: MCP
+  name: Get User Menus
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.routes
+  type: MCP
+  name: Get User Routes
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.assign-role
+  type: MCP
+  name: Assign Role to User
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.remove-role
+  type: MCP
+  name: Remove Role from User
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.users.verify-identifier
+  type: MCP
+  name: Verify User Identifier
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: user
+
+- url: /mcp-chat
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /mcp-chat
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /mcp-chat
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /mcp-chat/:id/messages
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /mcp-chat/:id/messages
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /mcp-chat/:id/messages/stream
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /core/pdf/example
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /mcp/api-keys
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- url: /mcp/api-keys
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- url: /mcp/api-keys/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- url: /notification
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- url: /notification/stream
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- url: /notification/unread-count
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- url: /notification/read-all
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: user
+
+- url: /notification/:id/read
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: user
+
+- url: /notification/:id/progress
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: user
+
+- url: /notification/:id
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: user
+
+- url: /notification
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /notification
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: user
+
+# ─── Roles ───────────────────────────────────────────────────────────────────
+
+- tool_name: core.roles.list
+  type: MCP
+  name: List Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.roles.get
+  type: MCP
+  name: Get Role
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.roles.create
+  type: MCP
+  name: Create Role
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.roles.update
+  type: MCP
+  name: Update Role
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.roles.delete
+  type: MCP
+  name: Delete Role
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.roles.users.list
+  type: MCP
+  name: List Role Users
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.roles.users.update
+  type: MCP
+  name: Update Role Users
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.roles.menus.list
+  type: MCP
+  name: List Role Menus
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.roles.menus.update
+  type: MCP
+  name: Update Role Menus
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.roles.routes.list
+  type: MCP
+  name: List Role Routes
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.roles.routes.update
+  type: MCP
+  name: Update Role Routes
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.roles.screens.list
+  type: MCP
+  name: List Role Screens
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.roles.screens.update
+  type: MCP
+  name: Update Role Screens
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Routes ──────────────────────────────────────────────────────────────────
+
+- tool_name: core.routes.list
+  type: MCP
+  name: List Routes
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.routes.get
+  type: MCP
+  name: Get Route
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.routes.create
+  type: MCP
+  name: Create Route
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.routes.update
+  type: MCP
+  name: Update Route
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.routes.delete
+  type: MCP
+  name: Delete Route
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.routes.roles.list
+  type: MCP
+  name: List Route Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.routes.roles.update
+  type: MCP
+  name: Update Route Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.routes.screens.list
+  type: MCP
+  name: List Route Screens
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.routes.screens.update
+  type: MCP
+  name: Update Route Screens
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Menus ───────────────────────────────────────────────────────────────────
+
+- tool_name: core.menus.system
+  type: MCP
+  name: Get System Menu
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.menus.stats
+  type: MCP
+  name: Get Menu Stats
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.menus.all
+  type: MCP
+  name: List All Menus
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.menus.list
+  type: MCP
+  name: List Menus
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.menus.get
+  type: MCP
+  name: Get Menu
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.menus.create
+  type: MCP
+  name: Create Menu
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.menus.update
+  type: MCP
+  name: Update Menu
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.menus.delete
+  type: MCP
+  name: Delete Menu
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.menus.order
+  type: MCP
+  name: Update Menu Order
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.menus.roles.list
+  type: MCP
+  name: List Menu Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.menus.roles.update
+  type: MCP
+  name: Update Menu Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Screens ─────────────────────────────────────────────────────────────────
+
+- tool_name: core.screens.list
+  type: MCP
+  name: List Screens
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.screens.get
+  type: MCP
+  name: Get Screen
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.screens.create
+  type: MCP
+  name: Create Screen
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.screens.update
+  type: MCP
+  name: Update Screen
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.screens.delete
+  type: MCP
+  name: Delete Screen
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.screens.roles.list
+  type: MCP
+  name: List Screen Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.screens.roles.update
+  type: MCP
+  name: Update Screen Roles
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.screens.routes.list
+  type: MCP
+  name: List Screen Routes
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.screens.routes.update
+  type: MCP
+  name: Update Screen Routes
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Sessions ────────────────────────────────────────────────────────────────
+
+- tool_name: core.sessions.active
+  type: MCP
+  name: Get Active Sessions
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.sessions.all
+  type: MCP
+  name: Get All Sessions
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.sessions.revoke
+  type: MCP
+  name: Revoke Session
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.sessions.revoke-all
+  type: MCP
+  name: Revoke All Sessions
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.sessions.revoke-all-other
+  type: MCP
+  name: Revoke All Other Sessions
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+# ─── Files ───────────────────────────────────────────────────────────────────
+
+- tool_name: core.files.list
+  type: MCP
+  name: List Files
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.files.get
+  type: MCP
+  name: Get File
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.files.open-url
+  type: MCP
+  name: Get File Open URL
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.files.download-url
+  type: MCP
+  name: Get File Download URL
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.files.delete
+  type: MCP
+  name: Delete Files
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Mail ────────────────────────────────────────────────────────────────────
+
+- tool_name: core.mail.list
+  type: MCP
+  name: List Mail Templates
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.mail.get
+  type: MCP
+  name: Get Mail Template
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.mail.create
+  type: MCP
+  name: Create Mail Template
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.mail.update
+  type: MCP
+  name: Update Mail Template
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.mail.delete
+  type: MCP
+  name: Delete Mail Templates
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.mail.test
+  type: MCP
+  name: Send Test Mail
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.mail.reload
+  type: MCP
+  name: Reload Mail Config
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Mail Sent ────────────────────────────────────────────────────────────────
+
+- tool_name: core.mail-sent.list
+  type: MCP
+  name: List Sent Mails
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.mail-sent.get
+  type: MCP
+  name: Get Sent Mail
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.mail-sent.delete
+  type: MCP
+  name: Delete Sent Mails
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Notifications ───────────────────────────────────────────────────────────
+
+- tool_name: core.notifications.list
+  type: MCP
+  name: List Notifications
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.notifications.unread-count
+  type: MCP
+  name: Get Unread Notification Count
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.notifications.mark-read
+  type: MCP
+  name: Mark Notification Read
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.notifications.mark-all-read
+  type: MCP
+  name: Mark All Notifications Read
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.notifications.create
+  type: MCP
+  name: Create Notification
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.notifications.delete
+  type: MCP
+  name: Delete Notification
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.notifications.delete-all
+  type: MCP
+  name: Delete All Notifications
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.notifications.update-progress
+  type: MCP
+  name: Update Notification Progress
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Dashboard ───────────────────────────────────────────────────────────────
+
+- tool_name: core.dashboard.list
+  type: MCP
+  name: List Dashboards
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.dashboard.get
+  type: MCP
+  name: Get Dashboard
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.dashboard.create
+  type: MCP
+  name: Create Dashboard
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.dashboard.update
+  type: MCP
+  name: Update Dashboard
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.dashboard.delete
+  type: MCP
+  name: Delete Dashboard
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.dashboard-items.list
+  type: MCP
+  name: List Dashboard Items
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.dashboard-items.create
+  type: MCP
+  name: Create Dashboard Item
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.dashboard-items.delete
+  type: MCP
+  name: Delete Dashboard Item
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── Webhooks ────────────────────────────────────────────────────────────────
+
+- tool_name: core.webhooks.list
+  type: MCP
+  name: List Webhooks
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.webhooks.get
+  type: MCP
+  name: Get Webhook
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.webhooks.create
+  type: MCP
+  name: Create Webhook
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.webhooks.update
+  type: MCP
+  name: Update Webhook
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.webhooks.delete
+  type: MCP
+  name: Delete Webhooks
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.webhooks.actions.list
+  type: MCP
+  name: List Webhook Actions
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.webhooks.actions.create
+  type: MCP
+  name: Create Webhook Action
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.webhooks.actions.update
+  type: MCP
+  name: Update Webhook Action
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.webhooks.actions.delete
+  type: MCP
+  name: Delete Webhook Actions
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.webhooks.logs.list
+  type: MCP
+  name: List Webhook Logs
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+# ─── Event Webhooks ──────────────────────────────────────────────────────────
+
+- tool_name: core.event-webhooks.list
+  type: MCP
+  name: List Event Webhooks
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.event-webhooks.get
+  type: MCP
+  name: Get Event Webhook
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.event-webhooks.create
+  type: MCP
+  name: Create Event Webhook
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.event-webhooks.update
+  type: MCP
+  name: Update Event Webhook
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.event-webhooks.delete
+  type: MCP
+  name: Delete Event Webhooks
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.event-webhooks.logs.list
+  type: MCP
+  name: List Event Webhook Logs
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+# ─── Integration Events ──────────────────────────────────────────────────────
+
+- tool_name: core.integration-events.list
+  type: MCP
+  name: List Integration Events
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.integration-events.options
+  type: MCP
+  name: Get Integration Event Options
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.integration-events.get
+  type: MCP
+  name: Get Integration Event
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.integration-events.create
+  type: MCP
+  name: Create Integration Event
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.integration-events.update
+  type: MCP
+  name: Update Integration Event
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.integration-events.delete
+  type: MCP
+  name: Delete Integration Events
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── AI ──────────────────────────────────────────────────────────────────────
+
+- tool_name: core.ai.chat
+  type: MCP
+  name: AI Chat
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.ai.agents.list
+  type: MCP
+  name: List AI Agents
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.ai.agents.get
+  type: MCP
+  name: Get AI Agent
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.ai.agents.get-by-slug
+  type: MCP
+  name: Get AI Agent By Slug
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.ai.agents.create
+  type: MCP
+  name: Create AI Agent
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.ai.agents.update
+  type: MCP
+  name: Update AI Agent
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.ai.agents.delete
+  type: MCP
+  name: Delete AI Agents
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.ai.agents.chat
+  type: MCP
+  name: Chat With AI Agent
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+# ─── Settings (admin ops) ─────────────────────────────────────────────────────
+
+- tool_name: core.settings.list
+  type: MCP
+  name: List Settings
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.settings.get-by-id
+  type: MCP
+  name: Get Setting By ID
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.settings.groups.list
+  type: MCP
+  name: List Setting Groups
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- tool_name: core.settings.set-many
+  type: MCP
+  name: Set Many Settings
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.settings.update-from-slug
+  type: MCP
+  name: Update Setting From Slug
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- tool_name: core.settings.delete
+  type: MCP
+  name: Delete Settings
+  relations:
+    role:
+      - where:
+          slug: admin
+
+# ─── MCP Chat ─────────────────────────────────────────────────────────────────
+
+- tool_name: core.mcp-chat.conversations.list
+  type: MCP
+  name: List MCP Chat Conversations
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.mcp-chat.conversations.create
+  type: MCP
+  name: Create MCP Chat Conversation
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.mcp-chat.conversations.delete
+  type: MCP
+  name: Delete MCP Chat Conversations
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.mcp-chat.messages.list
+  type: MCP
+  name: List MCP Chat Messages
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+- tool_name: core.mcp-chat.messages.send
+  type: MCP
+  name: Send MCP Chat Message
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+      - where:
+          slug: user
+
+# ─── System ──────────────────────────────────────────────────────────────────
+
+- tool_name: core.system.info
+  type: MCP
+  name: Get System Info
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /webhook-integration/user-tokens
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /webhook-integration/user-tokens
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /webhook-integration/internal-routes
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /webhook-integration/app-commands
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+
+- url: /ai-instruction
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction/:id
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction/slug/:slug
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction/:id
+  method: PATCH
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction
+  method: DELETE
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction/:id/versions
+  method: GET
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /ai-instruction/:id/versions/:version/restore
+  method: POST
+  type: HTTP
+  relations:
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+
+- url: /auth/verify
+  method: GET
+  type: HTTP
+  relations: &core_user_roles
+    role:
+      - where:
+          slug: admin
+      - where:
+          slug: admin-access
+- url: /auth/desktop-token
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /auth/roles
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /system
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /dashboard-core/:slug
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /oauth/:provider/callback/connect
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /oauth/:provider
+  method: DELETE
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/preferences
+  method: PUT
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/check-verification
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/check-verification-remove
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/verify-before-add
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/totp/generate
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/totp/verify
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/totp/:mfaId/remove
+  method: DELETE
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/email/verify/confirm
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/email/verify
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/email/verify
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/email/verify/confirm
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/email/send-code-to-remove
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/email
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/email/:mfaId/remove
+  method: DELETE
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa
+  method: GET
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/update-mfa/:mfaId
+  method: PUT
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/:mfaId/remove-with-recovery-code
+  method: DELETE
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/mfa/:mfaId/remove
+  method: DELETE
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/recovery-codes/send-verification
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/recovery-codes/regenerate
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/webauthn/generate
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/webauthn/verify
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/webauthn/authenticate/generate
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/webauthn/authenticate/verify
+  method: POST
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/webauthn/:mfaId/remove
+  method: DELETE
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/change-password
+  method: PUT
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/change-email
+  method: PUT
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile/avatar
+  method: PUT
+  type: HTTP
+  relations: *core_user_roles
+- url: /profile
+  method: PUT
+  type: HTTP
+  relations: *core_user_roles

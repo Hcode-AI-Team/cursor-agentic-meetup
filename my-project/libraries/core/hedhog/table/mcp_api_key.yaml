@@ -1,0 +1,34 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: name
+    type: varchar
+  - name: token_hash
+    type: varchar
+  - name: token_prefix
+    type: varchar
+  - name: type
+    type: varchar
+    length: 10
+    default: mcp
+  - name: last_used_at
+    type: datetime
+    isNullable: true
+  - name: expires_at
+    type: datetime
+    isNullable: true
+  - name: revoked_at
+    type: datetime
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - user_id
+  - columns:
+      - token_hash

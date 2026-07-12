@@ -1,0 +1,41 @@
+columns:
+  - type: pk
+  - type: slug
+  - name: name
+    type: varchar
+    length: 127
+  - name: module
+    type: varchar
+    length: 127
+  - name: aggregate_type
+    type: varchar
+    length: 127
+    isNullable: true
+  - name: description
+    type: text
+    isNullable: true
+  - name: payload_schema
+    type: json
+    isNullable: true
+  - name: metadata_schema
+    type: json
+    isNullable: true
+  - name: status
+    type: enum
+    enum:
+      - active
+      - inactive
+    default: active
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - slug
+    isUnique: true
+  - columns:
+      - module
+  - columns:
+      - aggregate_type
+  - columns:
+      - status
+

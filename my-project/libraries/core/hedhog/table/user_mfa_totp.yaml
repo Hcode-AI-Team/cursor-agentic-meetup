@@ -1,0 +1,12 @@
+columns:
+  - type: pk
+  - name: user_mfa_id
+    type: fk
+    references:
+      table: user_mfa
+      column: id
+      onDelete: CASCADE
+  - name: secret
+    type: bytes
+  - type: created_at
+  - type: updated_at

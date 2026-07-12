@@ -1,0 +1,79 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    isNullable: true
+    references:
+      table: user
+      column: id
+      onDelete: SET NULL
+  - name: conversation_id
+    type: fk
+    isNullable: true
+    references:
+      table: mcp_conversation
+      column: id
+      onDelete: SET NULL
+  - name: agent_id
+    type: fk
+    isNullable: true
+    references:
+      table: ai_agent
+      column: id
+      onDelete: SET NULL
+  - name: trigger
+    type: enum
+    enum:
+      - manual
+      - webhook
+      - schedule
+      - tool
+      - api
+    default: manual
+  - name: status
+    type: enum
+    enum:
+      - running
+      - completed
+      - failed
+      - cancelled
+    default: running
+  - name: context_slug
+    isNullable: true
+  - name: tokens_input
+    type: int
+    default: 0
+  - name: tokens_output
+    type: int
+    default: 0
+  - name: tokens_total
+    type: int
+    default: 0
+  - name: cost_usd
+    type: decimal
+    precision: 10
+    scale: 6
+    default: 0
+  - name: started_at
+    type: datetime
+  - name: finished_at
+    type: datetime
+    isNullable: true
+  - name: error
+    type: text
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - user_id
+  - columns:
+      - conversation_id
+  - columns:
+      - agent_id
+  - columns:
+      - status
+  - columns:
+      - context_slug
+  - columns:
+      - started_at

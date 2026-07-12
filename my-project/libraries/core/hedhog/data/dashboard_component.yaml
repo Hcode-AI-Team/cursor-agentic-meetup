@@ -1,0 +1,278 @@
+- slug: active-users-card
+  width: 2
+  height: 2
+  name:
+    en: Active Users
+    pt: Usuários Ativos
+  description:
+    en: Shows the number of active users.
+    pt: Mostra o número de usuários ativos.
+- slug: mail-sent-card
+  width: 2
+  height: 2
+  name:
+    en: Mail Sent Card
+    pt: Card de E-mails Enviados
+  description:
+    en: Shows the number of mails sent.
+    pt: Mostra o número de e-mails enviados.
+- slug: mail-sent-chart
+  width: 6
+  height: 5
+  name:
+    en: Mail Sent Chart
+    pt: Gráfico de E-mails Enviados
+  description:
+    en: Shows a chart of mails sent over time.
+    pt: Mostra um gráfico de e-mails enviados ao longo do tempo.
+- slug: permissions-card
+  width: 2
+  height: 2
+  name:
+    en: Permissions Card
+    pt: Card de Permissões
+  description:
+    en: Shows the permissions of the current user.
+    pt: Mostra as permissões do usuário atual.
+- slug: permissions-chart
+  width: 6
+  height: 5
+  name:
+    en: Permissions Chart
+    pt: Gráfico de Permissões
+  description:
+    en: Shows a chart of the permissions of the current user.
+    pt: Mostra um gráfico das permissões do usuário atual.
+- slug: session-activity-chart
+  width: 6
+  height: 5
+  name:
+    en: Session Activity Chart
+    pt: Gráfico de Atividade de Sessão
+  description:
+    en: Shows a chart of the session activity of the current user.
+    pt: Mostra um gráfico da atividade de sessão do usuário atual.
+- slug: sessions-today-card
+  width: 2
+  height: 2
+  name:
+    en: Sessions Today Card
+    pt: Card de Sessões Hoje
+  description:
+    en: Shows a card of the sessions today.
+    pt: Mostra um card das sessões de hoje.
+- slug: menus-card
+  width: 2
+  height: 2
+  name:
+    en: Menus Card
+    pt: Card de Menus
+  description:
+    en: Shows the total number of navigation menus.
+    pt: Mostra o total de menus de navegação.
+- slug: routes-card
+  width: 2
+  height: 2
+  name:
+    en: Routes Card
+    pt: Card de Rotas
+  description:
+    en: Shows the total number of registered API routes.
+    pt: Mostra o total de rotas de API registradas.
+- slug: user-growth-chart
+  width: 6
+  height: 5
+  name:
+    en: User Growth Chart
+    pt: Gráfico de Crescimento de Usuários
+  description:
+    en: Shows a chart of the user growth over time.
+    pt: Mostra um gráfico do crescimento de usuários ao longo do tempo.
+- slug: account-security
+  min_width: 4
+  max_width: 6
+  min_height: 4
+  max_height: 6
+  width: 5
+  height: 5
+  name:
+    en: Account Security
+    pt: Segurança da Conta
+  description:
+    en: Shows the security level and recommendations for your account.
+    pt: Mostra o nível de segurança e recomendações para sua conta.
+- slug: activity-timeline
+  min_width: 4
+  max_width: 6
+  min_height: 2
+  max_height: 4
+  width: 5
+  height: 3
+  name:
+    en: Activity Timeline
+    pt: Histórico de Atividades
+  description:
+    en: Displays your recent activity events in the system.
+    pt: Exibe os eventos recentes de atividade no sistema.
+- slug: email-notifications
+  min_width: 5
+  max_width: 8
+  min_height: 4
+  max_height: 6
+  width: 7
+  height: 5
+  name:
+    en: Email Notifications
+    pt: Notificações por E-mail
+  description:
+    en: Shows statistics and chart of system emails received and read.
+    pt: Mostra estatísticas e gráfico de e-mails do sistema recebidos e lidos.
+- slug: login-history-chart
+  min_width: 5
+  max_width: 8
+  min_height: 3
+  max_height: 5
+  width: 7
+  height: 4
+  name:
+    en: Login History Chart
+    pt: Gráfico de Histórico de Login
+  description:
+    en: Shows a chart of logins and failed attempts for the week.
+    pt: Mostra um gráfico de logins e tentativas falhas da semana.
+- slug: profile-card
+  min_width: 6
+  max_width: 12
+  min_height: 2
+  max_height: 3
+  width: 12
+  height: 3
+  name:
+    en: Profile Card
+    pt: Cartão de Perfil
+  description:
+    en: Displays user profile information and quick actions.
+    pt: Exibe informações do perfil do usuário e ações rápidas.
+- slug: stat-online-time
+  min_width: 2
+  max_width: 3
+  min_height: 1
+  max_height: 2
+  width: 3
+  height: 1
+  name:
+    en: Online Time
+    pt: Tempo Online
+  description:
+    en: Shows how long you have been online in the current session.
+    pt: Mostra há quanto tempo você está online na sessão atual.
+- slug: stat-actions-today
+  min_width: 2
+  max_width: 3
+  min_height: 1
+  max_height: 2
+  width: 3
+  height: 1
+  name:
+    en: Actions Today
+    pt: Ações Hoje
+  description:
+    en: Shows the number of actions performed today.
+    pt: Mostra o número de ações realizadas hoje.
+- slug: stat-consecutive-days
+  min_width: 2
+  max_width: 3
+  min_height: 1
+  max_height: 2
+  width: 3
+  height: 1
+  name:
+    en: Consecutive Days
+    pt: Dias Consecutivos
+  description:
+    en: Shows how many consecutive days you have logged in.
+    pt: Mostra quantos dias consecutivos você fez login.
+- slug: stat-access-level
+  min_width: 2
+  max_width: 3
+  min_height: 1
+  max_height: 2
+  width: 3
+  height: 1
+  name:
+    en: Access Level
+    pt: Nível de Acesso
+  description:
+    en: Shows your current security and access level.
+    pt: Mostra seu nível atual de segurança e acesso.
+- slug: user-roles
+  min_width: 4
+  max_width: 8
+  min_height: 2
+  max_height: 4
+  width: 7
+  height: 3
+  name:
+    en: User Roles
+    pt: Papéis do Usuário
+  description:
+    en: Shows the roles assigned to your profile.
+    pt: Mostra os papéis atribuídos ao seu perfil.
+- slug: user-sessions
+  min_width: 4
+  max_width: 7
+  min_height: 3
+  max_height: 5
+  width: 5
+  height: 4
+  name:
+    en: User Sessions
+    pt: Sessões do Usuário
+  description:
+    en: Displays active sessions and connected devices for your account.
+    pt: Exibe sessões ativas e dispositivos conectados à sua conta.
+- slug: mail-config
+  width: 6
+  height: 4
+  name:
+    en: Mail Configuration
+    pt: Configuração de E-mail
+  description:
+    en: Widget to configure the mail provider settings.
+    pt: Widget para configurar as definições do provedor de e-mail.
+- slug: locale-config
+  width: 6
+  height: 6
+  name:
+    en: Locale Configuration
+    pt: Configuração de Localização
+  description:
+    en: Widget to configure language and locale settings.
+    pt: Widget para configurar as definições de idioma e localização.
+- slug: oauth-config
+  width: 6
+  height: 5
+  name:
+    en: OAuth Configuration
+    pt: Configuração de OAuth
+  description:
+    en: Widget to configure OAuth authentication providers.
+    pt: Widget para configurar os provedores de autenticação OAuth.
+- slug: storage-config
+  width: 6
+  height: 4
+  name:
+    en: Storage Configuration
+    pt: Configuração de Armazenamento
+  description:
+    en: Widget to configure the file storage provider settings.
+    pt: Widget para configurar as definições do provedor de armazenamento.
+- slug: theme-config
+  width: 6
+  height: 5
+  name:
+    en: Theme Configuration
+    pt: Configuração de Tema
+  description:
+    en: Widget to configure the application theme and appearance.
+    pt: Widget para configurar o tema e a aparência da aplicação.

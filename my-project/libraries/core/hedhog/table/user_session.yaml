@@ -1,0 +1,20 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: hash
+  - name: browser_id
+    isNullable: true
+  - name: ip_address
+  - name: user_agent
+  - name: revoked_at
+    type: datetime
+    isNullable: true
+  - name: expires_at
+    type: datetime
+  - type: created_at
+  - type: updated_at

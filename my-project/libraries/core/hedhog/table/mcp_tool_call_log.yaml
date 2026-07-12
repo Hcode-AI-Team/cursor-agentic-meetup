@@ -1,0 +1,22 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: SET NULL
+    isNullable: true
+  - name: tool_name
+  - name: input
+    type: text
+    isNullable: true
+  - name: success
+    type: boolean
+    default: false
+  - name: error
+    isNullable: true
+  - name: duration_ms
+    type: int
+  - type: created_at
+  - type: updated_at

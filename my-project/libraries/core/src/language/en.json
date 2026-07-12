@@ -1,0 +1,178 @@
+{
+  "settingNotFound": "Setting not found or user cannot override.",
+  "userNotFound": "User not found.",
+  "roleNotFound": "Role not found.",
+  "accessDenied": "Access denied.",
+  "defaultRoleNotFound": "Default user role not found.",
+  "defaultNameMfaEmail": "Default E-mail MFA",
+  "urlSettingMissing": "URL setting is missing.",
+  "userIdentifierNotFound": "User identifier not found.",
+  "invalidMfaCode": "Invalid MFA code.",
+  "invalidRecoveryCode": "Invalid recovery code.",
+  "noEmailMfaFound": "No email MFA method found for this user.",
+  "webauthnNotConfigured": "WebAuthn not configured.",
+  "challengeNotFound": "Challenge not found or expired.",
+  "verificationFailed": "Verification failed.",
+  "userIdsRequired": "At least one User ID is required to delete users.",
+  "invalidIds": "Invalid IDs.",
+  "invalidCode": "Invalid code.",
+  "totpNotFound": "TOTP method not found.",
+  "invalidMfaToken": "Invalid MFA token.",
+  "invalidJsonFile": "File does not contain valid JSON.",
+  "invalidJsonArray": "The JSON file must contain an array of settings.",
+  "deleteItemsRequired": "You must select at least one item to delete.",
+  "signup": {
+    "emailExists": "Email already in use."
+  },
+  "forgot": {
+    "rateLimit": "Too many requests. Please try again later.",
+    "userNotFound": "User not found."
+  },
+  "challenge": {
+    "invalidOrExpired": "The provided code is invalid or has expired."
+  },
+  "reset": {
+    "password": {
+      "required": "Password is required.",
+      "minLength": "Password must be at least 8 characters long."
+    },
+    "code": {
+      "required": "Reset code is required."
+    }
+  },
+  "session": {
+    "userIdRequired": "User ID is required to create a session.",
+    "ipAddressRequired": "IP address is required to create a session.",
+    "userAgentRequired": "User agent is required to create a session."
+  },
+  "profile": {
+    "update": {
+      "nameRequired": "Name is required."
+    },
+    "emailIdentifierNotFound": "Email identifier not found.",
+    "defaultNameMfaEmail": "Email Verification",
+    "emailVerification": {
+      "pinInvalid": "PIN must be exactly 6 digits.",
+      "pinIsString": "PIN must be a string."
+    },
+    "changePassword": {
+      "currentPasswordIsString": "Current password must be a string.",
+      "newPasswordIsString": "New password must be a string."
+    },
+    "sendEmailVerification": {
+      "emailIsString": "Email must be a string."
+    }
+  },
+  "password": {
+    "weakPassword": "Password does not meet the security requirements defined in system settings.",
+    "required": "Password is required.",
+    "minLength": "Password must be at least {minLength} characters long.",
+    "minLowercase": "Password must contain at least {minLowercase} lowercase letter(s).",
+    "minUppercase": "Password must contain at least {minUppercase} uppercase letter(s).",
+    "minNumbers": "Password must contain at least {minNumbers} number(s).",
+    "minSymbols": "Password must contain at least {minSymbols} special character(s)."
+  },
+  "createUser": {
+    "nameRequired": "Name is required."
+  },
+  "pinCode": {
+    "invalidLength": "PIN code must be exactly {length} digits long.",
+    "required": "PIN code is required."
+  },
+  "validation": {
+    "emailRequired": "Email is required.",
+    "emailInvalid": "The provided email is invalid.",
+    "currentEmailRequired": "Current email is required.",
+    "currentEmailInvalid": "The current email provided is invalid.",
+    "newEmailRequired": "New email is required.",
+    "newEmailInvalid": "The new email provided is invalid.",
+    "passwordRequired": "Password is required.",
+    "passwordMinLength": "Password must be at least 8 characters long.",
+    "passwordStrength": "Password must be at least 6 characters long and contain at least 1 lowercase letter.",
+    "codeMustBeString": "Code must be a string.",
+    "codeRequired": "Code is required.",
+    "tokenInvalid": "Invalid token.",
+    "tokenMustBeJWT": "Token must be a valid JWT.",
+    "methodTypeInvalid": "Method type must be totp, email, or recovery.",
+    "streetMustBeString": "Street must be a string.",
+    "numberMustBeString": "Number must be a string.",
+    "complementMustBeString": "Complement must be a string.",
+    "districtMustBeString": "District must be a string.",
+    "cityMustBeString": "City must be a string.",
+    "stateMustBeString": "State must be a string.",
+    "postalCodeMustBeString": "Postal code must be a string.",
+    "nameMustBeString": "Name must be a string.",
+    "nameRequired": "Name is required.",
+    "slugMustBeString": "Slug must be a string.",
+    "slugRequired": "Slug is required.",
+    "descriptionMustBeString": "Description must be a string.",
+    "descriptionRequired": "Description is required.",
+    "urlMustBeString": "URL must be a string.",
+    "urlRequired": "URL is required.",
+    "methodMustBeString": "Method must be a string.",
+    "methodMustBeValid": "Method must be a valid HTTP method (GET, POST, PUT, DELETE, PATCH, OPTIONS, or HEAD).",
+    "iconMustBeString": "Icon must be a string.",
+    "orderMustBeNumber": "Order must be a number.",
+    "tokenMustBe6Digits": "Token must be a 6-digit numeric string.",
+    "stringRequired": "This field must be a string.",
+    "numberRequired": "This field must be a number.",
+    "booleanRequired": "This field must be a boolean.",
+    "arrayRequired": "This field must be an array.",
+    "arrayNotEmpty": "Array must not be empty.",
+    "objectRequired": "This field must be an object.",
+    "fieldRequired": "This field is required.",
+    "minLength": "Minimum length is {min} characters.",
+    "maxLength": "Maximum length is {max} characters.",
+    "dateInvalid": "Invalid date format.",
+    "emailMustBeValid": "Email must be valid.",
+    "colorMustBeString": "Color must be a string.",
+    "colorRequired": "Color is required.",
+    "colorMustBeHex": "Color must be a valid hexadecimal color.",
+    "statusMustBeEnum": "Status must be a valid enum value.",
+    "statusMustBeString": "Status must be a string.",
+    "typeMustBeEnum": "Type must be a valid enum value.",
+    "localeMustBeObject": "Locale must be an object.",
+    "localeRequired": "Locale is required.",
+    "categoryIdMustBeNumber": "Category ID must be a number.",
+    "addressesMustBeArray": "Addresses must be an array.",
+    "addressTypeIdMustBeInteger": "Address type ID must be an integer.",
+    "contactsMustBeArray": "Contacts must be an array.",
+    "contactTypeIdMustBeInteger": "Contact type ID must be an integer.",
+    "countryCodeMustBeString": "Country code must be a string.",
+    "documentsMustBeArray": "Documents must be an array.",
+    "documentTypeIdMustBeInteger": "Document type ID must be an integer.",
+    "genderInvalid": "Gender must be a valid value.",
+    "idMustBeInteger": "ID must be an integer.",
+    "isPrimaryMustBeBoolean": "Is primary must be a boolean.",
+    "languageLength": "Language must be exactly 2 characters long.",
+    "line1MustBeString": "Address line 1 must be a string.",
+    "messageMustBeString": "Message must be a string.",
+    "responseMustBeString": "Response must be a string.",
+    "themeInvalid": "Theme must be one of: light, dark, or system.",
+    "tokenFormat": "Token must be in the correct format."
+  },
+  "file": {
+    "download": {
+      "not_found": "File not found.",
+      "invalid_token": "Invalid or expired download token.",
+      "error_title": "Download Failed",
+      "error_message": "We encountered an error while trying to download your file. The download link may have expired or is invalid.",
+      "error_details": "Error Details:",
+      "go_back": "Go Back"
+    },
+    "delete": {
+      "some_not_found": "Some files were not found."
+    }
+  },
+  "mail": {
+    "template": {
+      "not_found": "Mail template with id {id} not found."
+    }
+  },
+  "mail_sent_not_found": "Mail sent record not found.",
+  "validationSslugMustBeString": "Slug must be a string.",
+  "sessionRevoked": "Session has been revoked or expired.",
+  "dashboardNotFound": "Dashboard not found.",
+  "dashboardComponentNotFound": "Dashboard component not found.",
+  "dashboardItemNotFound": "Dashboard item not found."
+}

@@ -1,0 +1,141 @@
+columns:
+  - type: pk
+  - type: fk
+    name: webhook_integration_id
+    references:
+      table: webhook_integration
+      column: id
+      onDelete: cascade
+      onUpdate: cascade
+  - name: type
+    type: enum
+    enum:
+      - email
+      - whatsapp_evolution
+      - http_request
+      - internal_api
+      - app_command
+  - name: name
+    type: varchar
+    length: 127
+  - name: order
+    type: int
+    default: 0
+  - name: status
+    type: enum
+    enum:
+      - active
+      - inactive
+    default: active
+  - type: fk
+    name: integration_profile_id
+    isNullable: true
+    references:
+      table: integration_profile
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - type: fk
+    name: mail_id
+    isNullable: true
+    references:
+      table: mail
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - name: email_to
+    type: text
+    isNullable: true
+  - name: email_cc
+    type: text
+    isNullable: true
+  - name: email_bcc
+    type: text
+    isNullable: true
+  - name: whatsapp_target_type
+    type: enum
+    enum:
+      - phone
+      - group
+    isNullable: true
+  - name: whatsapp_target
+    type: varchar
+    length: 255
+    isNullable: true
+  - name: whatsapp_template
+    type: text
+    isNullable: true
+  - name: whatsapp_instance
+    type: varchar
+    length: 127
+    isNullable: true
+  - name: whatsapp_base_url
+    type: varchar
+    length: 255
+    isNullable: true
+  - name: whatsapp_token
+    type: text
+    isNullable: true
+  - name: http_url
+    type: text
+    isNullable: true
+  - name: http_method
+    type: varchar
+    length: 16
+    isNullable: true
+  - name: http_headers
+    type: json
+    isNullable: true
+  - name: http_query
+    type: json
+    isNullable: true
+  - name: http_body
+    type: text
+    isNullable: true
+  - name: http_timeout_ms
+    type: int
+    isNullable: true
+  - name: http_retry_count
+    type: int
+    isNullable: true
+  - name: internal_api_path
+    type: text
+    isNullable: true
+  - name: internal_api_method
+    type: varchar
+    length: 16
+    isNullable: true
+  - name: internal_api_query
+    type: json
+    isNullable: true
+  - name: internal_api_body
+    type: json
+    isNullable: true
+  - name: internal_api_token
+    type: text
+    isNullable: true
+  - type: fk
+    name: internal_api_user_id
+    isNullable: true
+    references:
+      table: user
+      column: id
+      onDelete: set null
+      onUpdate: cascade
+  - name: app_command_slug
+    type: varchar
+    length: 127
+    isNullable: true
+  - name: app_command_params
+    type: json
+    isNullable: true
+  - type: created_at
+  - type: updated_at
+indices:
+  - columns:
+      - webhook_integration_id
+  - columns:
+      - type
+  - columns:
+      - status
+

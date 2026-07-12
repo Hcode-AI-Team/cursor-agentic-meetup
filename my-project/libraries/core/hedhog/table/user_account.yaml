@@ -1,0 +1,31 @@
+columns:
+  - type: pk
+  - name: user_id
+    type: fk
+    references:
+      table: user
+      column: id
+      onDelete: CASCADE
+  - name: provider
+    type: enum
+    values:
+      - google
+      - facebook
+      - github
+      - apple
+      - microsoft
+      - microsoft-entra-id
+      - linkedin
+  - name: provider_user_id
+  - name: email
+    isNullable: true
+  - name: scopes
+    isNullable: true
+  - name: refresh_token
+    type: bytes
+    isNullable: true
+  - name: token_expires_at
+    type: datetime
+    isNullable: true
+  - type: created_at
+  - type: updated_at
